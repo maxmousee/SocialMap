@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A720B2C17AA0C7400D10E72 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A720B2A17AA0C6200D10E72 /* FacebookSDK.framework */; };
 		3A8413CE178A538600C1159A /* TweetMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8413CD178A538600C1159A /* TweetMapViewController.m */; };
 		3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8413CF178A595D00C1159A /* MapKit.framework */; };
-		3A9F01FA17A9F79B0033B803 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9F01F817A9F78B0033B803 /* FacebookSDK.framework */; };
 		3ABE6106178BA6F200E00BC6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */; };
 		90E9BE6416C1A63100EC2D36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E9BE6316C1A63100EC2D36 /* UIKit.framework */; };
 		90E9BE6616C1A63100EC2D36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E9BE6516C1A63100EC2D36 /* Foundation.framework */; };
@@ -29,10 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A720B2A17AA0C6200D10E72 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		3A8413CC178A538600C1159A /* TweetMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetMapViewController.h; sourceTree = "<group>"; };
 		3A8413CD178A538600C1159A /* TweetMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetMapViewController.m; sourceTree = "<group>"; };
 		3A8413CF178A595D00C1159A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		3A9F01F817A9F78B0033B803 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		90E9BE6016C1A63100EC2D36 /* SocialDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9BE6316C1A63100EC2D36 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -62,12 +62,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A720B2C17AA0C7400D10E72 /* FacebookSDK.framework in Frameworks */,
 				90E9BE8516C1A86900EC2D36 /* QuartzCore.framework in Frameworks */,
 				90E9BE8316C1A86100EC2D36 /* Accounts.framework in Frameworks */,
 				3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */,
 				90E9BE8116C1A81F00EC2D36 /* Social.framework in Frameworks */,
 				90E9BE6416C1A63100EC2D36 /* UIKit.framework in Frameworks */,
-				3A9F01FA17A9F79B0033B803 /* FacebookSDK.framework in Frameworks */,
 				90E9BE6616C1A63100EC2D36 /* Foundation.framework in Frameworks */,
 				3ABE6106178BA6F200E00BC6 /* CoreLocation.framework in Frameworks */,
 				90E9BE6816C1A63100EC2D36 /* CoreGraphics.framework in Frameworks */,
@@ -97,7 +97,7 @@
 		90E9BE6216C1A63100EC2D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A9F01F817A9F78B0033B803 /* FacebookSDK.framework */,
+				3A720B2A17AA0C6200D10E72 /* FacebookSDK.framework */,
 				3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */,
 				3A8413CF178A595D00C1159A /* MapKit.framework */,
 				90E9BE8416C1A86900EC2D36 /* QuartzCore.framework */,
@@ -291,6 +291,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
+					"\"$(SRCROOT)/..\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Twitter Profile/SocialDemo-Prefix.pch";
@@ -306,6 +307,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
+					"\"$(SRCROOT)/..\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Twitter Profile/SocialDemo-Prefix.pch";
