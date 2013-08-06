@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface TweetMapViewController : UIViewController <MKMapViewDelegate> {
     NSString *username;

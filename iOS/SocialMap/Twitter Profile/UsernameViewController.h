@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface UsernameViewController : UIViewController
+@interface UsernameViewController : UIViewController<FBFriendPickerDelegate>
 {
     IBOutlet UITextField *usernameTextfield;
+    NSMutableArray *fbUsers;
 }
+
+- (IBAction)pickFriendsButtonClick:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *showMapButton;
 @property (weak, nonatomic) IBOutlet UIButton *showTwitterInfoButton;
