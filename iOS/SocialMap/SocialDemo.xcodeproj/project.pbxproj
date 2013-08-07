@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A35682517B2C03400995261 /* facebook.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A35682317B2C03400995261 /* facebook.jpg */; };
+		3A35682617B2C03400995261 /* twitter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A35682417B2C03400995261 /* twitter.jpg */; };
+		3A35682817B2C14500995261 /* twitter-bird-light-bgs.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A35682717B2C14500995261 /* twitter-bird-light-bgs.png */; };
+		3A35682A17B2C26F00995261 /* new-facebook-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A35682917B2C26F00995261 /* new-facebook-logo.png */; };
 		3A720B2C17AA0C7400D10E72 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A720B2A17AA0C6200D10E72 /* FacebookSDK.framework */; };
 		3A8413CE178A538600C1159A /* TweetMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8413CD178A538600C1159A /* TweetMapViewController.m */; };
 		3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8413CF178A595D00C1159A /* MapKit.framework */; };
@@ -29,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A35682317B2C03400995261 /* facebook.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = facebook.jpg; path = "Twitter Profile/Buttons/facebook.jpg"; sourceTree = "<group>"; };
+		3A35682417B2C03400995261 /* twitter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = twitter.jpg; path = "Twitter Profile/Buttons/twitter.jpg"; sourceTree = "<group>"; };
+		3A35682717B2C14500995261 /* twitter-bird-light-bgs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-bird-light-bgs.png"; sourceTree = "<group>"; };
+		3A35682917B2C26F00995261 /* new-facebook-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-facebook-logo.png"; sourceTree = "<group>"; };
 		3A720B2A17AA0C6200D10E72 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		3A8413CC178A538600C1159A /* TweetMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetMapViewController.h; sourceTree = "<group>"; };
 		3A8413CD178A538600C1159A /* TweetMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetMapViewController.m; sourceTree = "<group>"; };
@@ -77,10 +85,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A35682217B2BBDC00995261 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				3A35682917B2C26F00995261 /* new-facebook-logo.png */,
+				3A35682717B2C14500995261 /* twitter-bird-light-bgs.png */,
+				3A35682317B2C03400995261 /* facebook.jpg */,
+				3A35682417B2C03400995261 /* twitter.jpg */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
 		90E9BE5716C1A63100EC2D36 = {
 			isa = PBXGroup;
 			children = (
-				90E9BE6916C1A63100EC2D36 /* Twitter Profile */,
+				3A35682217B2BBDC00995261 /* Buttons */,
+				90E9BE6916C1A63100EC2D36 /* MVC */,
 				90E9BE6216C1A63100EC2D36 /* Frameworks */,
 				90E9BE6116C1A63100EC2D36 /* Products */,
 			);
@@ -110,7 +130,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		90E9BE6916C1A63100EC2D36 /* Twitter Profile */ = {
+		90E9BE6916C1A63100EC2D36 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
 				90E9BE7216C1A63100EC2D36 /* AppDelegate.h */,
@@ -124,6 +144,7 @@
 				90E9BE6A16C1A63100EC2D36 /* Supporting Files */,
 				90E9BE8616C1A8F200EC2D36 /* MainStoryboard.storyboard */,
 			);
+			name = MVC;
 			path = "Twitter Profile";
 			sourceTree = "<group>";
 		};
@@ -197,6 +218,10 @@
 				90E9BE7816C1A63100EC2D36 /* Default@2x.png in Resources */,
 				90E9BE7A16C1A63100EC2D36 /* Default-568h@2x.png in Resources */,
 				90E9BE8716C1A8F200EC2D36 /* MainStoryboard.storyboard in Resources */,
+				3A35682517B2C03400995261 /* facebook.jpg in Resources */,
+				3A35682617B2C03400995261 /* twitter.jpg in Resources */,
+				3A35682817B2C14500995261 /* twitter-bird-light-bgs.png in Resources */,
+				3A35682A17B2C26F00995261 /* new-facebook-logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +321,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Twitter Profile/SocialDemo-Prefix.pch";
 				INFOPLIST_FILE = "Twitter Profile/SocialDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = SocialDemo;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -312,7 +339,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Twitter Profile/SocialDemo-Prefix.pch";
 				INFOPLIST_FILE = "Twitter Profile/SocialDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = SocialDemo;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

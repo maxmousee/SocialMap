@@ -10,6 +10,8 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import <QuartzCore/QuartzCore.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface ProfileViewController : UIViewController
 {
@@ -23,11 +25,10 @@
     IBOutlet UILabel *followingLabel;
     IBOutlet UILabel *followersLabel;
     
-    IBOutlet UITextView *lastTweetTextView;
-    
     NSString *username;
 }
 
 @property (nonatomic, retain) NSString *username;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

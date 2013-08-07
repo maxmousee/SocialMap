@@ -11,7 +11,7 @@
 
 @interface UsernameViewController : UIViewController<FBFriendPickerDelegate>
 {
-    IBOutlet UITextField *usernameTextfield;
+    NSString *username;
     NSMutableArray *fbUsers;
 }
 
@@ -19,5 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *showMapButton;
 @property (weak, nonatomic) IBOutlet UIButton *showTwitterInfoButton;
+@property (weak, nonatomic) IBOutlet UISwitch *interactionsSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *timelineSwitch;
 
 @end

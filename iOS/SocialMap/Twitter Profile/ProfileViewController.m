@@ -38,6 +38,17 @@
     [profileImageView.layer setShadowColor:[[UIColor blackColor] CGColor]];
     
     [self getInfo];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    int plotInteractions = [defaults integerForKey:@"userInteractions"];
+    int plotTimeline = [defaults integerForKey:@"userInteractions"];
+    if (plotInteractions > 0) {
+        [self plotInteractions];
+    }
+    if(plotTimeline > 0) {
+        [self plotTimeline];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,10 +129,7 @@
                             followingLabel.text= [NSString stringWithFormat:@"%i", following];
                             followersLabel.text = [NSString stringWithFormat:@"%i", followers];
                             
-                            NSString *lastTweet = [[(NSDictionary *)TWData objectForKey:@"status"] objectForKey:@"text"];
-                            lastTweetTextView.text= lastTweet;
-                            
-                            
+                            //NSString *lastTweet = [[(NSDictionary *)TWData objectForKey:@"status"] objectForKey:@"text"];
                             
                             // Get the profile image in the original resolution
                             
@@ -161,5 +169,182 @@
     bannerImageView.image = [UIImage imageWithData:data];
 }
 
+- (void)plotTimeline{
+    
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error){
+        if (granted) {
+            
+            NSArray *accounts = [accountStore accountsWithAccountType:accountType];
+            
+            // Check if the users has setup at least one Twitter account
+            
+            if (accounts.count > 0)
+            {
+                ACAccount *twitterAccount = [accounts objectAtIndex:0];
+                
+                // Creating a request to get the info about a user on Twitter
+                
+                SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/home_timeline.json?user_id=%@&count=800",username]] parameters:nil];
+                [twitterInfoRequest setAccount:twitterAccount];
+                
+                // Making the request
+                
+                @try {
+                    [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                        
+                        // Check if we reached the reate limit
+                        
+                        if ([urlResponse statusCode] == 429) {
+                            NSLog(@"Rate limit reached");
+                            return;
+                        }
+                        
+                        // Check if there was an error
+                        
+                        if (error) {
+                            NSLog(@"Error: %@", error.localizedDescription);
+                            return;
+                        }
+                        
+                        // Check if there is some response data
+                        
+                        if (responseData) {
+                            
+                            NSError *error = nil;
+                            NSArray *TWData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+                            //NSLog(@"%@", TWData);
+                            for (NSArray *tweetArray in TWData) {
+                                //NSLog(@"%@", tweetArray);
+                                //NSString *tweetGeolocation = [(NSDictionary *)tweetArray objectForKey:@"geo"];
+                                //NSLog(@"%@", tweetGeolocation);
+                                NSArray *userArray = [(NSDictionary *)tweetArray objectForKey:@"user"];
+                                //NSLog(@"%@", userArray);
+                                NSString *userLocation = [(NSDictionary *)userArray objectForKey:@"location"];
+                                NSLog(@"%@", userLocation);
+                                if(userLocation != nil && [userLocation length] > 0) {
+                                    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+                                    [geocoder geocodeAddressString:userLocation completionHandler:^(NSArray* placemarks, NSError* error){
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            // Update the UI
+                                            for (CLPlacemark* aPlacemark in placemarks)
+                                            {
+                                                // Add an annotation
+                                                MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+                                                point.coordinate = aPlacemark.location.coordinate;
+                                                point.title = [(NSDictionary *)userArray objectForKey:@"name"];
+                                                NSMutableString *userName = [[NSMutableString alloc]initWithString:@"@"];
+                                                [userName appendString:[(NSDictionary *)userArray objectForKey:@"screen_name"]];
+                                                point.subtitle = userName;
+                                                [_mapView addAnnotation:point];
+                                            }
+                                        });
+                                    }];
+                                }
+                                // Filter the preferred data
+                            }
+                        }
+                    }];
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"%@", exception.reason);
+                }
+            }
+        } else {
+            NSLog(@"No access granted");
+        }
+    }];
+}
+
+- (void)plotInteractions{
+    
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error){
+        if (granted) {
+            
+            NSArray *accounts = [accountStore accountsWithAccountType:accountType];
+            
+            // Check if the users has setup at least one Twitter account
+            
+            if (accounts.count > 0)
+            {
+                ACAccount *twitterAccount = [accounts objectAtIndex:0];
+                
+                // Creating a request to get the info about a user on Twitter
+                
+                SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/mentions_timeline.json?user_id=%@&count=800",username]] parameters:nil];
+                [twitterInfoRequest setAccount:twitterAccount];
+                
+                // Making the request
+                
+                @try {
+                    [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                        
+                        // Check if we reached the reate limit
+                        
+                        if ([urlResponse statusCode] == 429) {
+                            NSLog(@"Rate limit reached");
+                            return;
+                        }
+                        
+                        // Check if there was an error
+                        
+                        if (error) {
+                            NSLog(@"Error: %@", error.localizedDescription);
+                            return;
+                        }
+                        
+                        // Check if there is some response data
+                        
+                        if (responseData) {
+                            
+                            NSError *error = nil;
+                            NSArray *TWData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+                            //NSLog(@"%@", TWData);
+                            for (NSArray *tweetArray in TWData) {
+                                //NSLog(@"%@", tweetArray);
+                                //NSString *tweetGeolocation = [(NSDictionary *)tweetArray objectForKey:@"geo"];
+                                //NSLog(@"%@", tweetGeolocation);
+                                NSArray *userArray = [(NSDictionary *)tweetArray objectForKey:@"user"];
+                                //NSLog(@"%@", userArray);
+                                NSString *userLocation = [(NSDictionary *)userArray objectForKey:@"location"];
+                                NSLog(@"%@", userLocation);
+                                if(userLocation != nil && [userLocation length] > 0) {
+                                    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+                                    [geocoder geocodeAddressString:userLocation completionHandler:^(NSArray* placemarks, NSError* error){
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            // Update the UI
+                                            for (CLPlacemark* aPlacemark in placemarks)
+                                            {
+                                                // Add an annotation
+                                                MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+                                                point.coordinate = aPlacemark.location.coordinate;
+                                                point.title = [(NSDictionary *)userArray objectForKey:@"name"];
+                                                NSMutableString *userName = [[NSMutableString alloc]initWithString:@"@"];
+                                                [userName appendString:[(NSDictionary *)userArray objectForKey:@"screen_name"]];
+                                                point.subtitle = userName;
+                                                [_mapView addAnnotation:point];
+                                            }
+                                        });
+                                    }];
+                                }
+                                // Filter the preferred data
+                            }
+                        }
+                    }];
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"%@", exception.reason);
+                }
+            }
+        } else {
+            NSLog(@"No access granted");
+        }
+    }];
+}
 
 @end

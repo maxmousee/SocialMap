@@ -33,7 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [usernameTextfield setText:@"Loading Twitter Stuff..."];
     [_showMapButton setEnabled:NO];
     [_showTwitterInfoButton setEnabled:NO];
     
@@ -46,16 +45,22 @@
                                   @"friends_about_me"];
     
     //loginview.frame = CGRectOffset(loginview.frame, 5, 5);
-    CGRect loginViewFrame = _showMapButton.frame;
-    loginViewFrame.origin.y += 50;
+    //CGRect loginViewFrame = _showMapButton.frame;
+    //loginViewFrame.origin.y += 50;
     //loginViewFrame.origin.y += 105;
+    //loginViewFrame.origin.y += 160;
     //loginViewFrame.origin.x += 65;
-    loginview.frame = loginViewFrame;
+    //loginview.frame = loginViewFrame;
     loginview.delegate = self;
     
-    [self.view addSubview:loginview];
+    [loginview sizeToFit];
     
-    //[loginview sizeToFit];
+    CGRect loginViewFrame = loginview.frame;
+    loginViewFrame.origin.x += 80;
+    loginViewFrame.origin.y += 320;
+    loginview.frame = loginViewFrame;
+    
+    [self.view addSubview:loginview];
     
     [self getTwitterInfo];
     //[self requestFriendsWithFQL];
@@ -69,8 +74,14 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    //NSLog(@"UserInteractions enabled %d", [_interactionsSwitch isOn]);
+    //NSLog(@"Timeline enabled %d", [_timelineSwitch isOn]);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:[_interactionsSwitch isOn] forKey:@"userInteractions"];
+    [defaults setInteger:[_timelineSwitch isOn] forKey:@"timeline"];
+    [defaults synchronize];
     ProfileViewController *profileViewController = [segue destinationViewController];
-    [profileViewController setUsername:usernameTextfield.text];
+    [profileViewController setUsername:username];
 }
 
 - (void) getTwitterInfo
@@ -92,9 +103,7 @@
                 ACAccount *twitterAccount = [accounts objectAtIndex:0];
                 
                 // Creating a request to get the info about a user on Twitter
-                NSMutableString *twitterUsername = [[NSMutableString alloc]initWithString:@"@"];
-                [twitterUsername appendString:twitterAccount.username];
-                [usernameTextfield setText:twitterUsername];
+                username = twitterAccount.username;
                 [_showMapButton setEnabled:YES];
                 [_showTwitterInfoButton setEnabled:YES];
             }
@@ -208,43 +217,5 @@
 - (void)facebookViewControllerCancelWasPressed:(id)sender {
     [self fillTextBoxAndDismiss:@"<Cancelled>"];
 }
-
-// FQL via Graph API
--(void)requestFriendsWithFQL {
-    NSString* fql =
-    @"{"
-    @"'allfriends':'SELECT uid2 FROM friend WHERE uid1=me()',"
-    @"'frienddetails':'SELECT uid, name, pic, hometown_location, current_location FROM user WHERE uid IN ( SELECT uid2 FROM friend WHERE uid1 = me() )',"
-    @"}";
-    [FBRequestConnection startWithGraphPath:@"/fql"
-                                 parameters:@{ @"q" : fql}
-                                 HTTPMethod:@"GET"
-                          completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                              if(error) {
-                                  //[self printError:@"Error reading friends via FQL" error:error];
-                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOPS" message:@"Something bad happened trying to reach Facebook :(" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                  [alert show];
-                                  NSLog(@"%@", error);
-                                  return;
-                              }
-                              //NSArray* friendIds = ((NSArray*)[result data])[0][@"fql_result_set"];
-                              NSArray* friends = ((NSArray*)[result data])[1][@"fql_result_set"];
-                              for (NSDictionary *userData in friends) {
-                                  @try {                                      
-                                      NSLog(@"%@", [userData objectForKey:@"name"]);
-                                      NSDictionary *userLocationDict = [userData objectForKey:@"current_location"];
-                                      NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
-                                      NSLog(@"%@", [userLocationDict objectForKey:@"latitude"]);
-                                      NSLog(@"%@", [userLocationDict objectForKey:@"longitude"]);
-                                  }
-                                  @catch (NSException *exception) {
-                                      NSLog(@"EXCEPTION %@", exception);
-                                  }
-                                  
-                              }
-                          }];
-}
-
-#pragma mark -
 
 @end
