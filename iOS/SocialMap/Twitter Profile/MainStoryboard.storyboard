@@ -76,7 +76,7 @@
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dN2-VU-xML"/>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="57R-k2-NH4"/>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Interactions" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ty0-FV-0kB">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Interactions" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="Ty0-FV-0kB">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="3dL-ZR-kyw"/>
@@ -85,7 +85,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Following" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CHG-2l-NFy">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Following" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="CHG-2l-NFy">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rjB-ig-4Ju"/>
@@ -208,7 +208,12 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JFQ-hj-J0Z"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JFQ-hj-J0Z">
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Wkc-w7-cix" appends="YES" id="Q2d-3P-iHq"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -256,13 +261,23 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dw-SI-IKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Wkc-w7-cix">
+                    <connections>
+                        <action selector="handleMapViewTap:" destination="xoW-ci-mKL" id="4N7-8O-Eph"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pinchGestureRecognizer id="lWI-Xq-UvP">
+                    <connections>
+                        <action selector="handleMapViewPinch:" destination="xoW-ci-mKL" id="Bxn-Er-17q"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="770" y="-156"/>
         </scene>
         <!--Tweet Map View Controller - Map-->
         <scene sceneID="UGf-xk-eA1">
             <objects>
-                <viewController id="BLA-q6-FpI" customClass="TweetMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TweetMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BLA-q6-FpI" customClass="TweetMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FnJ-0y-mCw">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -298,6 +313,7 @@
         <class className="ProfileViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
             <relationships>
+                <relationship kind="action" name="handleMapViewTap:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="bannerImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="followersLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="followingLabel" candidateClass="UILabel"/>

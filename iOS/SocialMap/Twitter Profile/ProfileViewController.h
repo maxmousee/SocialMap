@@ -26,9 +26,13 @@
     IBOutlet UILabel *followersLabel;
     
     NSString *username;
+    BOOL isFullScreen;
+    CGRect mapViewSmallFrame;
 }
 
 @property (nonatomic, retain) NSString *username;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+- (IBAction)handleMapViewTap:(UITapGestureRecognizer *)recognizer;
 
 @end

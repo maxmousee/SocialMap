@@ -30,15 +30,9 @@
     [super viewDidLoad];
     [socialMapView setShowsUserLocation:true];
     [socialMapView setDelegate:self];
+    [socialMapView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [socialMapView.layer setBorderWidth: 2.0];
     [self plotFBFriendsWithFQL];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //[self getFollowers];
-        //[self plotFollowing];
-        //[self plotInteractions];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Update the UI
-        });
-    });
 	// Do any additional setup after loading the view.
 }
 

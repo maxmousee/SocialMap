@@ -7,6 +7,7 @@
 //
 
 #import "ProfileViewController.h"
+#import "TweetMapViewController.h"
 
 @interface ProfileViewController ()
 
@@ -37,6 +38,18 @@
     [profileImageView.layer setShadowOffset:CGSizeMake(1.0, 0.0)];
     [profileImageView.layer setShadowColor:[[UIColor blackColor] CGColor]];
     
+    [profileImageView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [profileImageView.layer setBorderWidth: 2.0];
+    
+    [bannerImageView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [bannerImageView.layer setBorderWidth: 2.0];
+    
+    [_mapView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    [_mapView.layer setBorderWidth: 2.0];
+    
+    isFullScreen = false;
+    mapViewSmallFrame = _mapView.frame;
+    
     [self getInfo];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -55,6 +68,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)handleMapViewTap:(UITapGestureRecognizer *)recognizer{
+    NSLog(@"Tap gesture recognized");
+    if(!isFullScreen) {
+        [_mapView setFrame:[self.view frame]];
+    } else {
+        //[_mapView setFrame:mapViewSmallFrame];
+    }
+    //isFullScreen = !isFullScreen;
 }
 
 - (void) getInfo
