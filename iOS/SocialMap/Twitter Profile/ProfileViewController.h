@@ -12,8 +12,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <iAd/iAd.h>
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <ADBannerViewDelegate>
 {
     IBOutlet UIImageView *profileImageView;
     IBOutlet UIImageView *bannerImageView;
@@ -28,10 +29,13 @@
     NSString *username;
     BOOL isFullScreen;
     CGRect mapViewSmallFrame;
+    
+    BOOL bannerIsVisible;
 }
 
 @property (nonatomic, retain) NSString *username;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet ADBannerView *theBannerView;
 
 - (IBAction)handleMapViewTap:(UITapGestureRecognizer *)recognizer;
 

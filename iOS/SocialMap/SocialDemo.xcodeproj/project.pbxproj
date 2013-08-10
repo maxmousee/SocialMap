@@ -11,6 +11,7 @@
 		3A35682617B2C03400995261 /* twitter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A35682417B2C03400995261 /* twitter.jpg */; };
 		3A35682817B2C14500995261 /* twitter-bird-light-bgs.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A35682717B2C14500995261 /* twitter-bird-light-bgs.png */; };
 		3A35682A17B2C26F00995261 /* new-facebook-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A35682917B2C26F00995261 /* new-facebook-logo.png */; };
+		3A62DB0317B6B1BE00776237 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A62DB0117B6B1B400776237 /* iAd.framework */; };
 		3A720B2C17AA0C7400D10E72 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A720B2A17AA0C6200D10E72 /* FacebookSDK.framework */; };
 		3A8413CE178A538600C1159A /* TweetMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8413CD178A538600C1159A /* TweetMapViewController.m */; };
 		3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8413CF178A595D00C1159A /* MapKit.framework */; };
@@ -37,6 +38,7 @@
 		3A35682417B2C03400995261 /* twitter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = twitter.jpg; path = "Twitter Profile/Buttons/twitter.jpg"; sourceTree = "<group>"; };
 		3A35682717B2C14500995261 /* twitter-bird-light-bgs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-bird-light-bgs.png"; sourceTree = "<group>"; };
 		3A35682917B2C26F00995261 /* new-facebook-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new-facebook-logo.png"; sourceTree = "<group>"; };
+		3A62DB0117B6B1B400776237 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		3A720B2A17AA0C6200D10E72 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		3A8413CC178A538600C1159A /* TweetMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetMapViewController.h; sourceTree = "<group>"; };
 		3A8413CD178A538600C1159A /* TweetMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetMapViewController.m; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				90E9BE8516C1A86900EC2D36 /* QuartzCore.framework in Frameworks */,
 				90E9BE8316C1A86100EC2D36 /* Accounts.framework in Frameworks */,
 				3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */,
+				3A62DB0317B6B1BE00776237 /* iAd.framework in Frameworks */,
 				90E9BE8116C1A81F00EC2D36 /* Social.framework in Frameworks */,
 				90E9BE6416C1A63100EC2D36 /* UIKit.framework in Frameworks */,
 				90E9BE6616C1A63100EC2D36 /* Foundation.framework in Frameworks */,
@@ -117,6 +120,7 @@
 		90E9BE6216C1A63100EC2D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A62DB0117B6B1B400776237 /* iAd.framework */,
 				3A720B2A17AA0C6200D10E72 /* FacebookSDK.framework */,
 				3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */,
 				3A8413CF178A595D00C1159A /* MapKit.framework */,

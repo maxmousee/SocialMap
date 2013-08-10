@@ -94,19 +94,27 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="wS2-jP-Nuh">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="r1N-MJ-pms"/>
+                                </constraints>
+                            </adBannerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="CHG-2l-NFy" firstAttribute="leading" secondItem="57R-k2-NH4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="6Mm-ud-Ubw"/>
                             <constraint firstItem="CHG-2l-NFy" firstAttribute="top" secondItem="QiI-9A-ygx" secondAttribute="top" constant="239" id="6OJ-Ff-cZ0"/>
+                            <constraint firstItem="wS2-jP-Nuh" firstAttribute="leading" secondItem="QiI-9A-ygx" secondAttribute="leading" type="default" id="EFN-Tv-rao"/>
                             <constraint firstItem="JFw-ni-hyd" firstAttribute="leading" secondItem="QiI-9A-ygx" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EmK-7e-Ptm"/>
                             <constraint firstItem="JFw-ni-hyd" firstAttribute="top" secondItem="QiI-9A-ygx" secondAttribute="top" constant="112" id="FZl-4f-L3h"/>
+                            <constraint firstItem="wS2-jP-Nuh" firstAttribute="trailing" secondItem="QiI-9A-ygx" secondAttribute="trailing" type="default" id="Ggk-4F-QX6"/>
                             <constraint firstItem="PRX-sr-A07" firstAttribute="top" secondItem="QiI-9A-ygx" secondAttribute="top" constant="10" id="I4J-uM-jSH"/>
                             <constraint firstItem="PRX-sr-A07" firstAttribute="leading" secondItem="QiI-9A-ygx" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="JBD-14-0a7"/>
                             <constraint firstItem="57R-k2-NH4" firstAttribute="top" secondItem="QiI-9A-ygx" secondAttribute="top" constant="245" id="STd-T1-ABB"/>
                             <constraint firstAttribute="trailing" secondItem="JFw-ni-hyd" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Trx-I1-vgv"/>
                             <constraint firstItem="Ty0-FV-0kB" firstAttribute="top" secondItem="QiI-9A-ygx" secondAttribute="top" constant="171" id="asU-HU-f8V"/>
                             <constraint firstItem="dN2-VU-xML" firstAttribute="leading" secondItem="QiI-9A-ygx" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="fEm-2m-ZNX"/>
+                            <constraint firstItem="wS2-jP-Nuh" firstAttribute="bottom" secondItem="QiI-9A-ygx" secondAttribute="bottom" type="default" id="mGH-yp-kHJ"/>
                             <constraint firstItem="diu-wA-2Z8" firstAttribute="trailing" secondItem="CHG-2l-NFy" secondAttribute="trailing" type="default" id="pJh-RB-PWK"/>
                             <constraint firstItem="diu-wA-2Z8" firstAttribute="top" secondItem="PRX-sr-A07" secondAttribute="top" type="default" id="sDL-I9-i21"/>
                             <constraint firstItem="dN2-VU-xML" firstAttribute="top" secondItem="QiI-9A-ygx" secondAttribute="top" constant="177" id="shy-IR-g9O"/>
@@ -120,6 +128,7 @@
                         <outlet property="interactionsSwitch" destination="dN2-VU-xML" id="qzb-Fp-WSm"/>
                         <outlet property="showMapButton" destination="diu-wA-2Z8" id="4zZ-SL-4qr"/>
                         <outlet property="showTwitterInfoButton" destination="PRX-sr-A07" id="jRm-0w-9Fh"/>
+                        <outlet property="theBannerView" destination="wS2-jP-Nuh" id="mJc-bU-2oa"/>
                         <outlet property="timelineSwitch" destination="57R-k2-NH4" id="IHf-s3-hoS"/>
                     </connections>
                 </viewController>
@@ -214,6 +223,11 @@
                                     <outletCollection property="gestureRecognizers" destination="Wkc-w7-cix" appends="YES" id="Q2d-3P-iHq"/>
                                 </connections>
                             </mapView>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="qqj-TO-gHS">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9Wu-6W-234"/>
+                                </constraints>
+                            </adBannerView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -222,7 +236,9 @@
                             <constraint firstItem="JFQ-hj-J0Z" firstAttribute="leading" secondItem="5Vh-mS-Uzz" secondAttribute="leading" type="default" id="2NN-gh-Qlk"/>
                             <constraint firstItem="4Ka-hT-4kE" firstAttribute="leading" secondItem="5Vh-mS-Uzz" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4lh-wC-w1A"/>
                             <constraint firstAttribute="trailing" secondItem="rgv-f7-VqG" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7lP-aK-FPN"/>
+                            <constraint firstItem="qqj-TO-gHS" firstAttribute="leading" secondItem="5Vh-mS-Uzz" secondAttribute="leading" type="default" id="7su-xz-bdZ"/>
                             <constraint firstItem="4Ka-hT-4kE" firstAttribute="baseline" secondItem="Wqt-iS-zT7" secondAttribute="baseline" type="default" id="8VM-pR-uaI"/>
+                            <constraint firstItem="qqj-TO-gHS" firstAttribute="bottom" secondItem="5Vh-mS-Uzz" secondAttribute="bottom" type="default" id="ElA-Wd-fl5"/>
                             <constraint firstItem="4kq-z6-3Nv" firstAttribute="top" secondItem="4Ka-hT-4kE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="F6h-Th-nTU"/>
                             <constraint firstItem="4Ka-hT-4kE" firstAttribute="top" secondItem="0cP-qY-wDA" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="KJ9-d7-rBH"/>
                             <constraint firstItem="rgv-f7-VqG" firstAttribute="top" secondItem="5Vh-mS-Uzz" secondAttribute="top" constant="120" id="M7Q-bS-AWR"/>
@@ -231,6 +247,7 @@
                             <constraint firstItem="Fx5-gf-233" firstAttribute="baseline" secondItem="Ibb-ed-THH" secondAttribute="baseline" type="default" id="UMT-3g-7O2"/>
                             <constraint firstItem="JFQ-hj-J0Z" firstAttribute="trailing" secondItem="5Vh-mS-Uzz" secondAttribute="trailing" type="default" id="WyC-Qs-KHy"/>
                             <constraint firstItem="t1b-MW-BKi" firstAttribute="centerX" secondItem="OXO-aG-N2h" secondAttribute="centerX" type="default" id="Z2p-uv-mWp"/>
+                            <constraint firstItem="qqj-TO-gHS" firstAttribute="trailing" secondItem="5Vh-mS-Uzz" secondAttribute="trailing" type="default" id="bW3-on-k45"/>
                             <constraint firstItem="t1b-MW-BKi" firstAttribute="leading" secondItem="5Vh-mS-Uzz" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bZ6-tJ-wP1"/>
                             <constraint firstItem="Ibb-ed-THH" firstAttribute="baseline" secondItem="4kq-z6-3Nv" secondAttribute="baseline" type="default" id="bwE-pB-5t6"/>
                             <constraint firstItem="4kq-z6-3Nv" firstAttribute="leading" secondItem="5Vh-mS-Uzz" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="caR-hn-P2R"/>
@@ -256,6 +273,7 @@
                         <outlet property="mapView" destination="JFQ-hj-J0Z" id="aSJ-iP-akl"/>
                         <outlet property="nameLabel" destination="t1b-MW-BKi" id="kqt-T3-z4i"/>
                         <outlet property="profileImageView" destination="OXO-aG-N2h" id="wRJ-Uw-0cM"/>
+                        <outlet property="theBannerView" destination="qqj-TO-gHS" id="7HG-N3-UoK"/>
                         <outlet property="tweetsLabel" destination="4Ka-hT-4kE" id="Gwp-GB-Mg9"/>
                         <outlet property="usernameLabel" destination="rgv-f7-VqG" id="yn9-g3-dDr"/>
                     </connections>
@@ -283,18 +301,27 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jgm-HA-Vjs"/>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="nXZ-A0-6g6">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wf5-88-4jF"/>
+                                </constraints>
+                            </adBannerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jgm-HA-Vjs" firstAttribute="leading" secondItem="FnJ-0y-mCw" secondAttribute="leading" type="default" id="1eK-NQ-CK3"/>
+                            <constraint firstItem="nXZ-A0-6g6" firstAttribute="bottom" secondItem="FnJ-0y-mCw" secondAttribute="bottom" type="default" id="AP2-Px-dgZ"/>
                             <constraint firstItem="jgm-HA-Vjs" firstAttribute="top" secondItem="FnJ-0y-mCw" secondAttribute="top" type="default" id="DzB-jd-jHP"/>
                             <constraint firstItem="jgm-HA-Vjs" firstAttribute="trailing" secondItem="FnJ-0y-mCw" secondAttribute="trailing" type="default" id="Oya-mk-Nju"/>
+                            <constraint firstItem="nXZ-A0-6g6" firstAttribute="leading" secondItem="FnJ-0y-mCw" secondAttribute="leading" type="default" id="VU0-pQ-2SY"/>
+                            <constraint firstItem="nXZ-A0-6g6" firstAttribute="trailing" secondItem="FnJ-0y-mCw" secondAttribute="trailing" type="default" id="eIN-qo-MIg"/>
                             <constraint firstItem="jgm-HA-Vjs" firstAttribute="bottom" secondItem="FnJ-0y-mCw" secondAttribute="bottom" type="default" id="jkg-OJ-eRw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="NLm-ag-mT7"/>
                     <connections>
                         <outlet property="socialMapView" destination="jgm-HA-Vjs" id="Qdu-uk-4mY"/>
+                        <outlet property="theBannerView" destination="nXZ-A0-6g6" id="Wlf-Z3-OTe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyA-ux-Gp8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,41 +333,6 @@
         <image name="new-facebook-logo.png" width="690" height="690"/>
         <image name="twitter-bird-light-bgs.png" width="300" height="300"/>
     </resources>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ProfileViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="handleMapViewTap:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="bannerImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="followersLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="followingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="profileImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tweetsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="usernameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TweetMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="socialMapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="UsernameViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UsernameViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="pickFriendsButtonClick:"/>
-                <relationship kind="outlet" name="interactionsSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="showMapButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="showTwitterInfoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="timelineSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

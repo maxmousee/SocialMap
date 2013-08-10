@@ -8,7 +8,7 @@
 
 #import "TweetMapViewController.h"
 
-@interface TweetMapViewController ()
+@interface TweetMapViewController () <ADBannerViewDelegate>
 
 @end
 
@@ -33,6 +33,10 @@
     [socialMapView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     [socialMapView.layer setBorderWidth: 2.0];
     [self plotFBFriendsWithFQL];
+    
+    _theBannerView.frame = CGRectOffset(_theBannerView.frame, 0, 50);
+    bannerIsVisible = NO;
+    _theBannerView.delegate = self;
 	// Do any additional setup after loading the view.
 }
 
@@ -40,6 +44,39 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    if (!bannerIsVisible)
+    {
+        NSLog(@"bannerViewDidLoadAd");
+        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+        banner.frame = CGRectOffset(banner.frame, 0, -50);
+        //buttonFrame.frame = CGRectOffset(buttonFrame.frame, 0, -50);
+        //web.frame = CGRectMake(web.frame.origin.x, web.frame.origin.y, web.frame.size.width,
+        //                       web.frame.size.height-50);
+        [UIView commitAnimations];
+        bannerIsVisible = YES;
+    }
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    if (bannerIsVisible)
+    {
+        NSLog(@"bannerView:didFailToReceiveAdWithError:");
+        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+        // assumes the banner view is at the top of the screen.
+        banner.frame = CGRectOffset(banner.frame, 0, 50);
+        //buttonFrame.frame = CGRectOffset(buttonFrame.frame, 0, 50);
+        //web.frame = CGRectMake(web.frame.origin.x,
+        //                       web.frame.origin.y,
+        //                       web.frame.size.width,
+        //                       web.frame.size.height+50);
+        [UIView commitAnimations];
+        bannerIsVisible = NO;
+    }
 }
 
 // FQL via Graph API
