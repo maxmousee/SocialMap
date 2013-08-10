@@ -51,7 +51,7 @@
     mapViewSmallFrame = _mapView.frame;
     
     _theBannerView.frame = CGRectOffset(_theBannerView.frame, 0, 50);
-    bannerIsVisible = NO;
+    bannerIsVisible = YES;
     _theBannerView.delegate = self;
     
     [self getInfo];

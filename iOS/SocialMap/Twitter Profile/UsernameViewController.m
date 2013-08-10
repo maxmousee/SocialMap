@@ -137,12 +137,12 @@
                 
                 // Creating a request to get the info about a user on Twitter
                 username = twitterAccount.username;
-                [_showMapButton setEnabled:YES];
                 [_showTwitterInfoButton setEnabled:YES];
             }
         } else {
             NSLog(@"No access granted");
         }
+        [_showMapButton setEnabled:YES];
     }];
 }
 

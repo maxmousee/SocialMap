@@ -34,8 +34,8 @@
     [socialMapView.layer setBorderWidth: 2.0];
     [self plotFBFriendsWithFQL];
     
-    _theBannerView.frame = CGRectOffset(_theBannerView.frame, 0, 50);
-    bannerIsVisible = NO;
+    //_theBannerView.frame = CGRectOffset(_theBannerView.frame, 0, 50);
+    bannerIsVisible = YES;
     _theBannerView.delegate = self;
 	// Do any additional setup after loading the view.
 }
