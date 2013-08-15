@@ -14,7 +14,7 @@
 		3A62DB0317B6B1BE00776237 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A62DB0117B6B1B400776237 /* iAd.framework */; };
 		3A62E5F017BD4E9900FF655F /* icon2_57.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3A62E5EF17BD4E9900FF655F /* icon2_57.PNG */; };
 		3A62E5F217BD4EB300FF655F /* icon2_114.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3A62E5F117BD4EB300FF655F /* icon2_114.PNG */; };
-		3A7F5CAD17BD566C00EF27A4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7F5CAB17BD566400EF27A4 /* FacebookSDK.framework */; };
+		3A762F5D17BD633600EE2AB4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */; };
 		3A8413CE178A538600C1159A /* TweetMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8413CD178A538600C1159A /* TweetMapViewController.m */; };
 		3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8413CF178A595D00C1159A /* MapKit.framework */; };
 		3ABE6106178BA6F200E00BC6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */; };
@@ -43,7 +43,7 @@
 		3A62DB0117B6B1B400776237 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		3A62E5EF17BD4E9900FF655F /* icon2_57.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_57.PNG; path = ../icon2_57.PNG; sourceTree = "<group>"; };
 		3A62E5F117BD4EB300FF655F /* icon2_114.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_114.PNG; path = ../icon2_114.PNG; sourceTree = "<group>"; };
-		3A7F5CAB17BD566400EF27A4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
+		3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		3A8413CC178A538600C1159A /* TweetMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetMapViewController.h; sourceTree = "<group>"; };
 		3A8413CD178A538600C1159A /* TweetMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetMapViewController.m; sourceTree = "<group>"; };
 		3A8413CF178A595D00C1159A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -79,7 +79,7 @@
 				90E9BE8516C1A86900EC2D36 /* QuartzCore.framework in Frameworks */,
 				90E9BE8316C1A86100EC2D36 /* Accounts.framework in Frameworks */,
 				3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */,
-				3A7F5CAD17BD566C00EF27A4 /* FacebookSDK.framework in Frameworks */,
+				3A762F5D17BD633600EE2AB4 /* FacebookSDK.framework in Frameworks */,
 				3A62DB0317B6B1BE00776237 /* iAd.framework in Frameworks */,
 				90E9BE8116C1A81F00EC2D36 /* Social.framework in Frameworks */,
 				90E9BE6416C1A63100EC2D36 /* UIKit.framework in Frameworks */,
@@ -124,7 +124,7 @@
 		90E9BE6216C1A63100EC2D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A7F5CAB17BD566400EF27A4 /* FacebookSDK.framework */,
+				3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */,
 				3A62DB0117B6B1B400776237 /* iAd.framework */,
 				3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */,
 				3A8413CF178A595D00C1159A /* MapKit.framework */,
@@ -329,6 +329,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/..\"",
+					"\"$(SRCROOT)/../../../../../FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Twitter Profile/MapIt-Prefix.pch";
@@ -347,6 +348,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/..\"",
+					"\"$(SRCROOT)/../../../../../FacebookSDK\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Twitter Profile/MapIt-Prefix.pch";
