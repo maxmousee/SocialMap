@@ -39,10 +39,8 @@
     FBLoginView *loginview = [[FBLoginView alloc] init];
     loginview.readPermissions = @[@"basic_info",
                                   @"user_location",
-                                  @"user_location",
                                   @"friends_location",
-                                  @"friends_hometown",
-                                  @"friends_about_me"];
+                                  @"friends_hometown"];
     
     //loginview.frame = CGRectOffset(loginview.frame, 5, 5);
     //CGRect loginViewFrame = _showMapButton.frame;
@@ -57,7 +55,7 @@
     
     CGRect loginViewFrame = loginview.frame;
     loginViewFrame.origin.x += 80;
-    loginViewFrame.origin.y += 300;
+    loginViewFrame.origin.y += 340;
     loginview.frame = loginViewFrame;
     
     [self.view addSubview:loginview];

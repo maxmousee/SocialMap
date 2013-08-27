@@ -99,6 +99,7 @@
                                   NSLog(@"%@", error);
                                   return;
                               }
+                              
                               //NSArray* friendIds = ((NSArray*)[result data])[0][@"fql_result_set"];
                               NSArray* friends = ((NSArray*)[result data])[1][@"fql_result_set"];
                               [socialMapView removeOverlays:socialMapView.overlays];
@@ -165,10 +166,10 @@
         // change pin image for group
         if (socialMapView.clusterByGroupTag) {
             if ([clusterAnnotation.groupTag isEqualToString:kTYPE1]) {
-                annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
+                annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
             }
             else if([clusterAnnotation.groupTag isEqualToString:kTYPE2]){
-                annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
+                annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
             }
             clusterAnnotation.title = clusterAnnotation.groupTag;
         }
@@ -185,10 +186,10 @@
         //singleAnnotation.title = singleAnnotation.groupTag;
         
         if ([singleAnnotation.groupTag isEqualToString:kTYPE1]) {
-            annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
+            annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
         }
         else if([singleAnnotation.groupTag isEqualToString:kTYPE2]){
-            annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
+            annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
         }
     }
     // Error
@@ -210,7 +211,7 @@
     
     if ([circle.title isEqualToString:@"background"])
     {
-        circleView.fillColor = [UIColor yellowColor];
+        circleView.fillColor = [UIColor blueColor];
         circleView.alpha = 0.25;
     }
     else if ([circle.title isEqualToString:@"helper"])
