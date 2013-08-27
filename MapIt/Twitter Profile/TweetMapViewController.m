@@ -28,16 +28,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //_theBannerView.frame = CGRectOffset(_theBannerView.frame, 0, 50);
+    bannerIsVisible = YES;
+    _theBannerView.delegate = self;
     [socialMapView setShowsUserLocation:true];
     [socialMapView setDelegate:self];
+    socialMapView.clusterSize = kDEFAULTCLUSTERSIZE;
+    socialMapView.clusteringMethod = OCClusteringMethodGrid;
+    socialMapView.clusteringEnabled = YES;
     [socialMapView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     [socialMapView.layer setBorderWidth: 2.0];
     [self plotFBFriendsWithFQL];
     
-    //_theBannerView.frame = CGRectOffset(_theBannerView.frame, 0, 50);
-    bannerIsVisible = YES;
-    _theBannerView.delegate = self;
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,6 +101,8 @@
                               }
                               //NSArray* friendIds = ((NSArray*)[result data])[0][@"fql_result_set"];
                               NSArray* friends = ((NSArray*)[result data])[1][@"fql_result_set"];
+                              [socialMapView removeOverlays:socialMapView.overlays];
+                              
                               for (NSDictionary *userData in friends) {
                                   @try {
                                       NSLog(@"%@", [userData objectForKey:@"name"]);
@@ -107,12 +111,13 @@
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"latitude"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"longitude"]);
                                       // Add an annotation
-                                      MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
                                       double latitude = [[userLocationDict objectForKey:@"latitude"]doubleValue];
                                       double longitude = [[userLocationDict objectForKey:@"longitude"]doubleValue];
-                                      point.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-                                      point.title = [userData objectForKey:@"name"];
-                                      [socialMapView addAnnotation:point];
+                                      
+                                      OCMapViewSampleHelpAnnotation *annotation = [[OCMapViewSampleHelpAnnotation alloc]initWithCoordinate:CLLocationCoordinate2DMake(latitude, longitude)];
+                                      annotation.title = [userData objectForKey:@"name"];
+                                      annotation.groupTag = kTYPE1;
+                                      [socialMapView addAnnotation:annotation];
                                   }
                                   @catch (NSException *exception) {
                                       //NSLog(@"EXCEPTION %@", exception);
@@ -121,5 +126,112 @@
                               }
                           }];
 }
+
+// ==============================
+#pragma mark - map delegate
+- (MKAnnotationView *)mapView:(MKMapView *)aMapView viewForAnnotation:(id <MKAnnotation>)annotation{
+    MKAnnotationView *annotationView;
+    
+    // if it's a cluster
+    if ([annotation isKindOfClass:[OCAnnotation class]]) {
+        
+        OCAnnotation *clusterAnnotation = (OCAnnotation *)annotation;
+        
+        annotationView = (MKAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"ClusterView"];
+        if (!annotationView) {
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"ClusterView"];
+            annotationView.canShowCallout = YES;
+            annotationView.centerOffset = CGPointMake(0, -20);
+        }
+        //calculate cluster region
+        CLLocationDistance clusterRadius = socialMapView.region.span.longitudeDelta * socialMapView.clusterSize * 111000 / 2.0f; //static circle size of cluster
+        //CLLocationDistance clusterRadius = mapView.region.span.longitudeDelta/log(mapView.region.span.longitudeDelta*mapView.region.span.longitudeDelta) * log(pow([clusterAnnotation.annotationsInCluster count], 4)) * mapView.clusterSize * 50000; //circle size based on number of annotations in cluster
+        
+        MKCircle *circle = [MKCircle circleWithCenterCoordinate:clusterAnnotation.coordinate radius:clusterRadius * cos([annotation coordinate].latitude * M_PI / 180.0)];
+        [circle setTitle:@"background"];
+        [socialMapView addOverlay:circle];
+        
+        MKCircle *circleLine = [MKCircle circleWithCenterCoordinate:clusterAnnotation.coordinate radius:clusterRadius * cos([annotation coordinate].latitude * M_PI / 180.0)];
+        [circleLine setTitle:@"line"];
+        [socialMapView addOverlay:circleLine];
+        
+        // set title
+        clusterAnnotation.title = @"Group";
+        clusterAnnotation.subtitle = [NSString stringWithFormat:@"Number of friends here: %d", [clusterAnnotation.annotationsInCluster count]];
+        
+        // set its image
+        annotationView.image = [UIImage imageNamed:@"regular.png"];
+        
+        // change pin image for group
+        if (socialMapView.clusterByGroupTag) {
+            if ([clusterAnnotation.groupTag isEqualToString:kTYPE1]) {
+                annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
+            }
+            else if([clusterAnnotation.groupTag isEqualToString:kTYPE2]){
+                annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
+            }
+            clusterAnnotation.title = clusterAnnotation.groupTag;
+        }
+    }
+    // If it's a single annotation
+    else if([annotation isKindOfClass:[OCMapViewSampleHelpAnnotation class]]){
+        OCMapViewSampleHelpAnnotation *singleAnnotation = (OCMapViewSampleHelpAnnotation *)annotation;
+        annotationView = (MKAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"singleAnnotationView"];
+        if (!annotationView) {
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:singleAnnotation reuseIdentifier:@"singleAnnotationView"];
+            annotationView.canShowCallout = YES;
+            annotationView.centerOffset = CGPointMake(0, -20);
+        }
+        //singleAnnotation.title = singleAnnotation.groupTag;
+        
+        if ([singleAnnotation.groupTag isEqualToString:kTYPE1]) {
+            annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
+        }
+        else if([singleAnnotation.groupTag isEqualToString:kTYPE2]){
+            annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
+        }
+    }
+    // Error
+    else{
+        annotationView = (MKPinAnnotationView *)[aMapView dequeueReusableAnnotationViewWithIdentifier:@"errorAnnotationView"];
+        if (!annotationView) {
+            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"errorAnnotationView"];
+            annotationView.canShowCallout = NO;
+            ((MKPinAnnotationView *)annotationView).pinColor = MKPinAnnotationColorRed;
+        }
+    }
+    
+    return annotationView;
+}
+
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay{
+    MKCircle *circle = overlay;
+    MKCircleView *circleView = [[MKCircleView alloc] initWithCircle:overlay];
+    
+    if ([circle.title isEqualToString:@"background"])
+    {
+        circleView.fillColor = [UIColor yellowColor];
+        circleView.alpha = 0.25;
+    }
+    else if ([circle.title isEqualToString:@"helper"])
+    {
+        circleView.fillColor = [UIColor redColor];
+        circleView.alpha = 0.25;
+    }
+    else
+    {
+        circleView.strokeColor = [UIColor blackColor];
+        circleView.lineWidth = 0.5;
+    }
+    
+    return circleView;
+}
+
+- (void)mapView:(MKMapView *)aMapView regionDidChangeAnimated:(BOOL)animated{
+    [socialMapView removeOverlays:socialMapView.overlays];
+    [socialMapView doClustering];
+}
+
+// ==============================
 
 @end

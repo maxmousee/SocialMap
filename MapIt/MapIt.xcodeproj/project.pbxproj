@@ -14,6 +14,26 @@
 		3A62DB0317B6B1BE00776237 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A62DB0117B6B1B400776237 /* iAd.framework */; };
 		3A62E5F017BD4E9900FF655F /* icon2_57.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3A62E5EF17BD4E9900FF655F /* icon2_57.PNG */; };
 		3A62E5F217BD4EB300FF655F /* icon2_114.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3A62E5F117BD4EB300FF655F /* icon2_114.PNG */; };
+		3A73819B17CCD0620060BC02 /* OCAlgorithms.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73818817CCD0620060BC02 /* OCAlgorithms.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3A73819C17CCD0620060BC02 /* OCAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73818A17CCD0620060BC02 /* OCAnnotation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3A73819D17CCD0620060BC02 /* OCDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73818C17CCD0620060BC02 /* OCDistance.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3A73819E17CCD0620060BC02 /* OCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73818F17CCD0620060BC02 /* OCMapView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3A73819F17CCD0620060BC02 /* banana.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A73819117CCD0620060BC02 /* banana.png */; };
+		3A7381A017CCD0620060BC02 /* banana@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A73819217CCD0620060BC02 /* banana@2x.png */; };
+		3A7381A117CCD0620060BC02 /* bananas.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A73819317CCD0620060BC02 /* bananas.png */; };
+		3A7381A217CCD0620060BC02 /* bananas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A73819417CCD0620060BC02 /* bananas@2x.png */; };
+		3A7381A317CCD0620060BC02 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A73819517CCD0620060BC02 /* orange.png */; };
+		3A7381A417CCD0620060BC02 /* orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A73819617CCD0620060BC02 /* orange@2x.png */; };
+		3A7381A517CCD0620060BC02 /* oranges.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A73819717CCD0620060BC02 /* oranges.png */; };
+		3A7381A617CCD0620060BC02 /* oranges@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A73819817CCD0620060BC02 /* oranges@2x.png */; };
+		3A7381A717CCD0620060BC02 /* regular.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A73819917CCD0620060BC02 /* regular.png */; };
+		3A7381A817CCD0620060BC02 /* regular@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A73819A17CCD0620060BC02 /* regular@2x.png */; };
+		3A7381AB17CCD0BF0060BC02 /* OCMapViewSampleHelpAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7381AA17CCD0BF0060BC02 /* OCMapViewSampleHelpAnnotation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3A7381AD17CCE00B0060BC02 /* kids01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A7381AC17CCE00B0060BC02 /* kids01.jpg */; };
+		3A7381AF17CCE01A0060BC02 /* kids02.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3A7381AE17CCE01A0060BC02 /* kids02.jpeg */; };
+		3A7381B317CCE2A40060BC02 /* map_pin_fav.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7381B017CCE2A40060BC02 /* map_pin_fav.png */; };
+		3A7381B417CCE2A40060BC02 /* map_pin_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7381B117CCE2A40060BC02 /* map_pin_normal.png */; };
+		3A7381B517CCE2A40060BC02 /* map_pin_rem.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7381B217CCE2A40060BC02 /* map_pin_rem.png */; };
 		3A762F5D17BD633600EE2AB4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */; };
 		3A8413CE178A538600C1159A /* TweetMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8413CD178A538600C1159A /* TweetMapViewController.m */; };
 		3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8413CF178A595D00C1159A /* MapKit.framework */; };
@@ -45,6 +65,32 @@
 		3A62DB0117B6B1B400776237 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		3A62E5EF17BD4E9900FF655F /* icon2_57.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_57.PNG; path = ../icon2_57.PNG; sourceTree = "<group>"; };
 		3A62E5F117BD4EB300FF655F /* icon2_114.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_114.PNG; path = ../icon2_114.PNG; sourceTree = "<group>"; };
+		3A73818717CCD0620060BC02 /* OCAlgorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAlgorithms.h; sourceTree = "<group>"; };
+		3A73818817CCD0620060BC02 /* OCAlgorithms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCAlgorithms.m; sourceTree = "<group>"; };
+		3A73818917CCD0620060BC02 /* OCAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAnnotation.h; sourceTree = "<group>"; };
+		3A73818A17CCD0620060BC02 /* OCAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCAnnotation.m; sourceTree = "<group>"; };
+		3A73818B17CCD0620060BC02 /* OCDistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDistance.h; sourceTree = "<group>"; };
+		3A73818C17CCD0620060BC02 /* OCDistance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDistance.m; sourceTree = "<group>"; };
+		3A73818D17CCD0620060BC02 /* OCGrouping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCGrouping.h; sourceTree = "<group>"; };
+		3A73818E17CCD0620060BC02 /* OCMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMapView.h; sourceTree = "<group>"; };
+		3A73818F17CCD0620060BC02 /* OCMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMapView.m; sourceTree = "<group>"; };
+		3A73819117CCD0620060BC02 /* banana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banana.png; sourceTree = "<group>"; };
+		3A73819217CCD0620060BC02 /* banana@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banana@2x.png"; sourceTree = "<group>"; };
+		3A73819317CCD0620060BC02 /* bananas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bananas.png; sourceTree = "<group>"; };
+		3A73819417CCD0620060BC02 /* bananas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bananas@2x.png"; sourceTree = "<group>"; };
+		3A73819517CCD0620060BC02 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
+		3A73819617CCD0620060BC02 /* orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange@2x.png"; sourceTree = "<group>"; };
+		3A73819717CCD0620060BC02 /* oranges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oranges.png; sourceTree = "<group>"; };
+		3A73819817CCD0620060BC02 /* oranges@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oranges@2x.png"; sourceTree = "<group>"; };
+		3A73819917CCD0620060BC02 /* regular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = regular.png; sourceTree = "<group>"; };
+		3A73819A17CCD0620060BC02 /* regular@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "regular@2x.png"; sourceTree = "<group>"; };
+		3A7381A917CCD0BF0060BC02 /* OCMapViewSampleHelpAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMapViewSampleHelpAnnotation.h; sourceTree = "<group>"; };
+		3A7381AA17CCD0BF0060BC02 /* OCMapViewSampleHelpAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMapViewSampleHelpAnnotation.m; sourceTree = "<group>"; };
+		3A7381AC17CCE00B0060BC02 /* kids01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kids01.jpg; sourceTree = "<group>"; };
+		3A7381AE17CCE01A0060BC02 /* kids02.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kids02.jpeg; sourceTree = "<group>"; };
+		3A7381B017CCE2A40060BC02 /* map_pin_fav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_fav.png; sourceTree = "<group>"; };
+		3A7381B117CCE2A40060BC02 /* map_pin_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_normal.png; sourceTree = "<group>"; };
+		3A7381B217CCE2A40060BC02 /* map_pin_rem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_rem.png; sourceTree = "<group>"; };
 		3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		3A8413CC178A538600C1159A /* TweetMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetMapViewController.h; sourceTree = "<group>"; };
 		3A8413CD178A538600C1159A /* TweetMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetMapViewController.m; sourceTree = "<group>"; };
@@ -107,9 +153,52 @@
 			name = Buttons;
 			sourceTree = "<group>";
 		};
+		3A73818617CCD0620060BC02 /* OCMapView */ = {
+			isa = PBXGroup;
+			children = (
+				3A7381A917CCD0BF0060BC02 /* OCMapViewSampleHelpAnnotation.h */,
+				3A7381AA17CCD0BF0060BC02 /* OCMapViewSampleHelpAnnotation.m */,
+				3A73818717CCD0620060BC02 /* OCAlgorithms.h */,
+				3A73818817CCD0620060BC02 /* OCAlgorithms.m */,
+				3A73818917CCD0620060BC02 /* OCAnnotation.h */,
+				3A73818A17CCD0620060BC02 /* OCAnnotation.m */,
+				3A73818B17CCD0620060BC02 /* OCDistance.h */,
+				3A73818C17CCD0620060BC02 /* OCDistance.m */,
+				3A73818D17CCD0620060BC02 /* OCGrouping.h */,
+				3A73818E17CCD0620060BC02 /* OCMapView.h */,
+				3A73818F17CCD0620060BC02 /* OCMapView.m */,
+			);
+			path = OCMapView;
+			sourceTree = "<group>";
+		};
+		3A73819017CCD0620060BC02 /* pins */ = {
+			isa = PBXGroup;
+			children = (
+				3A7381B017CCE2A40060BC02 /* map_pin_fav.png */,
+				3A7381B117CCE2A40060BC02 /* map_pin_normal.png */,
+				3A7381B217CCE2A40060BC02 /* map_pin_rem.png */,
+				3A7381AE17CCE01A0060BC02 /* kids02.jpeg */,
+				3A7381AC17CCE00B0060BC02 /* kids01.jpg */,
+				3A73819117CCD0620060BC02 /* banana.png */,
+				3A73819217CCD0620060BC02 /* banana@2x.png */,
+				3A73819317CCD0620060BC02 /* bananas.png */,
+				3A73819417CCD0620060BC02 /* bananas@2x.png */,
+				3A73819517CCD0620060BC02 /* orange.png */,
+				3A73819617CCD0620060BC02 /* orange@2x.png */,
+				3A73819717CCD0620060BC02 /* oranges.png */,
+				3A73819817CCD0620060BC02 /* oranges@2x.png */,
+				3A73819917CCD0620060BC02 /* regular.png */,
+				3A73819A17CCD0620060BC02 /* regular@2x.png */,
+			);
+			name = pins;
+			path = sample_pins;
+			sourceTree = "<group>";
+		};
 		90E9BE5716C1A63100EC2D36 = {
 			isa = PBXGroup;
 			children = (
+				3A73818617CCD0620060BC02 /* OCMapView */,
+				3A73819017CCD0620060BC02 /* pins */,
 				3A35682217B2BBDC00995261 /* Buttons */,
 				90E9BE6916C1A63100EC2D36 /* MVC */,
 				90E9BE6216C1A63100EC2D36 /* Frameworks */,
@@ -242,6 +331,21 @@
 				3A62E5F217BD4EB300FF655F /* icon2_114.PNG in Resources */,
 				3A87862717CC8A3600BBA7FC /* icon2_72.PNG in Resources */,
 				3A87862917CC8A4100BBA7FC /* icon2_144.PNG in Resources */,
+				3A73819F17CCD0620060BC02 /* banana.png in Resources */,
+				3A7381A017CCD0620060BC02 /* banana@2x.png in Resources */,
+				3A7381A117CCD0620060BC02 /* bananas.png in Resources */,
+				3A7381A217CCD0620060BC02 /* bananas@2x.png in Resources */,
+				3A7381A317CCD0620060BC02 /* orange.png in Resources */,
+				3A7381A417CCD0620060BC02 /* orange@2x.png in Resources */,
+				3A7381A517CCD0620060BC02 /* oranges.png in Resources */,
+				3A7381A617CCD0620060BC02 /* oranges@2x.png in Resources */,
+				3A7381A717CCD0620060BC02 /* regular.png in Resources */,
+				3A7381A817CCD0620060BC02 /* regular@2x.png in Resources */,
+				3A7381AD17CCE00B0060BC02 /* kids01.jpg in Resources */,
+				3A7381AF17CCE01A0060BC02 /* kids02.jpeg in Resources */,
+				3A7381B317CCE2A40060BC02 /* map_pin_fav.png in Resources */,
+				3A7381B417CCE2A40060BC02 /* map_pin_normal.png in Resources */,
+				3A7381B517CCE2A40060BC02 /* map_pin_rem.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +361,11 @@
 				90E9BE8A16C1BEE000EC2D36 /* UsernameViewController.m in Sources */,
 				90E9BE9016C1C13500EC2D36 /* ProfileViewController.m in Sources */,
 				3A8413CE178A538600C1159A /* TweetMapViewController.m in Sources */,
+				3A73819B17CCD0620060BC02 /* OCAlgorithms.m in Sources */,
+				3A73819C17CCD0620060BC02 /* OCAnnotation.m in Sources */,
+				3A73819D17CCD0620060BC02 /* OCDistance.m in Sources */,
+				3A73819E17CCD0620060BC02 /* OCMapView.m in Sources */,
+				3A7381AB17CCD0BF0060BC02 /* OCMapViewSampleHelpAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +442,7 @@
 		90E9BE7E16C1A63100EC2D36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
@@ -352,6 +462,7 @@
 		90E9BE7F16C1A63100EC2D36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",

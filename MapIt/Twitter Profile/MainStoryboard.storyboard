@@ -282,7 +282,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jgm-HA-Vjs"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jgm-HA-Vjs" customClass="OCMapView"/>
                             <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="nXZ-A0-6g6">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wf5-88-4jF"/>
@@ -319,6 +319,9 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
+        <class className="OCMapView" superclassName="MKMapView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OCMapView.h"/>
+        </class>
         <class className="ProfileViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
             <relationships>
@@ -336,7 +339,7 @@
         <class className="TweetMapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetMapViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="socialMapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="socialMapView" candidateClass="OCMapView"/>
                 <relationship kind="outlet" name="theBannerView" candidateClass="ADBannerView"/>
             </relationships>
         </class>
@@ -347,7 +350,6 @@
                 <relationship kind="outlet" name="interactionsSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="showMapButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="showTwitterInfoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="theBannerView" candidateClass="ADBannerView"/>
                 <relationship kind="outlet" name="timelineSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
