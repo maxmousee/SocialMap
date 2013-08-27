@@ -15,6 +15,7 @@
 @implementation TweetMapViewController
 
 @synthesize username;
+@synthesize activityIndicator;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +39,15 @@
     socialMapView.clusteringEnabled = YES;
     [socialMapView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     [socialMapView.layer setBorderWidth: 2.0];
+    
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.activityIndicator];
+    CGPoint center = self.view.center;
+    center.y -= 60;
+    self.activityIndicator.center = center;
+    [self.activityIndicator startAnimating];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
+    
     [self plotFBFriendsWithFQL];
     
 }
@@ -125,6 +135,8 @@
                                   }
                                   
                               }
+                              [self.activityIndicator stopAnimating];
+                              [UIApplication sharedApplication].networkActivityIndicatorVisible = FALSE;
                           }];
 }
 

@@ -28,11 +28,11 @@
     NSString *username;
     NSArray *followersIDs;
     IBOutlet OCMapView *socialMapView;
-    
     BOOL bannerIsVisible;
 }
 
 @property (nonatomic, retain) NSString *username;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet ADBannerView *theBannerView;
 
 @end
