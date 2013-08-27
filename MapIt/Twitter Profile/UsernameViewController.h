@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
-#import <iAd/iAd.h>
 
-@interface UsernameViewController : UIViewController<FBFriendPickerDelegate, ADBannerViewDelegate>
+@interface UsernameViewController : UIViewController<FBFriendPickerDelegate>
 {
     NSString *username;
     NSMutableArray *fbUsers;
-    BOOL bannerIsVisible;
 }
 
 - (IBAction)pickFriendsButtonClick:(id)sender;
@@ -23,6 +21,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *showTwitterInfoButton;
 @property (weak, nonatomic) IBOutlet UISwitch *interactionsSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *timelineSwitch;
-@property (weak, nonatomic) IBOutlet ADBannerView *theBannerView;
 
 @end

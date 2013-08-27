@@ -6,7 +6,7 @@
 #import "UsernameViewController.h"
 #import "ProfileViewController.h"
 
-@interface UsernameViewController () <FBLoginViewDelegate, ADBannerViewDelegate>
+@interface UsernameViewController () <FBLoginViewDelegate>
 
 @property (strong, nonatomic) id<FBGraphUser> loggedInUser;
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
@@ -62,17 +62,6 @@
     
     [self.view addSubview:loginview];
     
-    // On iOS 6 ADBannerView introduces a new initializer, use it when available.
-    /*
-    if ([ADBannerView instancesRespondToSelector:@selector(initWithAdType:)]) {
-        _theBannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
-    } else {
-        _theBannerView = [[ADBannerView alloc] init];
-    }
-     */
-    bannerIsVisible = YES;
-    _theBannerView.delegate = self;
-    
     [self getTwitterInfo];
     //[self requestFriendsWithFQL];
 }
@@ -93,28 +82,6 @@
     [defaults synchronize];
     ProfileViewController *profileViewController = [segue destinationViewController];
     [profileViewController setUsername:username];
-}
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
-{
-    if (!bannerIsVisible)
-    {
-        NSLog(@"bannerViewDidLoadAd");
-        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
-        [UIView commitAnimations];
-        bannerIsVisible = YES;
-    }
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-    if (bannerIsVisible)
-    {
-        NSLog(@"bannerView:didFailToReceiveAdWithError:");
-        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
-        [UIView commitAnimations];
-        bannerIsVisible = NO;
-    }
 }
 
 - (void) getTwitterInfo

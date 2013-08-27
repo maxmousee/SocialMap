@@ -65,7 +65,7 @@
 {
     if (bannerIsVisible)
     {
-        NSLog(@"bannerView:didFailToReceiveAdWithError:");
+        NSLog(@"bannerView:didFailToReceiveAdWithError:%@", error);
         [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
         // assumes the banner view is at the top of the screen.
         banner.frame = CGRectOffset(banner.frame, 0, 50);
@@ -101,9 +101,9 @@
                               NSArray* friends = ((NSArray*)[result data])[1][@"fql_result_set"];
                               for (NSDictionary *userData in friends) {
                                   @try {
-                                      //NSLog(@"%@", [userData objectForKey:@"name"]);
+                                      NSLog(@"%@", [userData objectForKey:@"name"]);
                                       NSDictionary *userLocationDict = [userData objectForKey:@"current_location"];
-                                      //NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
+                                      NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"latitude"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"longitude"]);
                                       // Add an annotation
@@ -115,7 +115,7 @@
                                       [socialMapView addAnnotation:point];
                                   }
                                   @catch (NSException *exception) {
-                                      NSLog(@"EXCEPTION %@", exception);
+                                      //NSLog(@"EXCEPTION %@", exception);
                                   }
                                   
                               }
