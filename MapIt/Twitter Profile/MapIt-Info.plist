@@ -16,7 +16,11 @@
 			<array>
 				<string>icon2_57.PNG</string>
 				<string>icon2_114.PNG</string>
+				<string>icon2_72.PNG</string>
+				<string>icon2_144.PNG</string>
 			</array>
+			<key>UIPrerenderedIcon</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -41,6 +45,8 @@
 	<true/>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
