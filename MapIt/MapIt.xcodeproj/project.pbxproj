@@ -34,6 +34,10 @@
 		3A7381B317CCE2A40060BC02 /* map_pin_fav.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7381B017CCE2A40060BC02 /* map_pin_fav.png */; };
 		3A7381B417CCE2A40060BC02 /* map_pin_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7381B117CCE2A40060BC02 /* map_pin_normal.png */; };
 		3A7381B517CCE2A40060BC02 /* map_pin_rem.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7381B217CCE2A40060BC02 /* map_pin_rem.png */; };
+		3A7381B917CCF5280060BC02 /* iPadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7381B817CCF5280060BC02 /* iPadStoryboard.storyboard */; };
+		3A7381BB17CDB50A0060BC02 /* Reload-03.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7381BA17CDB50A0060BC02 /* Reload-03.png */; };
+		3A7381C017CDB9370060BC02 /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7381BF17CDB9370060BC02 /* ConfigurationViewController.m */; };
+		3A7381C317CDBAC50060BC02 /* iPadMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7381C217CDBAC50060BC02 /* iPadMapViewController.m */; };
 		3A762F5D17BD633600EE2AB4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */; };
 		3A8413CE178A538600C1159A /* TweetMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8413CD178A538600C1159A /* TweetMapViewController.m */; };
 		3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8413CF178A595D00C1159A /* MapKit.framework */; };
@@ -91,6 +95,12 @@
 		3A7381B017CCE2A40060BC02 /* map_pin_fav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_fav.png; sourceTree = "<group>"; };
 		3A7381B117CCE2A40060BC02 /* map_pin_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_normal.png; sourceTree = "<group>"; };
 		3A7381B217CCE2A40060BC02 /* map_pin_rem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_rem.png; sourceTree = "<group>"; };
+		3A7381B817CCF5280060BC02 /* iPadStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPadStoryboard.storyboard; sourceTree = "<group>"; };
+		3A7381BA17CDB50A0060BC02 /* Reload-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reload-03.png"; sourceTree = "<group>"; };
+		3A7381BE17CDB9370060BC02 /* ConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigurationViewController.h; path = iPad_MVC/ConfigurationViewController.h; sourceTree = "<group>"; };
+		3A7381BF17CDB9370060BC02 /* ConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigurationViewController.m; path = iPad_MVC/ConfigurationViewController.m; sourceTree = "<group>"; };
+		3A7381C117CDBAC50060BC02 /* iPadMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPadMapViewController.h; path = iPad_MVC/iPadMapViewController.h; sourceTree = "<group>"; };
+		3A7381C217CDBAC50060BC02 /* iPadMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iPadMapViewController.m; path = iPad_MVC/iPadMapViewController.m; sourceTree = "<group>"; };
 		3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		3A8413CC178A538600C1159A /* TweetMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetMapViewController.h; sourceTree = "<group>"; };
 		3A8413CD178A538600C1159A /* TweetMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetMapViewController.m; sourceTree = "<group>"; };
@@ -145,6 +155,7 @@
 		3A35682217B2BBDC00995261 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				3A7381BA17CDB50A0060BC02 /* Reload-03.png */,
 				3A35682917B2C26F00995261 /* new-facebook-logo.png */,
 				3A35682717B2C14500995261 /* twitter-bird-light-bgs.png */,
 				3A35682317B2C03400995261 /* facebook.jpg */,
@@ -194,6 +205,30 @@
 			path = sample_pins;
 			sourceTree = "<group>";
 		};
+		3A7381BC17CDB8F30060BC02 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				3A7381BE17CDB9370060BC02 /* ConfigurationViewController.h */,
+				3A7381BF17CDB9370060BC02 /* ConfigurationViewController.m */,
+				3A7381C117CDBAC50060BC02 /* iPadMapViewController.h */,
+				3A7381C217CDBAC50060BC02 /* iPadMapViewController.m */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		3A7381BD17CDB8FC0060BC02 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				3A8413CC178A538600C1159A /* TweetMapViewController.h */,
+				3A8413CD178A538600C1159A /* TweetMapViewController.m */,
+				90E9BE8816C1BEE000EC2D36 /* UsernameViewController.h */,
+				90E9BE8916C1BEE000EC2D36 /* UsernameViewController.m */,
+				90E9BE8E16C1C13500EC2D36 /* ProfileViewController.h */,
+				90E9BE8F16C1C13500EC2D36 /* ProfileViewController.m */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
 		90E9BE5716C1A63100EC2D36 = {
 			isa = PBXGroup;
 			children = (
@@ -234,16 +269,13 @@
 		90E9BE6916C1A63100EC2D36 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
+				3A7381BD17CDB8FC0060BC02 /* iPhone */,
+				3A7381BC17CDB8F30060BC02 /* iPad */,
 				90E9BE7216C1A63100EC2D36 /* AppDelegate.h */,
 				90E9BE7316C1A63100EC2D36 /* AppDelegate.m */,
-				3A8413CC178A538600C1159A /* TweetMapViewController.h */,
-				3A8413CD178A538600C1159A /* TweetMapViewController.m */,
-				90E9BE8816C1BEE000EC2D36 /* UsernameViewController.h */,
-				90E9BE8916C1BEE000EC2D36 /* UsernameViewController.m */,
-				90E9BE8E16C1C13500EC2D36 /* ProfileViewController.h */,
-				90E9BE8F16C1C13500EC2D36 /* ProfileViewController.m */,
 				90E9BE6A16C1A63100EC2D36 /* Supporting Files */,
 				90E9BE8616C1A8F200EC2D36 /* MainStoryboard.storyboard */,
+				3A7381B817CCF5280060BC02 /* iPadStoryboard.storyboard */,
 			);
 			name = MVC;
 			path = "Twitter Profile";
@@ -346,6 +378,8 @@
 				3A7381B317CCE2A40060BC02 /* map_pin_fav.png in Resources */,
 				3A7381B417CCE2A40060BC02 /* map_pin_normal.png in Resources */,
 				3A7381B517CCE2A40060BC02 /* map_pin_rem.png in Resources */,
+				3A7381B917CCF5280060BC02 /* iPadStoryboard.storyboard in Resources */,
+				3A7381BB17CDB50A0060BC02 /* Reload-03.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +400,8 @@
 				3A73819D17CCD0620060BC02 /* OCDistance.m in Sources */,
 				3A73819E17CCD0620060BC02 /* OCMapView.m in Sources */,
 				3A7381AB17CCD0BF0060BC02 /* OCMapViewSampleHelpAnnotation.m in Sources */,
+				3A7381C017CDB9370060BC02 /* ConfigurationViewController.m in Sources */,
+				3A7381C317CDBAC50060BC02 /* iPadMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
