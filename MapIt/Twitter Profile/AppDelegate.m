@@ -7,11 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "ConfigurationViewController.h"
+#import "iPadMapViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+        UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
+        ConfigurationViewController *cfgVC = (ConfigurationViewController *)[leftNavController topViewController];
+        iPadMapViewController *iMVC = [splitViewController.viewControllers objectAtIndex:1];
+        Configs *currentConfigs = [cfgVC currentConfigs];
+        [iMVC refreshMapConfigs:currentConfigs];
+        cfgVC.delegate = iMVC;
+    }
     return YES;
 }
 

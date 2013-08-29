@@ -58,7 +58,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="788"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLJ-Ga-X7J"/>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WMj-2F-w11"/>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="80N-7T-xjY"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ynj-0X-6Pb">
@@ -77,15 +76,6 @@
                                     <action selector="savePreferencesReloadMap:" destination="1zC-7d-5hv" eventType="touchUpInside" id="TfN-ix-gbY"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="new-facebook-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q1Q-lx-hXe">
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="9pa-7N-Vqw"/>
-                                    <constraint firstAttribute="height" constant="100" id="Tpo-rk-GNA"/>
-                                </constraints>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="twitter-bird-light-bgs.png" translatesAutoresizingMaskIntoConstraints="NO" id="lsN-bb-Yru">
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
@@ -99,52 +89,57 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7S4-cY-P5f"/>
+                                    <constraint firstAttribute="width" constant="190" id="xaP-Bv-iYV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Timeline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMT-xR-PFF">
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="185" id="34D-7Z-R4W"/>
+                                    <constraint firstAttribute="height" constant="21" id="dHu-JP-iHS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reload" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQK-bb-tqH">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reload" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQK-bb-tqH">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="OiP-du-zx4"/>
+                                    <constraint firstAttribute="width" constant="82" id="nnb-BT-j5A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CQK-bb-tqH" firstAttribute="centerX" secondItem="Ynj-0X-6Pb" secondAttribute="centerX" type="default" id="5je-1Q-seh"/>
-                            <constraint firstItem="iLJ-Ga-X7J" firstAttribute="centerX" secondItem="8dA-FM-mg3" secondAttribute="centerX" type="default" id="9iQ-Oy-ao9"/>
+                            <constraint firstItem="N0p-rG-BH8" firstAttribute="leading" secondItem="8dA-FM-mg3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4yS-1a-qS0"/>
+                            <constraint firstItem="CQK-bb-tqH" firstAttribute="centerX" secondItem="Ynj-0X-6Pb" secondAttribute="centerX" type="default" id="7Zd-Cf-sGh"/>
                             <constraint firstAttribute="trailing" secondItem="80N-7T-xjY" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="AYT-kX-2nU"/>
-                            <constraint firstItem="N0p-rG-BH8" firstAttribute="trailing" secondItem="Q1Q-lx-hXe" secondAttribute="trailing" type="default" id="BPK-fE-fdT"/>
                             <constraint firstItem="Ynj-0X-6Pb" firstAttribute="top" secondItem="CQK-bb-tqH" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Cb9-5h-bf3"/>
-                            <constraint firstItem="lsN-bb-Yru" firstAttribute="centerX" secondItem="iLJ-Ga-X7J" secondAttribute="centerX" type="default" id="Eoe-As-drS"/>
                             <constraint firstAttribute="trailing" secondItem="WMj-2F-w11" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="GTQ-Mt-WBR"/>
-                            <constraint firstItem="Ynj-0X-6Pb" firstAttribute="leading" secondItem="Q1Q-lx-hXe" secondAttribute="leading" type="default" id="VTO-E2-DBi"/>
-                            <constraint firstItem="WMj-2F-w11" firstAttribute="centerY" secondItem="N0p-rG-BH8" secondAttribute="centerY" type="default" id="YjZ-B7-Wwj"/>
-                            <constraint firstItem="XMT-xR-PFF" firstAttribute="leading" secondItem="8dA-FM-mg3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="aGP-4I-bWr"/>
-                            <constraint firstItem="Q1Q-lx-hXe" firstAttribute="centerX" secondItem="iLJ-Ga-X7J" secondAttribute="centerX" type="default" id="apm-ba-ZrX"/>
-                            <constraint firstItem="N0p-rG-BH8" firstAttribute="leading" secondItem="8dA-FM-mg3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dxQ-7E-W9k"/>
-                            <constraint firstItem="XMT-xR-PFF" firstAttribute="trailing" secondItem="N0p-rG-BH8" secondAttribute="trailing" type="default" id="ecI-NI-fFv"/>
+                            <constraint firstItem="N0p-rG-BH8" firstAttribute="centerY" secondItem="WMj-2F-w11" secondAttribute="centerY" type="default" id="SgM-Ve-ahf"/>
+                            <constraint firstItem="lsN-bb-Yru" firstAttribute="top" secondItem="8dA-FM-mg3" secondAttribute="top" constant="176" id="W8e-HV-XfV"/>
+                            <constraint firstAttribute="bottom" secondItem="80N-7T-xjY" secondAttribute="bottom" constant="210" id="eY5-77-VTb"/>
                             <constraint firstItem="XMT-xR-PFF" firstAttribute="trailing" secondItem="Ynj-0X-6Pb" secondAttribute="trailing" type="default" id="hDA-wp-fED"/>
-                            <constraint firstItem="lsN-bb-Yru" firstAttribute="top" secondItem="8dA-FM-mg3" secondAttribute="top" constant="296" id="hNw-zh-gU5"/>
-                            <constraint firstAttribute="bottom" secondItem="80N-7T-xjY" secondAttribute="bottom" constant="168" id="kt1-eO-jlE"/>
-                            <constraint firstItem="XMT-xR-PFF" firstAttribute="centerY" secondItem="80N-7T-xjY" secondAttribute="centerY" type="default" id="mIX-bS-aVK"/>
+                            <constraint firstItem="XMT-xR-PFF" firstAttribute="centerY" secondItem="80N-7T-xjY" secondAttribute="centerY" type="default" id="jik-nn-wKh"/>
+                            <constraint firstItem="XMT-xR-PFF" firstAttribute="trailing" secondItem="N0p-rG-BH8" secondAttribute="trailing" type="default" id="knt-fe-uwS"/>
+                            <constraint firstAttribute="bottom" secondItem="WMj-2F-w11" secondAttribute="bottom" constant="285" id="lKa-XK-DWQ"/>
                             <constraint firstAttribute="bottom" secondItem="Ynj-0X-6Pb" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="o8m-IV-8Ax"/>
-                            <constraint firstItem="iLJ-Ga-X7J" firstAttribute="top" secondItem="8dA-FM-mg3" secondAttribute="top" constant="238" id="qm6-ec-aaO"/>
-                            <constraint firstItem="Q1Q-lx-hXe" firstAttribute="top" secondItem="8dA-FM-mg3" secondAttribute="top" constant="93" id="ud3-rO-iMS"/>
-                            <constraint firstItem="WMj-2F-w11" firstAttribute="top" secondItem="lsN-bb-Yru" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xlp-an-x3o"/>
+                            <constraint firstItem="CQK-bb-tqH" firstAttribute="centerX" secondItem="8dA-FM-mg3" secondAttribute="centerX" type="default" id="yHm-dh-eiN"/>
+                            <constraint firstItem="CQK-bb-tqH" firstAttribute="centerX" secondItem="lsN-bb-Yru" secondAttribute="centerX" type="default" id="zgq-Kh-lZD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SocialMap" id="HZK-uB-Vgt"/>
                     <connections>
-                        <outlet property="facebookEnabledSwitch" destination="iLJ-Ga-X7J" id="Jvc-s8-i7K"/>
                         <outlet property="twitterInteractionsOnSwitch" destination="WMj-2F-w11" id="kNP-Wd-rbm"/>
                         <outlet property="twitterTimelineOnSwitch" destination="80N-7T-xjY" id="zW0-P1-XyA"/>
                     </connections>
@@ -170,9 +165,30 @@
     </scenes>
     <resources>
         <image name="Reload-03.png" width="512" height="512"/>
-        <image name="new-facebook-logo.png" width="690" height="690"/>
         <image name="twitter-bird-light-bgs.png" width="300" height="300"/>
     </resources>
+    <classes>
+        <class className="ConfigurationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfigurationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="savePreferencesReloadMap:"/>
+                <relationship kind="outlet" name="twitterInteractionsOnSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="twitterTimelineOnSwitch" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="OCMapView" superclassName="MKMapView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OCMapView.h"/>
+        </class>
+        <class className="iPadMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iPadMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="socialMapView" candidateClass="OCMapView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

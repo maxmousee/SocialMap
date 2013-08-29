@@ -16,19 +16,23 @@
 #import <math.h>
 #import "OCMapView.h"
 #import "OCMapViewSampleHelpAnnotation.h"
+#import "RefreshMapViewDelegate.h"
+#import "Configs.h"
 
 #define ARC4RANDOM_MAX 0X100000000
-#define kTYPE1 @"Friend"
-#define kTYPE2 @"Friend of friend"
+#define kTYPE1 @"Facebook"
+#define kTYPE2 @"Twitter"
 #define kDEFAULTCLUSTERSIZE 0.2
 
-@interface iPadMapViewController : UIViewController <MKMapViewDelegate> {
+@interface iPadMapViewController : UIViewController <MKMapViewDelegate, FBLoginViewDelegate, UISplitViewControllerDelegate, RefreshMapViewDelegate> {
     NSString *username;
     NSArray *followersIDs;
     IBOutlet OCMapView *socialMapView;
+    FBLoginView *loginview;
 }
 
 @property (nonatomic, retain) NSString *twitterUsername;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) Configs *currentCFGs;
 
 @end

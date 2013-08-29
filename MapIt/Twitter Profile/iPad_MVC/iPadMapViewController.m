@@ -8,7 +8,9 @@
 
 #import "iPadMapViewController.h"
 
-@interface iPadMapViewController ()
+@interface iPadMapViewController () <FBLoginViewDelegate, MKMapViewDelegate, UISplitViewControllerDelegate, RefreshMapViewDelegate>
+
+@property (strong, nonatomic) id<FBGraphUser> loggedInUser;
 
 @end
 
@@ -29,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        
     [socialMapView setShowsUserLocation:true];
     [socialMapView setDelegate:self];
     socialMapView.clusterSize = kDEFAULTCLUSTERSIZE;
@@ -37,14 +40,238 @@
     [socialMapView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     [socialMapView.layer setBorderWidth: 2.0];
     
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [self.view addSubview:self.activityIndicator];
     CGPoint center = self.view.center;
     center.y -= 120;
     self.activityIndicator.center = center;
     [self.activityIndicator startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
-    //[self plotFBFriendsWithFQL];
+}
+
+- (void)refreshMapConfigs:(Configs *)newCFGs {
+    //NSLog(@"refresh cfgs");
+    //Make sure we're not setting up the same configurations.
+    if (_currentCFGs != newCFGs) {
+        _currentCFGs = newCFGs;
+        loginview = _currentCFGs.loginview;
+        //Update the UI to reflect the new monster selected from the list.
+        [self refreshMap];
+    }
+}
+
+-(void)refreshMap {
+    //NSLog(@"refresh map");
+    //make sure to remove all overlays before draw it again
+    [self.activityIndicator startAnimating];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
+    [socialMapView removeOverlays:socialMapView.overlays];
+    [socialMapView removeAnnotations:socialMapView.annotations];
+    [self plotFBFriendsWithFQL];
+    if(_currentCFGs.showTwInteractions > 0) {
+        dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
+        dispatch_async(myQueue, ^{
+            // Perform long running process
+            sleep(3);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update the UI
+                [self plotInteractions];
+            });
+        });
+    }
+    if(_currentCFGs.showTwTimeline > 0) {
+        dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
+        dispatch_async(myQueue, ^{
+            // Perform long running process
+            sleep(5);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update the UI
+                [self plotTimeline];
+            });
+        });
+    }
+}
+
+- (void)plotTimeline{
+    
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error){
+        if (granted) {
+            
+            NSArray *accounts = [accountStore accountsWithAccountType:accountType];
+            
+            // Check if the users has setup at least one Twitter account
+            
+            if (accounts.count > 0)
+            {
+                ACAccount *twitterAccount = [accounts objectAtIndex:0];
+                
+                // Creating a request to get the info about a user on Twitter
+                
+                SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/home_timeline.json?user_id=%@&count=800",username]] parameters:nil];
+                [twitterInfoRequest setAccount:twitterAccount];
+                
+                // Making the request
+                
+                @try {
+                    [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                        
+                        // Check if we reached the reate limit
+                        
+                        if ([urlResponse statusCode] == 429) {
+                            NSLog(@"Rate limit reached");
+                            return;
+                        }
+                        
+                        // Check if there was an error
+                        
+                        if (error) {
+                            NSLog(@"Error: %@", error.localizedDescription);
+                            return;
+                        }
+                        
+                        // Check if there is some response data
+                        
+                        if (responseData) {
+                            
+                            NSError *error = nil;
+                            NSArray *TWData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+                            //NSLog(@"%@", TWData);
+                            for (NSArray *tweetArray in TWData) {
+                                //NSLog(@"%@", tweetArray);
+                                //NSString *tweetGeolocation = [(NSDictionary *)tweetArray objectForKey:@"geo"];
+                                //NSLog(@"%@", tweetGeolocation);
+                                NSArray *userArray = [(NSDictionary *)tweetArray objectForKey:@"user"];
+                                //NSLog(@"%@", userArray);
+                                NSString *userLocation = [(NSDictionary *)userArray objectForKey:@"location"];
+                                NSLog(@"%@", userLocation);
+                                if(userLocation != nil && [userLocation length] > 0) {
+                                    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+                                    [geocoder geocodeAddressString:userLocation completionHandler:^(NSArray* placemarks, NSError* error){
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            // Update the UI
+                                            for (CLPlacemark* aPlacemark in placemarks)
+                                            {
+                                                // Add an annotation
+                                                OCMapViewSampleHelpAnnotation *annotation = [[OCMapViewSampleHelpAnnotation alloc]initWithCoordinate:aPlacemark.location.coordinate];
+                                                annotation.title = [(NSDictionary *)userArray objectForKey:@"name"];
+                                                NSMutableString *userName = [[NSMutableString alloc]initWithString:@"@"];
+                                                [userName appendString:[(NSDictionary *)userArray objectForKey:@"screen_name"]];
+                                                annotation.subtitle = userName;
+                                                annotation.groupTag = kTYPE2;
+                                                [socialMapView addAnnotation:annotation];
+                                            }
+                                        });
+                                    }];
+                                }
+                                // Filter the preferred data
+                            }
+                        }
+                    }];
+                    [self dismissActivityIndicators];
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"%@", exception.reason);
+                }
+            }
+        } else {
+            [self dismissActivityIndicators];
+            NSLog(@"No access granted");
+        }
+    }];
+}
+
+- (void)plotInteractions{
+    
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error){
+        if (granted) {
+            
+            NSArray *accounts = [accountStore accountsWithAccountType:accountType];
+            
+            // Check if the users has setup at least one Twitter account
+            
+            if (accounts.count > 0)
+            {
+                ACAccount *twitterAccount = [accounts objectAtIndex:0];
+                
+                // Creating a request to get the info about a user on Twitter
+                
+                SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/mentions_timeline.json?user_id=%@&count=800",username]] parameters:nil];
+                [twitterInfoRequest setAccount:twitterAccount];
+                
+                // Making the request
+                
+                @try {
+                    [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                        
+                        // Check if we reached the reate limit
+                        
+                        if ([urlResponse statusCode] == 429) {
+                            NSLog(@"Rate limit reached");
+                            return;
+                        }
+                        
+                        // Check if there was an error
+                        
+                        if (error) {
+                            NSLog(@"Error: %@", error.localizedDescription);
+                            return;
+                        }
+                        
+                        // Check if there is some response data
+                        
+                        if (responseData) {
+                            
+                            NSError *error = nil;
+                            NSArray *TWData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+                            //NSLog(@"%@", TWData);
+                            for (NSArray *tweetArray in TWData) {
+                                //NSLog(@"%@", tweetArray);
+                                //NSString *tweetGeolocation = [(NSDictionary *)tweetArray objectForKey:@"geo"];
+                                //NSLog(@"%@", tweetGeolocation);
+                                NSArray *userArray = [(NSDictionary *)tweetArray objectForKey:@"user"];
+                                //NSLog(@"%@", userArray);
+                                NSString *userLocation = [(NSDictionary *)userArray objectForKey:@"location"];
+                                NSLog(@"%@", userLocation);
+                                if(userLocation != nil && [userLocation length] > 0) {
+                                    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+                                    [geocoder geocodeAddressString:userLocation completionHandler:^(NSArray* placemarks, NSError* error){
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            // Update the UI
+                                            for (CLPlacemark* aPlacemark in placemarks)
+                                            {
+                                                // Add an annotation
+                                                OCMapViewSampleHelpAnnotation *annotation = [[OCMapViewSampleHelpAnnotation alloc]initWithCoordinate:aPlacemark.location.coordinate];
+                                                annotation.title = [(NSDictionary *)userArray objectForKey:@"name"];
+                                                NSMutableString *userName = [[NSMutableString alloc]initWithString:@"@"];
+                                                [userName appendString:[(NSDictionary *)userArray objectForKey:@"screen_name"]];
+                                                annotation.subtitle = userName;
+                                                annotation.groupTag = kTYPE2;
+                                                [socialMapView addAnnotation:annotation];
+                                            }
+                                        });
+                                    }];
+                                }
+                                // Filter the preferred data
+                            }
+                        }
+                    }];
+                    [self dismissActivityIndicators];
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"%@", exception.reason);
+                }
+            }
+        } else {
+            NSLog(@"No access granted");
+            [self dismissActivityIndicators];
+        }
+    }];
 }
 
 // FQL via Graph API
@@ -63,6 +290,7 @@
                                   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOPS" message:@"Something bad happened trying to reach Facebook :(" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                                   [alert show];
                                   NSLog(@"%@", error);
+                                  [self dismissActivityIndicators];
                                   return;
                               }
                               
@@ -91,9 +319,13 @@
                                   }
                                   
                               }
-                              [self.activityIndicator stopAnimating];
-                              [UIApplication sharedApplication].networkActivityIndicatorVisible = FALSE;
+                              [self dismissActivityIndicators];
                           }];
+}
+
+- (void)dismissActivityIndicators {
+    [self.activityIndicator stopAnimating];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = FALSE;
 }
 
 // ==============================

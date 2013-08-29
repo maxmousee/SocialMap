@@ -34,7 +34,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    FBLoginView *loginview = [[FBLoginView alloc] init];
+    [self setFacebookLoginButton];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    int isTwInteractionsEnabled = [defaults integerForKey:@"twUserInteractions"];
+    if(isTwInteractionsEnabled > 0) [_twitterTimelineOnSwitch setOn:YES];
+    else [_twitterTimelineOnSwitch setOn:NO];
+    
+    int isTwTimelineEnabled = [defaults integerForKey:@"twTimeline"];
+    if(isTwTimelineEnabled > 0) [_twitterTimelineOnSwitch setOn:YES];
+    else [_twitterTimelineOnSwitch setOn:NO];
+    _currentConfigs = [Configs updateCFG:[_twitterTimelineOnSwitch isOn]:[_twitterInteractionsOnSwitch isOn]:loginview];
+    if (_delegate) {
+        [_delegate refreshMapConfigs:_currentConfigs];
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)setFacebookLoginButton {
+    loginview = [[FBLoginView alloc] init];
     loginview.readPermissions = @[@"basic_info",
                                   @"user_location",
                                   @"friends_location",
@@ -46,16 +69,10 @@
     
     CGRect loginViewFrame = loginview.frame;
     loginViewFrame.origin.x += 80;
-    loginViewFrame.origin.y += 20;
+    loginViewFrame.origin.y += 80;
     loginview.frame = loginViewFrame;
     
     [self.view addSubview:loginview];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 // UIAlertView helper for post buttons
@@ -111,8 +128,19 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:[_twitterInteractionsOnSwitch isOn] forKey:@"twUserInteractions"];
     [defaults setInteger:[_twitterTimelineOnSwitch isOn] forKey:@"twTimeline"];
-    [defaults setInteger:[_facebookEnabledSwitch isOn] forKey:@"fbFriends"];
     [defaults synchronize];
+    if (_currentConfigs.showTwTimeline != [_twitterTimelineOnSwitch isOn]) {
+        _currentConfigs = [Configs updateCFG:[_twitterTimelineOnSwitch isOn]:[_twitterInteractionsOnSwitch isOn]:loginview];
+    }
+    if(_currentConfigs.showTwInteractions != [_twitterInteractionsOnSwitch isOn]) {
+        _currentConfigs = [Configs updateCFG:[_twitterTimelineOnSwitch isOn]:[_twitterInteractionsOnSwitch isOn]:loginview];
+    }
+    if(_currentConfigs.loginview != loginview) {
+        _currentConfigs = [Configs updateCFG:[_twitterTimelineOnSwitch isOn]:[_twitterInteractionsOnSwitch isOn]:loginview];
+    }
+    if (_delegate) {
+        [_delegate refreshMapConfigs:_currentConfigs];
+    }
 }
 
 @end

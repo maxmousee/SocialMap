@@ -43,6 +43,7 @@
 		3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8413CF178A595D00C1159A /* MapKit.framework */; };
 		3A87862717CC8A3600BBA7FC /* icon2_72.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3A87862617CC8A3600BBA7FC /* icon2_72.PNG */; };
 		3A87862917CC8A4100BBA7FC /* icon2_144.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3A87862817CC8A4100BBA7FC /* icon2_144.PNG */; };
+		3A96F53217CEEC79009425B5 /* Configs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A96F53117CEEC79009425B5 /* Configs.m */; };
 		3ABE6106178BA6F200E00BC6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */; };
 		90E9BE6416C1A63100EC2D36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E9BE6316C1A63100EC2D36 /* UIKit.framework */; };
 		90E9BE6616C1A63100EC2D36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E9BE6516C1A63100EC2D36 /* Foundation.framework */; };
@@ -107,6 +108,9 @@
 		3A8413CF178A595D00C1159A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3A87862617CC8A3600BBA7FC /* icon2_72.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_72.PNG; path = ../icon2_72.PNG; sourceTree = "<group>"; };
 		3A87862817CC8A4100BBA7FC /* icon2_144.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_144.PNG; path = ../icon2_144.PNG; sourceTree = "<group>"; };
+		3A96F52F17CEEBE6009425B5 /* RefreshMapViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RefreshMapViewDelegate.h; path = iPad_MVC/RefreshMapViewDelegate.h; sourceTree = "<group>"; };
+		3A96F53017CEEC79009425B5 /* Configs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configs.h; sourceTree = "<group>"; };
+		3A96F53117CEEC79009425B5 /* Configs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configs.m; sourceTree = "<group>"; };
 		3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		90E9BE6016C1A63100EC2D36 /* MapIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9BE6316C1A63100EC2D36 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -210,6 +214,7 @@
 			children = (
 				3A7381BE17CDB9370060BC02 /* ConfigurationViewController.h */,
 				3A7381BF17CDB9370060BC02 /* ConfigurationViewController.m */,
+				3A96F52F17CEEBE6009425B5 /* RefreshMapViewDelegate.h */,
 				3A7381C117CDBAC50060BC02 /* iPadMapViewController.h */,
 				3A7381C217CDBAC50060BC02 /* iPadMapViewController.m */,
 			);
@@ -273,6 +278,8 @@
 				3A7381BC17CDB8F30060BC02 /* iPad */,
 				90E9BE7216C1A63100EC2D36 /* AppDelegate.h */,
 				90E9BE7316C1A63100EC2D36 /* AppDelegate.m */,
+				3A96F53017CEEC79009425B5 /* Configs.h */,
+				3A96F53117CEEC79009425B5 /* Configs.m */,
 				90E9BE6A16C1A63100EC2D36 /* Supporting Files */,
 				90E9BE8616C1A8F200EC2D36 /* MainStoryboard.storyboard */,
 				3A7381B817CCF5280060BC02 /* iPadStoryboard.storyboard */,
@@ -402,6 +409,7 @@
 				3A7381AB17CCD0BF0060BC02 /* OCMapViewSampleHelpAnnotation.m in Sources */,
 				3A7381C017CDB9370060BC02 /* ConfigurationViewController.m in Sources */,
 				3A7381C317CDBAC50060BC02 /* iPadMapViewController.m in Sources */,
+				3A96F53217CEEC79009425B5 /* Configs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

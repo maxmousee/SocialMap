@@ -10,13 +10,18 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import "Configs.h"
+
+@class Configs;
+#import "RefreshMapViewDelegate.h"
 
 @interface ConfigurationViewController : UIViewController <FBLoginViewDelegate> {
-    
+    FBLoginView *loginview;
 }
 
-@property (weak, nonatomic) IBOutlet UISwitch *facebookEnabledSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *twitterInteractionsOnSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *twitterTimelineOnSwitch;
+@property (weak, nonatomic) Configs *currentConfigs;
+@property (nonatomic, assign) id<RefreshMapViewDelegate> delegate;
 
 @end
