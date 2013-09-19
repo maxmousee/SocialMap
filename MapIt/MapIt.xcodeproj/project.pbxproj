@@ -39,12 +39,14 @@
 		3A7381C017CDB9370060BC02 /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7381BF17CDB9370060BC02 /* ConfigurationViewController.m */; };
 		3A7381C317CDBAC50060BC02 /* iPadMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7381C217CDBAC50060BC02 /* iPadMapViewController.m */; };
 		3A762F5D17BD633600EE2AB4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */; };
+		3A7C97E117EAA5A500A7AFEB /* reload_Big.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7C97E017EAA5A500A7AFEB /* reload_Big.png */; };
 		3A8413CE178A538600C1159A /* TweetMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8413CD178A538600C1159A /* TweetMapViewController.m */; };
 		3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8413CF178A595D00C1159A /* MapKit.framework */; };
 		3A87862717CC8A3600BBA7FC /* icon2_72.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3A87862617CC8A3600BBA7FC /* icon2_72.PNG */; };
 		3A87862917CC8A4100BBA7FC /* icon2_144.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3A87862817CC8A4100BBA7FC /* icon2_144.PNG */; };
 		3A96F53217CEEC79009425B5 /* Configs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A96F53117CEEC79009425B5 /* Configs.m */; };
 		3ABE6106178BA6F200E00BC6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */; };
+		3AE87C3217EAAECC00B6372E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE87C3117EAAECC00B6372E /* Images.xcassets */; };
 		90E9BE6416C1A63100EC2D36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E9BE6316C1A63100EC2D36 /* UIKit.framework */; };
 		90E9BE6616C1A63100EC2D36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E9BE6516C1A63100EC2D36 /* Foundation.framework */; };
 		90E9BE6816C1A63100EC2D36 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E9BE6716C1A63100EC2D36 /* CoreGraphics.framework */; };
@@ -103,6 +105,7 @@
 		3A7381C117CDBAC50060BC02 /* iPadMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPadMapViewController.h; path = iPad_MVC/iPadMapViewController.h; sourceTree = "<group>"; };
 		3A7381C217CDBAC50060BC02 /* iPadMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iPadMapViewController.m; path = iPad_MVC/iPadMapViewController.m; sourceTree = "<group>"; };
 		3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		3A7C97E017EAA5A500A7AFEB /* reload_Big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload_Big.png; sourceTree = "<group>"; };
 		3A8413CC178A538600C1159A /* TweetMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetMapViewController.h; sourceTree = "<group>"; };
 		3A8413CD178A538600C1159A /* TweetMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetMapViewController.m; sourceTree = "<group>"; };
 		3A8413CF178A595D00C1159A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -115,6 +118,7 @@
 		3AB109D017EA80FF00C06BC4 /* icon2_152.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_152.PNG; path = ../icon2_152.PNG; sourceTree = "<group>"; };
 		3AB109D117EA811300C06BC4 /* icon2_120.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_120.PNG; path = ../icon2_120.PNG; sourceTree = "<group>"; };
 		3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3AE87C3117EAAECC00B6372E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MapIt/Images.xcassets; sourceTree = "<group>"; };
 		90E9BE6016C1A63100EC2D36 /* MapIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9BE6316C1A63100EC2D36 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		90E9BE6516C1A63100EC2D36 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -163,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				3A7381BA17CDB50A0060BC02 /* Reload-03.png */,
+				3A7C97E017EAA5A500A7AFEB /* reload_Big.png */,
 				3A35682917B2C26F00995261 /* new-facebook-logo.png */,
 				3A35682717B2C14500995261 /* twitter-bird-light-bgs.png */,
 				3A35682317B2C03400995261 /* facebook.jpg */,
@@ -240,6 +245,7 @@
 		90E9BE5716C1A63100EC2D36 = {
 			isa = PBXGroup;
 			children = (
+				3AE87C3117EAAECC00B6372E /* Images.xcassets */,
 				3A73818617CCD0620060BC02 /* OCMapView */,
 				3A73819017CCD0620060BC02 /* pins */,
 				3A35682217B2BBDC00995261 /* Buttons */,
@@ -364,8 +370,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				90E9BE6E16C1A63100EC2D36 /* InfoPlist.strings in Resources */,
+				3AE87C3217EAAECC00B6372E /* Images.xcassets in Resources */,
 				90E9BE7616C1A63100EC2D36 /* Default.png in Resources */,
 				90E9BE7816C1A63100EC2D36 /* Default@2x.png in Resources */,
+				3A7C97E117EAA5A500A7AFEB /* reload_Big.png in Resources */,
 				90E9BE7A16C1A63100EC2D36 /* Default-568h@2x.png in Resources */,
 				90E9BE8716C1A8F200EC2D36 /* MainStoryboard.storyboard in Resources */,
 				3A35682517B2C03400995261 /* facebook.jpg in Resources */,
@@ -492,6 +500,8 @@
 		90E9BE7E16C1A63100EC2D36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -512,6 +522,8 @@
 		90E9BE7F16C1A63100EC2D36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

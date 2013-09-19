@@ -247,7 +247,7 @@
             </objects>
             <point key="canvasLocation" x="770" y="-156"/>
         </scene>
-        <!--Tweet Map View Controller - Map-->
+        <!--Tweet Map View Controller - Facebook-->
         <scene sceneID="UGf-xk-eA1">
             <objects>
                 <viewController storyboardIdentifier="TweetMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BLA-q6-FpI" customClass="TweetMapViewController" sceneMemberID="viewController">
@@ -280,7 +280,7 @@
                             <constraint firstItem="jgm-HA-Vjs" firstAttribute="bottom" secondItem="FnJ-0y-mCw" secondAttribute="bottom" id="jkg-OJ-eRw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Map" id="NLm-ag-mT7"/>
+                    <navigationItem key="navigationItem" title="Facebook" id="NLm-ag-mT7"/>
                     <connections>
                         <outlet property="socialMapView" destination="jgm-HA-Vjs" id="Qdu-uk-4mY"/>
                         <outlet property="theBannerView" destination="nXZ-A0-6g6" id="Wlf-Z3-OTe"/>

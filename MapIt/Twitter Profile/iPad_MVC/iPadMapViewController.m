@@ -52,12 +52,19 @@
 - (void)refreshMapConfigs:(Configs *)newCFGs {
     //NSLog(@"refresh cfgs");
     //Make sure we're not setting up the same configurations.
-    if (_currentCFGs != newCFGs) {
+    //if (_currentCFGs != newCFGs) {
         _currentCFGs = newCFGs;
         loginview = _currentCFGs.loginview;
         //Update the UI to reflect the new monster selected from the list.
-        [self refreshMap];
-    }
+    dispatch_queue_t myQueue = dispatch_queue_create("WaitQueue",NULL);
+    dispatch_async(myQueue, ^{
+        // Perform long running process
+        sleep(2);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self refreshMap];
+        });
+    });
+    //}
 }
 
 -(void)refreshMap {
