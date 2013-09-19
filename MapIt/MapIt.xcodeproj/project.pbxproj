@@ -111,6 +111,9 @@
 		3A96F52F17CEEBE6009425B5 /* RefreshMapViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RefreshMapViewDelegate.h; path = iPad_MVC/RefreshMapViewDelegate.h; sourceTree = "<group>"; };
 		3A96F53017CEEC79009425B5 /* Configs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configs.h; sourceTree = "<group>"; };
 		3A96F53117CEEC79009425B5 /* Configs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configs.m; sourceTree = "<group>"; };
+		3AB109CF17EA80F000C06BC4 /* icon2_76.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_76.PNG; path = ../icon2_76.PNG; sourceTree = "<group>"; };
+		3AB109D017EA80FF00C06BC4 /* icon2_152.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_152.PNG; path = ../icon2_152.PNG; sourceTree = "<group>"; };
+		3AB109D117EA811300C06BC4 /* icon2_120.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_120.PNG; path = ../icon2_120.PNG; sourceTree = "<group>"; };
 		3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		90E9BE6016C1A63100EC2D36 /* MapIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9BE6316C1A63100EC2D36 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -298,6 +301,9 @@
 				90E9BE7516C1A63100EC2D36 /* Default.png */,
 				90E9BE7716C1A63100EC2D36 /* Default@2x.png */,
 				90E9BE7916C1A63100EC2D36 /* Default-568h@2x.png */,
+				3AB109D117EA811300C06BC4 /* icon2_120.PNG */,
+				3AB109D017EA80FF00C06BC4 /* icon2_152.PNG */,
+				3AB109CF17EA80F000C06BC4 /* icon2_76.PNG */,
 				3A87862617CC8A3600BBA7FC /* icon2_72.PNG */,
 				3A87862817CC8A4100BBA7FC /* icon2_144.PNG */,
 				3A62E5F117BD4EB300FF655F /* icon2_114.PNG */,

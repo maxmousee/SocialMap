@@ -36,6 +36,9 @@
     [super viewDidLoad];
     [self setFacebookLoginButton];
     
+    _twitterTimelineOnSwitch.onTintColor = [UIColor colorWithRed:90.0/255.0 green:200.0/255.0 blue:250.0/255.0 alpha:1];
+    _twitterInteractionsOnSwitch.onTintColor = [UIColor colorWithRed:90.0/255.0 green:200.0/255.0 blue:250.0/255.0 alpha:1];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     int isTwInteractionsEnabled = [defaults integerForKey:@"twUserInteractions"];
     if(isTwInteractionsEnabled > 0) [_twitterTimelineOnSwitch setOn:YES];
@@ -69,7 +72,7 @@
     
     CGRect loginViewFrame = loginview.frame;
     loginViewFrame.origin.x += 80;
-    loginViewFrame.origin.y += 80;
+    loginViewFrame.origin.y += 140;
     loginview.frame = loginViewFrame;
     
     [self.view addSubview:loginview];

@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2Id-9R-a4W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2Id-9R-a4W">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--I Pad Map View Controller-->
         <scene sceneID="rWW-JO-Jmn">
             <objects>
                 <viewController id="Zk1-R5-V9E" customClass="iPadMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Xv-rb-vcp"/>
+                        <viewControllerLayoutGuide type="bottom" id="aa9-fj-nms"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZRn-Ix-fsh">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2od-BX-Nb4" customClass="OCMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <connections>
                                     <outlet property="delegate" destination="ZRn-Ix-fsh" id="BFc-tJ-vBa"/>
                                 </connections>
@@ -20,10 +26,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2od-BX-Nb4" firstAttribute="bottom" secondItem="ZRn-Ix-fsh" secondAttribute="bottom" type="default" id="K5c-zq-Opq"/>
-                            <constraint firstItem="2od-BX-Nb4" firstAttribute="top" secondItem="ZRn-Ix-fsh" secondAttribute="top" type="default" id="KKh-7f-rRM"/>
-                            <constraint firstItem="2od-BX-Nb4" firstAttribute="leading" secondItem="ZRn-Ix-fsh" secondAttribute="leading" type="default" id="cLI-0i-QSt"/>
-                            <constraint firstItem="2od-BX-Nb4" firstAttribute="trailing" secondItem="ZRn-Ix-fsh" secondAttribute="trailing" type="default" id="hia-rP-nZd"/>
+                            <constraint firstItem="2od-BX-Nb4" firstAttribute="bottom" secondItem="ZRn-Ix-fsh" secondAttribute="bottom" id="K5c-zq-Opq"/>
+                            <constraint firstItem="2od-BX-Nb4" firstAttribute="top" secondItem="ZRn-Ix-fsh" secondAttribute="top" id="KKh-7f-rRM"/>
+                            <constraint firstItem="2od-BX-Nb4" firstAttribute="leading" secondItem="ZRn-Ix-fsh" secondAttribute="leading" id="cLI-0i-QSt"/>
+                            <constraint firstItem="2od-BX-Nb4" firstAttribute="trailing" secondItem="ZRn-Ix-fsh" secondAttribute="trailing" id="hia-rP-nZd"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -54,16 +60,22 @@
         <scene sceneID="UNu-xV-wCS">
             <objects>
                 <viewController id="1zC-7d-5hv" customClass="ConfigurationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jUT-kh-i01"/>
+                        <viewControllerLayoutGuide type="bottom" id="beV-7g-Jyj"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8dA-FM-mg3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="788"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WMj-2F-w11"/>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="80N-7T-xjY"/>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ynj-0X-6Pb">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="3w2-Lo-DSf"/>
-                                </constraints>
+                            <switch opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WMj-2F-w11">
+                                <rect key="frame" x="251" y="445" width="51" height="31"/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="80N-7T-xjY">
+                                <rect key="frame" x="251" y="543" width="51" height="31"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ynj-0X-6Pb">
+                                <rect key="frame" x="110" y="650" width="100" height="100"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="Reload-03.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,67 +88,38 @@
                                     <action selector="savePreferencesReloadMap:" destination="1zC-7d-5hv" eventType="touchUpInside" id="TfN-ix-gbY"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="twitter-bird-light-bgs.png" translatesAutoresizingMaskIntoConstraints="NO" id="lsN-bb-Yru">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="twitter-bird-light-bgs.png" translatesAutoresizingMaskIntoConstraints="NO" id="lsN-bb-Yru">
+                                <rect key="frame" x="90" y="232" width="140" height="140"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                                 </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="ofv-lL-gpC"/>
-                                    <constraint firstAttribute="height" constant="140" id="oqX-Yg-JsP"/>
-                                </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Interactions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0p-rG-BH8">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Interactions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0p-rG-BH8">
+                                <rect key="frame" x="20" y="450" width="190" height="21"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="7S4-cY-P5f"/>
-                                    <constraint firstAttribute="width" constant="190" id="xaP-Bv-iYV"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Timeline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMT-xR-PFF">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Timeline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMT-xR-PFF">
+                                <rect key="frame" x="20" y="548" width="190" height="21"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="185" id="34D-7Z-R4W"/>
-                                    <constraint firstAttribute="height" constant="21" id="dHu-JP-iHS"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Reload" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQK-bb-tqH">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="OiP-du-zx4"/>
-                                    <constraint firstAttribute="width" constant="82" id="nnb-BT-j5A"/>
-                                </constraints>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Reload" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQK-bb-tqH">
+                                <rect key="frame" x="119" y="620" width="82" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="N0p-rG-BH8" firstAttribute="leading" secondItem="8dA-FM-mg3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4yS-1a-qS0"/>
-                            <constraint firstItem="CQK-bb-tqH" firstAttribute="centerX" secondItem="Ynj-0X-6Pb" secondAttribute="centerX" type="default" id="7Zd-Cf-sGh"/>
-                            <constraint firstAttribute="trailing" secondItem="80N-7T-xjY" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="AYT-kX-2nU"/>
-                            <constraint firstItem="Ynj-0X-6Pb" firstAttribute="top" secondItem="CQK-bb-tqH" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Cb9-5h-bf3"/>
-                            <constraint firstAttribute="trailing" secondItem="WMj-2F-w11" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="GTQ-Mt-WBR"/>
-                            <constraint firstItem="N0p-rG-BH8" firstAttribute="centerY" secondItem="WMj-2F-w11" secondAttribute="centerY" type="default" id="SgM-Ve-ahf"/>
-                            <constraint firstItem="lsN-bb-Yru" firstAttribute="top" secondItem="8dA-FM-mg3" secondAttribute="top" constant="176" id="W8e-HV-XfV"/>
-                            <constraint firstAttribute="bottom" secondItem="80N-7T-xjY" secondAttribute="bottom" constant="210" id="eY5-77-VTb"/>
-                            <constraint firstItem="XMT-xR-PFF" firstAttribute="trailing" secondItem="Ynj-0X-6Pb" secondAttribute="trailing" type="default" id="hDA-wp-fED"/>
-                            <constraint firstItem="XMT-xR-PFF" firstAttribute="centerY" secondItem="80N-7T-xjY" secondAttribute="centerY" type="default" id="jik-nn-wKh"/>
-                            <constraint firstItem="XMT-xR-PFF" firstAttribute="trailing" secondItem="N0p-rG-BH8" secondAttribute="trailing" type="default" id="knt-fe-uwS"/>
-                            <constraint firstAttribute="bottom" secondItem="WMj-2F-w11" secondAttribute="bottom" constant="285" id="lKa-XK-DWQ"/>
-                            <constraint firstAttribute="bottom" secondItem="Ynj-0X-6Pb" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="o8m-IV-8Ax"/>
-                            <constraint firstItem="CQK-bb-tqH" firstAttribute="centerX" secondItem="8dA-FM-mg3" secondAttribute="centerX" type="default" id="yHm-dh-eiN"/>
-                            <constraint firstItem="CQK-bb-tqH" firstAttribute="centerX" secondItem="lsN-bb-Yru" secondAttribute="centerX" type="default" id="zgq-Kh-lZD"/>
-                        </constraints>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="SocialMap" id="HZK-uB-Vgt"/>
                     <connections>
@@ -167,30 +150,8 @@
         <image name="Reload-03.png" width="512" height="512"/>
         <image name="twitter-bird-light-bgs.png" width="300" height="300"/>
     </resources>
-    <classes>
-        <class className="ConfigurationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfigurationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="savePreferencesReloadMap:"/>
-                <relationship kind="outlet" name="twitterInteractionsOnSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="twitterTimelineOnSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="OCMapView" superclassName="MKMapView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OCMapView.h"/>
-        </class>
-        <class className="iPadMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/iPadMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="socialMapView" candidateClass="OCMapView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>

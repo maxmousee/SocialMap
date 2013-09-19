@@ -12,8 +12,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "OCMapView.h"
+#import "OCMapViewSampleHelpAnnotation.h"
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <MKMapViewDelegate>
 {
     IBOutlet UIImageView *profileImageView;
     IBOutlet UIImageView *bannerImageView;
@@ -32,7 +34,7 @@
 }
 
 @property (nonatomic, retain) NSString *username;
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet OCMapView *mapView;
 
 - (IBAction)handleMapViewTap:(UITapGestureRecognizer *)recognizer;
 
