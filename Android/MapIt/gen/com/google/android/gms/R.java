@@ -24,13 +24,13 @@ public final class R {
 		public static final int zOrderOnTop = 0x7f01000d;
 	}
 	public static final class color {
-		public static final int ame_default_cluster_circle_color_extra_large = 0x7f04000d;
-		public static final int ame_default_cluster_circle_color_large = 0x7f04000c;
-		public static final int ame_default_cluster_circle_color_medium = 0x7f04000b;
-		public static final int ame_default_cluster_circle_color_small = 0x7f04000a;
-		public static final int ame_default_cluster_circle_shadow_color = 0x7f04000e;
-		public static final int ame_default_cluster_text_color = 0x7f04000f;
-		public static final int ame_default_cluster_text_shadow_color = 0x7f040010;
+		public static final int ame_default_cluster_circle_color_extra_large = 0x7f040014;
+		public static final int ame_default_cluster_circle_color_large = 0x7f040013;
+		public static final int ame_default_cluster_circle_color_medium = 0x7f040012;
+		public static final int ame_default_cluster_circle_color_small = 0x7f040011;
+		public static final int ame_default_cluster_circle_shadow_color = 0x7f040015;
+		public static final int ame_default_cluster_text_color = 0x7f040016;
+		public static final int ame_default_cluster_text_shadow_color = 0x7f040017;
 		public static final int common_action_bar_splitter = 0x7f040009;
 		public static final int common_signin_btn_dark_text_default = 0x7f040000;
 		public static final int common_signin_btn_dark_text_disabled = 0x7f040002;
@@ -45,15 +45,15 @@ public final class R {
 		public static final int common_signin_btn_text_light = 0x7f040019;
 	}
 	public static final class dimen {
-		public static final int ame_default_cluster_circle_blur_radius = 0x7f070000;
-		public static final int ame_default_cluster_circle_shadow_blur_radius = 0x7f070001;
-		public static final int ame_default_cluster_circle_shadow_offset_x = 0x7f070002;
-		public static final int ame_default_cluster_circle_shadow_offset_y = 0x7f070003;
-		public static final int ame_default_cluster_text_padding = 0x7f070004;
-		public static final int ame_default_cluster_text_shadow_blur_radius = 0x7f070005;
-		public static final int ame_default_cluster_text_shadow_offset_x = 0x7f070006;
-		public static final int ame_default_cluster_text_shadow_offset_y = 0x7f070007;
-		public static final int ame_default_cluster_text_size = 0x7f070008;
+		public static final int ame_default_cluster_circle_blur_radius = 0x7f07000d;
+		public static final int ame_default_cluster_circle_shadow_blur_radius = 0x7f07000e;
+		public static final int ame_default_cluster_circle_shadow_offset_x = 0x7f07000f;
+		public static final int ame_default_cluster_circle_shadow_offset_y = 0x7f070010;
+		public static final int ame_default_cluster_text_padding = 0x7f070011;
+		public static final int ame_default_cluster_text_shadow_blur_radius = 0x7f070012;
+		public static final int ame_default_cluster_text_shadow_offset_x = 0x7f070013;
+		public static final int ame_default_cluster_text_shadow_offset_y = 0x7f070014;
+		public static final int ame_default_cluster_text_size = 0x7f070015;
 	}
 	public static final class drawable {
 		public static final int common_signin_btn_icon_dark = 0x7f020020;

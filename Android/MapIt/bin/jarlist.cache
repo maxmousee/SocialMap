@@ -1,8 +1,8 @@
 # cache for current jar dependency. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-1381111443000 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f /Users/maxmouse/Documents/Dev/Mobile/MapIt/libs/android-support-v4.jar
-1381122219000 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f /Users/maxmouse/Downloads/facebook-android-sdk-3.5/facebook/libs/android-support-v4.jar
-1376428736000 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f /Users/maxmouse/Documents/Dev/Mobile/android-maps-extensions-1.7.0/android-maps-extensions/libs/android-support-v4.jar
 1380710708000 632030 23023656ba91dc12e963cf7d5682db5d2aba6262 /Users/maxmouse/Documents/Dev/Mobile/android-maps-extensions-1.7.0/android-maps-extensions/libs/google-play-services.jar
 1380005438000 632030 23023656ba91dc12e963cf7d5682db5d2aba6262 /Users/maxmouse/Documents/Dev/Mobile/google-play-services_lib/libs/google-play-services.jar
+1381111443000 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f /Users/maxmouse/Documents/Dev/Mobile/SocialMap/Android/MapIt/libs/android-support-v4.jar
+1381122219000 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f /Users/maxmouse/Downloads/facebook-android-sdk-3.5/facebook/libs/android-support-v4.jar
+1376428736000 556198 4a6be13368bb64c5a0b0460632d228a1a915f58f /Users/maxmouse/Documents/Dev/Mobile/android-maps-extensions-1.7.0/android-maps-extensions/libs/android-support-v4.jar

@@ -38,6 +38,7 @@ import android.widget.Toast;
 public class FacebookMapActivity extends FragmentActivity {
 	// Google Map
 	private GoogleMap googleMap;
+	private boolean currentLocationOpt;
 	//private List<Marker> declusterifiedMarkers;
 	//ArrayList<Friend> fbFriendArray;
 
@@ -45,19 +46,16 @@ public class FacebookMapActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.facebook_map_activity);
-		try {
-			// Loading map
-			initilizeMap();
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (savedInstanceState == null) {
+		    Bundle extras = getIntent().getExtras();
+		    if(extras == null) {
+		    	currentLocationOpt = true;
+		    } else {
+		    	currentLocationOpt = extras.getBoolean("current_location", true);
+		    }
+		} else {
+			currentLocationOpt = savedInstanceState.getBoolean("current_location", true);
 		}
-		//getFBFriendsLocation();
-	}
-	
-	@Override
-	protected void onResume()
-	{
-		super.onResume();
 		try {
 			// Loading map
 			initilizeMap();
@@ -198,7 +196,7 @@ public class FacebookMapActivity extends FragmentActivity {
 							i++;
 						}
 						if (text.length() == 0) {
-							text = "Markers with mutable data";
+							text = "";
 						} else if (markers.size() > 0) {
 							text += "and " + markers.size() + " more...";
 						} else {
@@ -282,7 +280,14 @@ public class FacebookMapActivity extends FragmentActivity {
 							//Log.d("fql", "name = " + userJSONObj.get("name"));
 
 							try{
-								JSONObject locationJSONObj = userJSONObj.getJSONObject("current_location");
+								JSONObject locationJSONObj = null;
+								if(currentLocationOpt)
+								{
+									locationJSONObj = userJSONObj.getJSONObject("current_location");
+								}
+								else {
+									locationJSONObj = userJSONObj.getJSONObject("hometown_location");
+								}
 								double usrLatitude = locationJSONObj.getDouble("latitude");
 								double usrLongitude = locationJSONObj.getDouble("longitude");
 								String usrName = userJSONObj.getString("name");

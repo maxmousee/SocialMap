@@ -9,25 +9,45 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SelectionActivity extends Activity {
 	static final int FACEBOOK_LOGIN_REQUEST = 1;  // The request code
-	ImageView showFacebookMapButton;
+	Button currentLocBtn;
+	Button hometownBtn;
+	TextView fbInfoTV;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_selection);
-		showFacebookMapButton = (ImageView)findViewById(R.id.mapFacebookButton);
-		showFacebookMapButton.setOnClickListener(new OnClickListener(){
+		
+		currentLocBtn = (Button)findViewById(R.id.currentLocationButton);
+		hometownBtn = (Button)findViewById(R.id.homeTownButton);
+		fbInfoTV = (TextView)findViewById(R.id.textView1);
+		
+		currentLocBtn.setOnClickListener(new OnClickListener(){
 	        @Override
 	        //On click function
 	        public void onClick(View view) {
-	        	Intent facebookMapIntent = new Intent(SelectionActivity.this, FacebookMapActivity.class);
-	        	startActivity(facebookMapIntent);
+	        	Intent facebookCurrentLocationMapIntent = new Intent(SelectionActivity.this, FacebookMapActivity.class);
+	        	facebookCurrentLocationMapIntent.putExtra("current_location", true);
+	        	startActivity(facebookCurrentLocationMapIntent);
 	        }
 	    });
+		
+		hometownBtn.setOnClickListener(new OnClickListener(){
+	        @Override
+	        //On click function
+	        public void onClick(View view) {
+	        	Intent facebookHometownMapIntent = new Intent(SelectionActivity.this, FacebookMapActivity.class);
+	        	facebookHometownMapIntent.putExtra("current_location", false);
+	        	startActivity(facebookHometownMapIntent);
+	        }
+	    });
+	    
 	}
 	
 	@Override
@@ -41,14 +61,18 @@ public class SelectionActivity extends Activity {
 			@Override
 			public void call(Session session, SessionState state,
 					Exception exception) {
-				
-		        if (session.isOpened()) {
-		        	showFacebookMapButton.setVisibility(View.VISIBLE);
+		        if (session.isOpened()) 
+		        {
+		        	hometownBtn.setVisibility(View.VISIBLE);
+		        	currentLocBtn.setVisibility(View.VISIBLE);
+		        	fbInfoTV.setVisibility(View.VISIBLE);
 		        }
-		        else {
-		        	showFacebookMapButton.setVisibility(View.GONE);
+		        else 
+		        {
+		        	hometownBtn.setVisibility(View.GONE);
+		        	currentLocBtn.setVisibility(View.GONE);
+		        	fbInfoTV.setVisibility(View.GONE);
 		        }
-				
 			}
 		  }); 
 	}
