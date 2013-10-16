@@ -17,7 +17,8 @@
 @property (nonatomic, strong) FBLoginView *loginview;
 @property (nonatomic, assign) int showTwInteractions;
 @property (nonatomic, assign) int showTwTimeline;
+@property (nonatomic, assign) int fbCurrentLocation;
 
-+(Configs *)updateCFG: (int)twTimelineEnabled : (int)twInteractionsEnabled : (FBLoginView *)loginview;
++(Configs *)updateCFG: (int)twTimelineEnabled : (int)twInteractionsEnabled : (FBLoginView *)theLoginview : (int)isFBCurrentLocation;
 
 @end

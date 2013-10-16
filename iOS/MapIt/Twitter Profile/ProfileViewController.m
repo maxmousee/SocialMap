@@ -76,7 +76,7 @@
 }
 
 - (IBAction)handleMapViewTap:(UITapGestureRecognizer *)recognizer{
-    NSLog(@"Tap gesture recognized");
+    //NSLog(@"Tap gesture recognized");
     if(!isFullScreen) {
         [_mapView setFrame:[self.view frame]];
     } else {
@@ -403,21 +403,23 @@
         [circleLine setTitle:@"line"];
         [_mapView addOverlay:circleLine];
         
-        // set title
-        clusterAnnotation.title = @"Group";
-        clusterAnnotation.subtitle = [NSString stringWithFormat:@"Number of friends here: %d", [clusterAnnotation.annotationsInCluster count]];
+        // set title and subtitle
+        OCAnnotation *firstAnnotation = [clusterAnnotation.annotationsInCluster objectAtIndex:0];
+        clusterAnnotation.title = [firstAnnotation subtitle];
+        clusterAnnotation.subtitle = [NSString stringWithFormat:@"and %d more...", [clusterAnnotation.annotationsInCluster count] - 1];
         
         // set its image
         annotationView.image = [UIImage imageNamed:@"regular.png"];
         
         // change pin image for group
         if (_mapView.clusterByGroupTag) {
+            /*
             if ([clusterAnnotation.groupTag isEqualToString:kTYPE1]) {
                 annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
             }
             else if([clusterAnnotation.groupTag isEqualToString:kTYPE2]){
                 annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
-            }
+            } */
             clusterAnnotation.title = clusterAnnotation.groupTag;
         }
     }
@@ -431,13 +433,15 @@
             annotationView.centerOffset = CGPointMake(0, -20);
         }
         //singleAnnotation.title = singleAnnotation.groupTag;
-        
+        annotationView.image = [UIImage imageNamed:@"regular.png"];
+        /*
         if ([singleAnnotation.groupTag isEqualToString:kTYPE1]) {
             annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
         }
         else if([singleAnnotation.groupTag isEqualToString:kTYPE2]){
             annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
         }
+         */
     }
     // Error
     else{

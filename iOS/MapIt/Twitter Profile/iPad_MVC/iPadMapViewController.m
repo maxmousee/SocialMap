@@ -74,7 +74,12 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     [socialMapView removeOverlays:socialMapView.overlays];
     [socialMapView removeAnnotations:socialMapView.annotations];
-    [self plotFBFriendsWithFQL];
+    if(_currentCFGs.fbCurrentLocation > 0) {
+        [self plotFBFriendsHomeTownWithFQL];
+    } else {
+        [self plotFBFriendsCurrentLocationWithFQL];
+    }
+    
     if(_currentCFGs.showTwInteractions > 0) {
         dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
         dispatch_async(myQueue, ^{
@@ -282,7 +287,7 @@
 }
 
 // FQL via Graph API
--(void)plotFBFriendsWithFQL {
+-(void)plotFBFriendsCurrentLocationWithFQL {
     NSString* fql =
     @"{"
     @"'allfriends':'SELECT uid2 FROM friend WHERE uid1=me()',"
@@ -309,6 +314,54 @@
                                   @try {
                                       NSLog(@"%@", [userData objectForKey:@"name"]);
                                       NSDictionary *userLocationDict = [userData objectForKey:@"current_location"];
+                                      NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
+                                      //NSLog(@"%@", [userLocationDict objectForKey:@"latitude"]);
+                                      //NSLog(@"%@", [userLocationDict objectForKey:@"longitude"]);
+                                      // Add an annotation
+                                      double latitude = [[userLocationDict objectForKey:@"latitude"]doubleValue];
+                                      double longitude = [[userLocationDict objectForKey:@"longitude"]doubleValue];
+                                      
+                                      OCMapViewSampleHelpAnnotation *annotation = [[OCMapViewSampleHelpAnnotation alloc]initWithCoordinate:CLLocationCoordinate2DMake(latitude, longitude)];
+                                      annotation.title = [userData objectForKey:@"name"];
+                                      annotation.groupTag = kTYPE1;
+                                      [socialMapView addAnnotation:annotation];
+                                  }
+                                  @catch (NSException *exception) {
+                                      //NSLog(@"EXCEPTION %@", exception);
+                                  }
+                                  
+                              }
+                              [self dismissActivityIndicators];
+                          }];
+}
+
+-(void)plotFBFriendsHomeTownWithFQL {
+    NSString* fql =
+    @"{"
+    @"'allfriends':'SELECT uid2 FROM friend WHERE uid1=me()',"
+    @"'frienddetails':'SELECT uid, name, pic, hometown_location, current_location FROM user WHERE uid IN ( SELECT uid2 FROM friend WHERE uid1 = me() )',"
+    @"}";
+    [FBRequestConnection startWithGraphPath:@"/fql"
+                                 parameters:@{ @"q" : fql}
+                                 HTTPMethod:@"GET"
+                          completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                              if(error) {
+                                  //[self printError:@"Error reading friends via FQL" error:error];
+                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOPS" message:@"Something bad happened trying to reach Facebook :(" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                  [alert show];
+                                  NSLog(@"%@", error);
+                                  [self dismissActivityIndicators];
+                                  return;
+                              }
+                              
+                              //NSArray* friendIds = ((NSArray*)[result data])[0][@"fql_result_set"];
+                              NSArray* friends = ((NSArray*)[result data])[1][@"fql_result_set"];
+                              [socialMapView removeOverlays:socialMapView.overlays];
+                              
+                              for (NSDictionary *userData in friends) {
+                                  @try {
+                                      NSLog(@"%@", [userData objectForKey:@"name"]);
+                                      NSDictionary *userLocationDict = [userData objectForKey:@"hometown_location"];
                                       NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"latitude"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"longitude"]);
@@ -363,23 +416,14 @@
         [circleLine setTitle:@"line"];
         [socialMapView addOverlay:circleLine];
         
-        // set title
-        clusterAnnotation.title = @"Group";
-        clusterAnnotation.subtitle = [NSString stringWithFormat:@"Number of friends here: %d", [clusterAnnotation.annotationsInCluster count]];
+        // set title and subtitle
+        OCAnnotation *firstAnnotation = [clusterAnnotation.annotationsInCluster objectAtIndex:0];
+        clusterAnnotation.title = [firstAnnotation title];
+        clusterAnnotation.subtitle = [NSString stringWithFormat:@"and %d more...", [clusterAnnotation.annotationsInCluster count] - 1];
         
         // set its image
         annotationView.image = [UIImage imageNamed:@"regular.png"];
         
-        // change pin image for group
-        if (socialMapView.clusterByGroupTag) {
-            if ([clusterAnnotation.groupTag isEqualToString:kTYPE1]) {
-                annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
-            }
-            else if([clusterAnnotation.groupTag isEqualToString:kTYPE2]){
-                annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
-            }
-            clusterAnnotation.title = clusterAnnotation.groupTag;
-        }
     }
     // If it's a single annotation
     else if([annotation isKindOfClass:[OCMapViewSampleHelpAnnotation class]]){
@@ -391,13 +435,6 @@
             annotationView.centerOffset = CGPointMake(0, -20);
         }
         //singleAnnotation.title = singleAnnotation.groupTag;
-        
-        if ([singleAnnotation.groupTag isEqualToString:kTYPE1]) {
-            annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
-        }
-        else if([singleAnnotation.groupTag isEqualToString:kTYPE2]){
-            annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
-        }
     }
     // Error
     else{

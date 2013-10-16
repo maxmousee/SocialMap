@@ -19,6 +19,7 @@
     FBLoginView *loginview;
 }
 
+@property (weak, nonatomic) IBOutlet UISlider *fbLocationSlider;
 @property (weak, nonatomic) IBOutlet UISwitch *twitterInteractionsOnSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *twitterTimelineOnSwitch;
 @property (weak, nonatomic) Configs *currentConfigs;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dog-SB-gYR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dog-SB-gYR">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -262,28 +262,18 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jgm-HA-Vjs" customClass="OCMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
-                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="nXZ-A0-6g6">
-                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="wf5-88-4jF"/>
-                                </constraints>
-                            </adBannerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jgm-HA-Vjs" firstAttribute="leading" secondItem="FnJ-0y-mCw" secondAttribute="leading" id="1eK-NQ-CK3"/>
-                            <constraint firstItem="nXZ-A0-6g6" firstAttribute="bottom" secondItem="FnJ-0y-mCw" secondAttribute="bottom" id="AP2-Px-dgZ"/>
                             <constraint firstItem="jgm-HA-Vjs" firstAttribute="top" secondItem="FnJ-0y-mCw" secondAttribute="top" id="DzB-jd-jHP"/>
                             <constraint firstItem="jgm-HA-Vjs" firstAttribute="trailing" secondItem="FnJ-0y-mCw" secondAttribute="trailing" id="Oya-mk-Nju"/>
-                            <constraint firstItem="nXZ-A0-6g6" firstAttribute="leading" secondItem="FnJ-0y-mCw" secondAttribute="leading" id="VU0-pQ-2SY"/>
-                            <constraint firstItem="nXZ-A0-6g6" firstAttribute="trailing" secondItem="FnJ-0y-mCw" secondAttribute="trailing" id="eIN-qo-MIg"/>
                             <constraint firstItem="jgm-HA-Vjs" firstAttribute="bottom" secondItem="FnJ-0y-mCw" secondAttribute="bottom" id="jkg-OJ-eRw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Facebook" id="NLm-ag-mT7"/>
                     <connections>
                         <outlet property="socialMapView" destination="jgm-HA-Vjs" id="Qdu-uk-4mY"/>
-                        <outlet property="theBannerView" destination="nXZ-A0-6g6" id="Wlf-Z3-OTe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CyA-ux-Gp8" userLabel="First Responder" sceneMemberID="firstResponder"/>

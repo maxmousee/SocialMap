@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A2D18EB180F0DD20036C1CA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D18EA180F0DD20036C1CA /* StoreKit.framework */; };
+		3A2D18ED180F0E270036C1CA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D18EC180F0E270036C1CA /* MessageUI.framework */; };
+		3A2D18EF180F0E470036C1CA /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D18EE180F0E470036C1CA /* CoreAudio.framework */; };
+		3A2D18F1180F0E5E0036C1CA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2D18F0180F0E5E0036C1CA /* AudioToolbox.framework */; };
 		3A35682517B2C03400995261 /* facebook.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A35682317B2C03400995261 /* facebook.jpg */; };
 		3A35682617B2C03400995261 /* twitter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3A35682417B2C03400995261 /* twitter.jpg */; };
 		3A35682817B2C14500995261 /* twitter-bird-light-bgs.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A35682717B2C14500995261 /* twitter-bird-light-bgs.png */; };
@@ -39,6 +43,12 @@
 		3A7381C017CDB9370060BC02 /* ConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7381BF17CDB9370060BC02 /* ConfigurationViewController.m */; };
 		3A7381C317CDBAC50060BC02 /* iPadMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7381C217CDBAC50060BC02 /* iPadMapViewController.m */; };
 		3A762F5D17BD633600EE2AB4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */; };
+		3A78F54C180EFAA3007AA92A /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A78F4FC180EFAA2007AA92A /* libGoogleAdMobAds.a */; };
+		3A78F54D180EFAA3007AA92A /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3A78F4FD180EFAA2007AA92A /* README.txt */; };
+		3A78F555180EFCC8007AA92A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A78F554180EFCC8007AA92A /* libz.dylib */; };
+		3A78F557180EFCD3007AA92A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A78F556180EFCD3007AA92A /* AdSupport.framework */; };
+		3A78F559180EFE1B007AA92A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A78F558180EFE1B007AA92A /* SystemConfiguration.framework */; };
+		3A78F55B180EFE57007AA92A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A78F55A180EFE57007AA92A /* CoreData.framework */; };
 		3A7C97E117EAA5A500A7AFEB /* reload_Big.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A7C97E017EAA5A500A7AFEB /* reload_Big.png */; };
 		3A8413CE178A538600C1159A /* TweetMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8413CD178A538600C1159A /* TweetMapViewController.m */; };
 		3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8413CF178A595D00C1159A /* MapKit.framework */; };
@@ -65,6 +75,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A2D18EA180F0DD20036C1CA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3A2D18EC180F0E270036C1CA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		3A2D18EE180F0E470036C1CA /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		3A2D18F0180F0E5E0036C1CA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3A2D18F2180F0E680036C1CA /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		3A35682317B2C03400995261 /* facebook.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = facebook.jpg; path = "Twitter Profile/Buttons/facebook.jpg"; sourceTree = "<group>"; };
 		3A35682417B2C03400995261 /* twitter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = twitter.jpg; path = "Twitter Profile/Buttons/twitter.jpg"; sourceTree = "<group>"; };
 		3A35682717B2C14500995261 /* twitter-bird-light-bgs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-bird-light-bgs.png"; sourceTree = "<group>"; };
@@ -105,6 +120,21 @@
 		3A7381C117CDBAC50060BC02 /* iPadMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPadMapViewController.h; path = iPad_MVC/iPadMapViewController.h; sourceTree = "<group>"; };
 		3A7381C217CDBAC50060BC02 /* iPadMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iPadMapViewController.m; path = iPad_MVC/iPadMapViewController.m; sourceTree = "<group>"; };
 		3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		3A78F4F3180EFAA2007AA92A /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
+		3A78F4F4180EFAA2007AA92A /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
+		3A78F4F5180EFAA2007AA92A /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
+		3A78F4F6180EFAA2007AA92A /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
+		3A78F4F7180EFAA2007AA92A /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
+		3A78F4F8180EFAA2007AA92A /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
+		3A78F4F9180EFAA2007AA92A /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitialDelegate.h; sourceTree = "<group>"; };
+		3A78F4FA180EFAA2007AA92A /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
+		3A78F4FB180EFAA2007AA92A /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
+		3A78F4FC180EFAA2007AA92A /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		3A78F4FD180EFAA2007AA92A /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		3A78F554180EFCC8007AA92A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3A78F556180EFCD3007AA92A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		3A78F558180EFE1B007AA92A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3A78F55A180EFE57007AA92A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3A7C97E017EAA5A500A7AFEB /* reload_Big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reload_Big.png; sourceTree = "<group>"; };
 		3A8413CC178A538600C1159A /* TweetMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetMapViewController.h; sourceTree = "<group>"; };
 		3A8413CD178A538600C1159A /* TweetMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetMapViewController.m; sourceTree = "<group>"; };
@@ -147,6 +177,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A2D18F1180F0E5E0036C1CA /* AudioToolbox.framework in Frameworks */,
+				3A2D18EF180F0E470036C1CA /* CoreAudio.framework in Frameworks */,
+				3A2D18ED180F0E270036C1CA /* MessageUI.framework in Frameworks */,
+				3A2D18EB180F0DD20036C1CA /* StoreKit.framework in Frameworks */,
+				3A78F55B180EFE57007AA92A /* CoreData.framework in Frameworks */,
+				3A78F559180EFE1B007AA92A /* SystemConfiguration.framework in Frameworks */,
+				3A78F557180EFCD3007AA92A /* AdSupport.framework in Frameworks */,
+				3A78F555180EFCC8007AA92A /* libz.dylib in Frameworks */,
 				90E9BE8516C1A86900EC2D36 /* QuartzCore.framework in Frameworks */,
 				90E9BE8316C1A86100EC2D36 /* Accounts.framework in Frameworks */,
 				3A8413D1178A596D00C1159A /* MapKit.framework in Frameworks */,
@@ -157,6 +195,7 @@
 				90E9BE6616C1A63100EC2D36 /* Foundation.framework in Frameworks */,
 				3ABE6106178BA6F200E00BC6 /* CoreLocation.framework in Frameworks */,
 				90E9BE6816C1A63100EC2D36 /* CoreGraphics.framework in Frameworks */,
+				3A78F54C180EFAA3007AA92A /* libGoogleAdMobAds.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,10 +281,37 @@
 			name = iPhone;
 			sourceTree = "<group>";
 		};
+		3A78F465180EFA85007AA92A /* GoogleMobileAds */ = {
+			isa = PBXGroup;
+			children = (
+				3A78F466180EFAA1007AA92A /* GoogleAdMobAdsSdkiOS-6.5.1 */,
+			);
+			name = GoogleMobileAds;
+			sourceTree = "<group>";
+		};
+		3A78F466180EFAA1007AA92A /* GoogleAdMobAdsSdkiOS-6.5.1 */ = {
+			isa = PBXGroup;
+			children = (
+				3A78F4F3180EFAA2007AA92A /* GADAdMobExtras.h */,
+				3A78F4F4180EFAA2007AA92A /* GADAdNetworkExtras.h */,
+				3A78F4F5180EFAA2007AA92A /* GADAdSize.h */,
+				3A78F4F6180EFAA2007AA92A /* GADBannerView.h */,
+				3A78F4F7180EFAA2007AA92A /* GADBannerViewDelegate.h */,
+				3A78F4F8180EFAA2007AA92A /* GADInterstitial.h */,
+				3A78F4F9180EFAA2007AA92A /* GADInterstitialDelegate.h */,
+				3A78F4FA180EFAA2007AA92A /* GADRequest.h */,
+				3A78F4FB180EFAA2007AA92A /* GADRequestError.h */,
+				3A78F4FC180EFAA2007AA92A /* libGoogleAdMobAds.a */,
+				3A78F4FD180EFAA2007AA92A /* README.txt */,
+			);
+			path = "GoogleAdMobAdsSdkiOS-6.5.1";
+			sourceTree = "<group>";
+		};
 		90E9BE5716C1A63100EC2D36 = {
 			isa = PBXGroup;
 			children = (
 				3AE87C3117EAAECC00B6372E /* Images.xcassets */,
+				3A78F465180EFA85007AA92A /* GoogleMobileAds */,
 				3A73818617CCD0620060BC02 /* OCMapView */,
 				3A73819017CCD0620060BC02 /* pins */,
 				3A35682217B2BBDC00995261 /* Buttons */,
@@ -266,6 +332,15 @@
 		90E9BE6216C1A63100EC2D36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A2D18F2180F0E680036C1CA /* AudioUnit.framework */,
+				3A2D18F0180F0E5E0036C1CA /* AudioToolbox.framework */,
+				3A2D18EE180F0E470036C1CA /* CoreAudio.framework */,
+				3A2D18EC180F0E270036C1CA /* MessageUI.framework */,
+				3A2D18EA180F0DD20036C1CA /* StoreKit.framework */,
+				3A78F55A180EFE57007AA92A /* CoreData.framework */,
+				3A78F558180EFE1B007AA92A /* SystemConfiguration.framework */,
+				3A78F556180EFCD3007AA92A /* AdSupport.framework */,
+				3A78F554180EFCC8007AA92A /* libz.dylib */,
 				3A762F5B17BD632B00EE2AB4 /* FacebookSDK.framework */,
 				3A62DB0117B6B1B400776237 /* iAd.framework */,
 				3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */,
@@ -382,6 +457,7 @@
 				3A35682A17B2C26F00995261 /* new-facebook-logo.png in Resources */,
 				3A62E5F017BD4E9900FF655F /* icon2_57.PNG in Resources */,
 				3A62E5F217BD4EB300FF655F /* icon2_114.PNG in Resources */,
+				3A78F54D180EFAA3007AA92A /* README.txt in Resources */,
 				3A87862717CC8A3600BBA7FC /* icon2_72.PNG in Resources */,
 				3A87862917CC8A4100BBA7FC /* icon2_144.PNG in Resources */,
 				3A73819F17CCD0620060BC02 /* banana.png in Resources */,
@@ -513,6 +589,13 @@
 				GCC_PREFIX_HEADER = "Twitter Profile/MapIt-Prefix.pch";
 				INFOPLIST_FILE = "Twitter Profile/MapIt-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/maxmouse/Documents/Dev/Mobile/SocialMap/iOS/MapIt/GoogleAdMobAdsSdkiOS-6.5.1/Add-ons/GoogleAnalyticsServicesiOS_3.0/GoogleAnalytics/Library",
+					"/Users/maxmouse/Documents/Dev/Mobile/SocialMap/iOS/MapIt/GoogleAdMobAdsSdkiOS-6.5.1/Add-ons/GoogleAnalyticsServicesiOS_3.0",
+					"/Users/maxmouse/Documents/Dev/Mobile/SocialMap/iOS/MapIt/GoogleAdMobAdsSdkiOS-6.5.1",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = MapIt;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -535,6 +618,13 @@
 				GCC_PREFIX_HEADER = "Twitter Profile/MapIt-Prefix.pch";
 				INFOPLIST_FILE = "Twitter Profile/MapIt-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/maxmouse/Documents/Dev/Mobile/SocialMap/iOS/MapIt/GoogleAdMobAdsSdkiOS-6.5.1/Add-ons/GoogleAnalyticsServicesiOS_3.0/GoogleAnalytics/Library",
+					"/Users/maxmouse/Documents/Dev/Mobile/SocialMap/iOS/MapIt/GoogleAdMobAdsSdkiOS-6.5.1/Add-ons/GoogleAnalyticsServicesiOS_3.0",
+					"/Users/maxmouse/Documents/Dev/Mobile/SocialMap/iOS/MapIt/GoogleAdMobAdsSdkiOS-6.5.1",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = MapIt;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

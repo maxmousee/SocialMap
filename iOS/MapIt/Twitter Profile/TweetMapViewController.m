@@ -8,7 +8,7 @@
 
 #import "TweetMapViewController.h"
 
-@interface TweetMapViewController () <ADBannerViewDelegate>
+@interface TweetMapViewController ()
 
 @end
 
@@ -30,8 +30,6 @@
 {
     [super viewDidLoad];
     //_theBannerView.frame = CGRectOffset(_theBannerView.frame, 0, 50);
-    bannerIsVisible = YES;
-    _theBannerView.delegate = self;
     [socialMapView setShowsUserLocation:true];
     [socialMapView setDelegate:self];
     socialMapView.clusterSize = kDEFAULTCLUSTERSIZE;
@@ -49,6 +47,7 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     
     [self plotFBFriendsWithFQL];
+    [self setUpGoogleAd];
     
 }
 
@@ -58,37 +57,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+- (void)setUpGoogleAd
 {
-    if (!bannerIsVisible)
-    {
-        NSLog(@"bannerViewDidLoadAd");
-        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
-        banner.frame = CGRectOffset(banner.frame, 0, -50);
-        //buttonFrame.frame = CGRectOffset(buttonFrame.frame, 0, -50);
-        //web.frame = CGRectMake(web.frame.origin.x, web.frame.origin.y, web.frame.size.width,
-        //                       web.frame.size.height-50);
-        [UIView commitAnimations];
-        bannerIsVisible = YES;
-    }
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-{
-    if (bannerIsVisible)
-    {
-        NSLog(@"bannerView:didFailToReceiveAdWithError:%@", error);
-        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
-        // assumes the banner view is at the top of the screen.
-        banner.frame = CGRectOffset(banner.frame, 0, 50);
-        //buttonFrame.frame = CGRectOffset(buttonFrame.frame, 0, 50);
-        //web.frame = CGRectMake(web.frame.origin.x,
-        //                       web.frame.origin.y,
-        //                       web.frame.size.width,
-        //                       web.frame.size.height+50);
-        [UIView commitAnimations];
-        bannerIsVisible = NO;
-    }
+    googleBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    CGRect googleBannerViewFrame = googleBannerView.frame;
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    googleBannerViewFrame.origin.y = screenRect.size.height - googleBannerViewFrame.size.height;
+    [googleBannerView setFrame:googleBannerViewFrame];
+    
+    // Specify the ad unit ID.
+    googleBannerView.adUnitID = @"ca-app-pub-6181270546404452/2050401562";
+    
+    // Let the runtime know which UIViewController to restore after taking
+    // the user wherever the ad goes and add it to the view hierarchy.
+    googleBannerView.rootViewController = self;
+    [self.view addSubview:googleBannerView];
+    
+    // Initiate a generic request to load it with an ad.
+    
+    GADRequest *request = [GADRequest request];
+    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, @"596325609d0e6da57543212613fd6f6c", nil];
+    //request.testDevices = [NSArray arrayWithObjects:@"596325609d0e6da57543212613fd6f6c", nil];
+    //request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
+    [googleBannerView loadRequest:request];
 }
 
 // FQL via Graph API
@@ -168,23 +159,13 @@
         [circleLine setTitle:@"line"];
         [socialMapView addOverlay:circleLine];
         
-        // set title
-        clusterAnnotation.title = @"Group";
-        clusterAnnotation.subtitle = [NSString stringWithFormat:@"Number of friends here: %d", [clusterAnnotation.annotationsInCluster count]];
-        
+        // set title and subtitle
+        OCAnnotation *firstAnnotation = [clusterAnnotation.annotationsInCluster objectAtIndex:0];
+        clusterAnnotation.title = [firstAnnotation title];
+        clusterAnnotation.subtitle = [NSString stringWithFormat:@"and %d more...", [clusterAnnotation.annotationsInCluster count] - 1];
+
         // set its image
         annotationView.image = [UIImage imageNamed:@"regular.png"];
-        
-        // change pin image for group
-        if (socialMapView.clusterByGroupTag) {
-            if ([clusterAnnotation.groupTag isEqualToString:kTYPE1]) {
-                annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
-            }
-            else if([clusterAnnotation.groupTag isEqualToString:kTYPE2]){
-                annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
-            }
-            clusterAnnotation.title = clusterAnnotation.groupTag;
-        }
     }
     // If it's a single annotation
     else if([annotation isKindOfClass:[OCMapViewSampleHelpAnnotation class]]){
@@ -196,13 +177,8 @@
             annotationView.centerOffset = CGPointMake(0, -20);
         }
         //singleAnnotation.title = singleAnnotation.groupTag;
-        
-        if ([singleAnnotation.groupTag isEqualToString:kTYPE1]) {
-            annotationView.image = [UIImage imageNamed:@"map_pin_normal.png"];
-        }
-        else if([singleAnnotation.groupTag isEqualToString:kTYPE2]){
-            annotationView.image = [UIImage imageNamed:@"map_pin_fav.png"];
-        }
+        annotationView.image = [UIImage imageNamed:@"regular.png"];
+
     }
     // Error
     else{

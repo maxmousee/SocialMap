@@ -17,6 +17,7 @@
 #import <math.h>
 #import "OCMapView.h"
 #import "OCMapViewSampleHelpAnnotation.h"
+#import "GADBannerView.h"
 
 #define ARC4RANDOM_MAX 0X100000000
 #define kTYPE1 @"Friend"
@@ -24,15 +25,14 @@
 #define kDEFAULTCLUSTERSIZE 0.2
 
 
-@interface TweetMapViewController : UIViewController <MKMapViewDelegate, ADBannerViewDelegate> {
+@interface TweetMapViewController : UIViewController <MKMapViewDelegate> {
     NSString *username;
     NSArray *followersIDs;
     IBOutlet OCMapView *socialMapView;
-    BOOL bannerIsVisible;
+    GADBannerView *googleBannerView;
 }
 
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
-@property (weak, nonatomic) IBOutlet ADBannerView *theBannerView;
 
 @end
