@@ -32,7 +32,6 @@
 
     <Button
         android:id="@+id/currentLocationButton"
-        style="@android:style/Widget.Holo.Light.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/homeTownButton"
@@ -53,7 +52,6 @@
 
     <Button
         android:id="@+id/homeTownButton"
-        style="@android:style/Widget.Holo.Light.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
