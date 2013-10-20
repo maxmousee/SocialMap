@@ -77,10 +77,8 @@
     if (FBSession.activeSession.isOpen)
     {
         if([defaults integerForKey:@"isFBCurrentLocation"] > 0) {
-            //NSLog(@"plotFBFriendsHomeTownWithFQL");
             [self plotFBFriendsHomeTownWithFQL];
         } else {
-            //NSLog(@"plotFBFriendsCurrentLocationWithFQL");
             [self plotFBFriendsCurrentLocationWithFQL];
         }
     }
@@ -292,6 +290,7 @@
 
 // FQL via Graph API
 -(void)plotFBFriendsCurrentLocationWithFQL {
+    NSLog(@"plotFBFriendsCurrentLocationWithFQL");
     NSString* fql =
     @"{"
     @"'allfriends':'SELECT uid2 FROM friend WHERE uid1=me()',"
@@ -340,6 +339,7 @@
 }
 
 -(void)plotFBFriendsHomeTownWithFQL {
+    NSLog(@"plotFBFriendsHomeTownWithFQL");
     NSString* fql =
     @"{"
     @"'allfriends':'SELECT uid2 FROM friend WHERE uid1=me()',"
