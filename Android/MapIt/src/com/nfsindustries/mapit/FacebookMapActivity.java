@@ -1,6 +1,7 @@
 package com.nfsindustries.mapit;
 
 import java.text.Collator;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -26,6 +27,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.model.LatLng;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -218,17 +220,27 @@ public class FacebookMapActivity extends FragmentActivity {
 			});
 
 			
-			/*
+			
 			googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 				@Override
 				public boolean onMarkerClick(Marker marker) {
 					if (marker.isCluster()) {
-						declusterify(marker);
+						ArrayList<String> usersList = new ArrayList<String>();
+						Intent usersListIntent = new Intent(FacebookMapActivity.this, UsersListActivity.class);
+						List<Marker> markers = marker.getMarkers();
+						for(Marker m : markers) {
+							usersList.add(m.getTitle());
+							//Log.d("addedUser", m.getTitle());
+						}
+						usersListIntent.putStringArrayListExtra("users", usersList);
+						startActivity(usersListIntent);
 						return true;
 					}
 					return false;
 				}
 			});
+			
+			/*
 			googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 				@Override
 				public void onMapClick(LatLng position) {

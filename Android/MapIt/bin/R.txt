@@ -199,6 +199,7 @@ int layout com_facebook_search_bar_layout 0x7f03000d
 int layout com_facebook_usersettingsfragment 0x7f03000e
 int layout facebook_map_activity 0x7f03000f
 int layout fb_login_fragment_activity 0x7f030010
+int layout view_users_list_activity 0x7f030011
 int menu selection 0x7f090000
 int string action_settings 0x7f060033
 int string app_id 0x7f060035

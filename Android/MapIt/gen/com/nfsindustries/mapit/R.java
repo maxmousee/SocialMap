@@ -455,6 +455,7 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment=0x7f03000e;
         public static final int facebook_map_activity=0x7f03000f;
         public static final int fb_login_fragment_activity=0x7f030010;
+        public static final int view_users_list_activity=0x7f030011;
     }
     public static final class menu {
         public static final int selection=0x7f090000;
