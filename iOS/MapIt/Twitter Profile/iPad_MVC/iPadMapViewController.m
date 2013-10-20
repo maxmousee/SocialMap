@@ -83,39 +83,6 @@
             //NSLog(@"plotFBFriendsCurrentLocationWithFQL");
             [self plotFBFriendsCurrentLocationWithFQL];
         }
-    } else {
-        // try to open session with existing valid token
-        NSArray *permissions = [[NSArray alloc] initWithObjects:
-                                @"basic_info",
-                                @"user_location",
-                                @"friends_location",
-                                @"friends_hometown",
-                                nil];
-        FBSession *session = [[FBSession alloc] initWithPermissions:permissions];
-        [FBSession setActiveSession:session];
-        if([FBSession openActiveSessionWithAllowLoginUI:NO]) {
-            // post to wall
-        } else {
-            // you need to log the user
-            [FBSession openActiveSessionWithReadPermissions:permissions allowLoginUI:YES completionHandler:^(FBSession *session,
-                                                                                                             FBSessionState state,
-                                                                                                             NSError *error)
-             {
-                 if (FB_ISSESSIONOPENWITHSTATE([session state]))
-                 {
-                     if([defaults integerForKey:@"isFBCurrentLocation"] > 0) {
-                         [self plotFBFriendsHomeTownWithFQL];
-                     } else {
-                         [self plotFBFriendsCurrentLocationWithFQL];
-                     }
-                 }
-                 else
-                 {
-                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOPS" message:@"Facebook Login issue :(" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                     [alert show];
-                 }
-             }];
-        }
     }
     if([defaults boolForKey:@"twUserInteractions"]) {
         dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
