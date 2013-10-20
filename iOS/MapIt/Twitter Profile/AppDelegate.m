@@ -19,8 +19,6 @@
         UINavigationController *leftNavController = [splitViewController.viewControllers objectAtIndex:0];
         ConfigurationViewController *cfgVC = (ConfigurationViewController *)[leftNavController topViewController];
         iPadMapViewController *iMVC = [splitViewController.viewControllers objectAtIndex:1];
-        Configs *currentConfigs = [cfgVC currentConfigs];
-        [iMVC refreshMapConfigs:currentConfigs];
         cfgVC.delegate = iMVC;
     }
     return YES;

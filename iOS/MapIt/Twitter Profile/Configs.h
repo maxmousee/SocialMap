@@ -11,14 +11,12 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 @interface Configs : NSObject {
-
 }
 
-@property (nonatomic, strong) FBLoginView *loginview;
-@property (nonatomic, assign) int showTwInteractions;
-@property (nonatomic, assign) int showTwTimeline;
 @property (nonatomic, assign) int fbCurrentLocation;
+@property (nonatomic, assign) BOOL showTwTimeline;
+@property (nonatomic, assign) BOOL showTwInteractions;
 
-+(Configs *)updateCFG: (int)twTimelineEnabled : (int)twInteractionsEnabled : (FBLoginView *)theLoginview : (int)isFBCurrentLocation;
++(Configs *)updateCFG: (BOOL)twTimelineEnabled : (BOOL)twInteractionsEnabled : (int)isFBCurrentLocation;
 
 @end

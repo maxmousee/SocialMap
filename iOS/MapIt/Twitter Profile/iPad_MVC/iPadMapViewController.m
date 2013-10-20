@@ -54,7 +54,6 @@
     //Make sure we're not setting up the same configurations.
     //if (_currentCFGs != newCFGs) {
         _currentCFGs = newCFGs;
-        loginview = _currentCFGs.loginview;
         //Update the UI to reflect the new monster selected from the list.
     dispatch_queue_t myQueue = dispatch_queue_create("WaitQueue",NULL);
     dispatch_async(myQueue, ^{
@@ -74,28 +73,66 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     [socialMapView removeOverlays:socialMapView.overlays];
     [socialMapView removeAnnotations:socialMapView.annotations];
-    if(_currentCFGs.fbCurrentLocation > 0) {
-        [self plotFBFriendsHomeTownWithFQL];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (FBSession.activeSession.isOpen)
+    {
+        if([defaults integerForKey:@"isFBCurrentLocation"] > 0) {
+            //NSLog(@"plotFBFriendsHomeTownWithFQL");
+            [self plotFBFriendsHomeTownWithFQL];
+        } else {
+            //NSLog(@"plotFBFriendsCurrentLocationWithFQL");
+            [self plotFBFriendsCurrentLocationWithFQL];
+        }
     } else {
-        [self plotFBFriendsCurrentLocationWithFQL];
+        // try to open session with existing valid token
+        NSArray *permissions = [[NSArray alloc] initWithObjects:
+                                @"basic_info",
+                                @"user_location",
+                                @"friends_location",
+                                @"friends_hometown",
+                                nil];
+        FBSession *session = [[FBSession alloc] initWithPermissions:permissions];
+        [FBSession setActiveSession:session];
+        if([FBSession openActiveSessionWithAllowLoginUI:NO]) {
+            // post to wall
+        } else {
+            // you need to log the user
+            [FBSession openActiveSessionWithReadPermissions:permissions allowLoginUI:YES completionHandler:^(FBSession *session,
+                                                                                                             FBSessionState state,
+                                                                                                             NSError *error)
+             {
+                 if (FB_ISSESSIONOPENWITHSTATE([session state]))
+                 {
+                     if([defaults integerForKey:@"isFBCurrentLocation"] > 0) {
+                         [self plotFBFriendsHomeTownWithFQL];
+                     } else {
+                         [self plotFBFriendsCurrentLocationWithFQL];
+                     }
+                 }
+                 else
+                 {
+                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOPS" message:@"Facebook Login issue :(" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                     [alert show];
+                 }
+             }];
+        }
     }
-    
-    if(_currentCFGs.showTwInteractions > 0) {
+    if([defaults boolForKey:@"twUserInteractions"]) {
         dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
         dispatch_async(myQueue, ^{
             // Perform long running process
-            sleep(3);
+            sleep(2);
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Update the UI
                 [self plotInteractions];
             });
         });
     }
-    if(_currentCFGs.showTwTimeline > 0) {
+    if([defaults boolForKey:@"twTimeline"]) {
         dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
         dispatch_async(myQueue, ^{
             // Perform long running process
-            sleep(5);
+            sleep(4);
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Update the UI
                 [self plotTimeline];
@@ -158,7 +195,7 @@
                                 NSArray *userArray = [(NSDictionary *)tweetArray objectForKey:@"user"];
                                 //NSLog(@"%@", userArray);
                                 NSString *userLocation = [(NSDictionary *)userArray objectForKey:@"location"];
-                                NSLog(@"%@", userLocation);
+                                //NSLog(@"%@", userLocation);
                                 if(userLocation != nil && [userLocation length] > 0) {
                                     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
                                     [geocoder geocodeAddressString:userLocation completionHandler:^(NSArray* placemarks, NSError* error){
@@ -249,7 +286,7 @@
                                 NSArray *userArray = [(NSDictionary *)tweetArray objectForKey:@"user"];
                                 //NSLog(@"%@", userArray);
                                 NSString *userLocation = [(NSDictionary *)userArray objectForKey:@"location"];
-                                NSLog(@"%@", userLocation);
+                                //NSLog(@"%@", userLocation);
                                 if(userLocation != nil && [userLocation length] > 0) {
                                     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
                                     [geocoder geocodeAddressString:userLocation completionHandler:^(NSArray* placemarks, NSError* error){
@@ -312,9 +349,9 @@
                               
                               for (NSDictionary *userData in friends) {
                                   @try {
-                                      NSLog(@"%@", [userData objectForKey:@"name"]);
+                                      //NSLog(@"%@", [userData objectForKey:@"name"]);
                                       NSDictionary *userLocationDict = [userData objectForKey:@"current_location"];
-                                      NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
+                                      //NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"latitude"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"longitude"]);
                                       // Add an annotation
@@ -360,9 +397,9 @@
                               
                               for (NSDictionary *userData in friends) {
                                   @try {
-                                      NSLog(@"%@", [userData objectForKey:@"name"]);
+                                      //NSLog(@"%@", [userData objectForKey:@"name"]);
                                       NSDictionary *userLocationDict = [userData objectForKey:@"hometown_location"];
-                                      NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
+                                      //NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"latitude"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"longitude"]);
                                       // Add an annotation

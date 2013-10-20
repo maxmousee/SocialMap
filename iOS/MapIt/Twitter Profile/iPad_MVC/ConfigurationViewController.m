@@ -42,15 +42,12 @@
     _fbLocationSlider.minimumTrackTintColor = [UIColor colorWithRed:90.0/255.0 green:200.0/255.0 blue:250.0/255.0 alpha:1];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    int isTwInteractionsEnabled = [defaults integerForKey:@"twUserInteractions"];
-    if(isTwInteractionsEnabled > 0) [_twitterTimelineOnSwitch setOn:YES];
-    else [_twitterTimelineOnSwitch setOn:NO];
+    [_twitterTimelineOnSwitch setOn:[defaults boolForKey:@"twTimeline"]];
+    [_twitterInteractionsOnSwitch setOn:[defaults boolForKey:@"twUserInteractions"]];
+    [_fbLocationSlider setValue:[defaults integerForKey:@"isFBCurrentLocation"]];
     
-    int isTwTimelineEnabled = [defaults integerForKey:@"twTimeline"];
-    if(isTwTimelineEnabled > 0) [_twitterTimelineOnSwitch setOn:YES];
-    else [_twitterTimelineOnSwitch setOn:NO];
     int isFBCurrentLocation = (int)floor(_fbLocationSlider.value);
-    _currentConfigs = [Configs updateCFG:[_twitterTimelineOnSwitch isOn]:[_twitterInteractionsOnSwitch isOn]:loginview: isFBCurrentLocation];
+    _currentConfigs = [Configs updateCFG:[_twitterTimelineOnSwitch isOn]:[_twitterInteractionsOnSwitch isOn]: isFBCurrentLocation];
     if (_delegate) {
         [_delegate refreshMapConfigs:_currentConfigs];
     }
@@ -140,19 +137,13 @@
 - (IBAction)savePreferencesReloadMap:(id)sender {
     int isFBCurrentLocation = (int)floor(_fbLocationSlider.value);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:[_twitterInteractionsOnSwitch isOn] forKey:@"twUserInteractions"];
-    [defaults setInteger:[_twitterTimelineOnSwitch isOn] forKey:@"twTimeline"];
+    [defaults setBool:[_twitterInteractionsOnSwitch isOn] forKey:@"twUserInteractions"];
+    [defaults setBool:[_twitterTimelineOnSwitch isOn] forKey:@"twTimeline"];
     [defaults setInteger:isFBCurrentLocation forKey:@"isFBCurrentLocation"];
     [defaults synchronize];
-    if (_currentConfigs.showTwTimeline != [_twitterTimelineOnSwitch isOn]) {
-        _currentConfigs = [Configs updateCFG:[_twitterTimelineOnSwitch isOn]:[_twitterInteractionsOnSwitch isOn]:loginview: isFBCurrentLocation];
-    }
-    if(_currentConfigs.showTwInteractions != [_twitterInteractionsOnSwitch isOn]) {
-        _currentConfigs = [Configs updateCFG:[_twitterTimelineOnSwitch isOn]:[_twitterInteractionsOnSwitch isOn]:loginview: isFBCurrentLocation];
-    }
-    if(_currentConfigs.loginview != loginview) {
-        _currentConfigs = [Configs updateCFG:[_twitterTimelineOnSwitch isOn]:[_twitterInteractionsOnSwitch isOn]:loginview: isFBCurrentLocation];
-    }
+    _currentConfigs = [Configs updateCFG:[_twitterTimelineOnSwitch isOn]:[_twitterInteractionsOnSwitch isOn]: isFBCurrentLocation];
+    [_currentConfigs setShowTwInteractions:[_twitterInteractionsOnSwitch isOn]];
+    [_currentConfigs setShowTwTimeline:[_twitterTimelineOnSwitch isOn]];
     if (_delegate) {
         [_delegate refreshMapConfigs:_currentConfigs];
     }

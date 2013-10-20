@@ -28,7 +28,6 @@
     NSString *username;
     NSArray *followersIDs;
     IBOutlet OCMapView *socialMapView;
-    FBLoginView *loginview;
 }
 
 @property (nonatomic, retain) NSString *twitterUsername;
