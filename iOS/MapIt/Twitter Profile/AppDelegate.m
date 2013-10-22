@@ -21,6 +21,9 @@
         iPadMapViewController *iMVC = [splitViewController.viewControllers objectAtIndex:1];
         cfgVC.delegate = iMVC;
     }
+    else {
+        [FBProfilePictureView class];
+    }
     return YES;
 }
 

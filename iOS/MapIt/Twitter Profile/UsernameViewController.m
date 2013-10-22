@@ -40,7 +40,6 @@
 {
     [super viewDidLoad];
     
-    [_showMapButton setEnabled:NO];
     [_showTwitterInfoButton setEnabled:NO];
     
     FBLoginView *loginview = [[FBLoginView alloc] init];
@@ -49,13 +48,6 @@
                                   @"friends_location",
                                   @"friends_hometown"];
     
-    //loginview.frame = CGRectOffset(loginview.frame, 5, 5);
-    //CGRect loginViewFrame = _showMapButton.frame;
-    //loginViewFrame.origin.y += 50;
-    //loginViewFrame.origin.y += 105;
-    //loginViewFrame.origin.y += 160;
-    //loginViewFrame.origin.x += 65;
-    //loginview.frame = loginViewFrame;
     loginview.delegate = self;
     
     [loginview sizeToFit];
@@ -75,14 +67,26 @@
     
     [self.view addSubview:loginview];
     
+    [self checkFBLogin];
     [self getTwitterInfo];
-    //[self requestFriendsWithFQL];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) checkFBLogin
+{
+    if (FBSession.activeSession.isOpen)
+    {
+        [_showMapButton setEnabled:YES];
+    }
+    else
+    {
+        [_showMapButton setEnabled:NO];
+    }
 }
 
 - (void) getTwitterInfo
@@ -110,7 +114,6 @@
         } else {
             NSLog(@"No access granted");
         }
-        [_showMapButton setEnabled:YES];
     }];
 }
 

@@ -121,10 +121,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7BU-Q5-rAl">
-                                <rect key="frame" x="85" y="100" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="usrname" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjq-Zq-dYt">
                                 <rect key="frame" x="20" y="269" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -161,7 +157,15 @@
                                 <state key="normal" title="MapIt">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="BLA-q6-FpI" kind="push" id="dOB-gd-u2p"/>
+                                </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jhr-AJ-Bfd" customClass="FBProfilePictureView">
+                                <rect key="frame" x="80" y="101" width="160" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -169,7 +173,7 @@
                     <connections>
                         <outlet property="currentLocationSwitch" destination="p1f-Qe-y4E" id="ZOL-iz-r42"/>
                         <outlet property="hometownSwitch" destination="azG-Hu-a6V" id="0xN-4G-t5u"/>
-                        <outlet property="userProfileIV" destination="7BU-Q5-rAl" id="501-yb-hA0"/>
+                        <outlet property="userImage" destination="Jhr-AJ-Bfd" id="9pa-cu-1S2"/>
                         <outlet property="usrnameLabel" destination="rjq-Zq-dYt" id="Ve5-GL-yeh"/>
                     </connections>
                 </viewController>
@@ -177,7 +181,7 @@
             </objects>
             <point key="canvasLocation" x="720" y="669"/>
         </scene>
-        <!--Tweet Map View Controller - Facebook-->
+        <!--Tweet Map View Controller - fb map-->
         <scene sceneID="UGf-xk-eA1">
             <objects>
                 <viewController storyboardIdentifier="TweetMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BLA-q6-FpI" customClass="TweetMapViewController" sceneMemberID="viewController">
@@ -201,7 +205,7 @@
                             <constraint firstItem="jgm-HA-Vjs" firstAttribute="bottom" secondItem="FnJ-0y-mCw" secondAttribute="bottom" id="jkg-OJ-eRw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Facebook" id="NLm-ag-mT7"/>
+                    <navigationItem key="navigationItem" title="fb map" id="NLm-ag-mT7"/>
                     <connections>
                         <outlet property="socialMapView" destination="jgm-HA-Vjs" id="Qdu-uk-4mY"/>
                     </connections>

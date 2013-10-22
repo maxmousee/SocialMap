@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
+
+#define FBHOMETOWN "fbHometown"
+#define FBCURRENTLOCATION "fbCurrentLocation"
 
 @interface FbSettingsVC : UIViewController
 {
     //nothing to declare here
 }
 
-@property (weak, nonatomic) IBOutlet UIImageView *userProfileIV;
+@property (weak, nonatomic) IBOutlet FBProfilePictureView *userImage;
 @property (weak, nonatomic) IBOutlet UILabel *usrnameLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *currentLocationSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *hometownSwitch;

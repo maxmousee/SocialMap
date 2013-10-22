@@ -8,6 +8,9 @@
 
 #import "TweetMapViewController.h"
 
+#define FBHOMETOWN "fbHometown"
+#define FBCURRENTLOCATION "fbCurrentLocation"
+
 @interface TweetMapViewController ()
 
 @end
@@ -45,9 +48,16 @@
     self.activityIndicator.center = center;
     [self.activityIndicator startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
-    
-    [self plotFBFriendsWithFQL];
+
     [self setUpGoogleAd];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults boolForKey:@FBCURRENTLOCATION]) {
+        [self plotFBFriendsCurrentLocationWithFQL];
+    }
+    if([defaults boolForKey:@FBHOMETOWN]) {
+        [self plotFBFriendsHomeTownWithFQL];
+    }
     
 }
 
@@ -82,8 +92,14 @@
     [googleBannerView loadRequest:request];
 }
 
+-(void)dismissActivityIndicators {
+    [self.activityIndicator stopAnimating];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = FALSE;
+}
+
 // FQL via Graph API
--(void)plotFBFriendsWithFQL {
+-(void)plotFBFriendsCurrentLocationWithFQL {
+    NSLog(@"plotFBFriendsCurrentLocationWithFQL");
     NSString* fql =
     @"{"
     @"'allfriends':'SELECT uid2 FROM friend WHERE uid1=me()',"
@@ -98,6 +114,7 @@
                                   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOPS" message:@"Something bad happened trying to reach Facebook :(" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                                   [alert show];
                                   NSLog(@"%@", error);
+                                  [self dismissActivityIndicators];
                                   return;
                               }
                               
@@ -107,9 +124,9 @@
                               
                               for (NSDictionary *userData in friends) {
                                   @try {
-                                      NSLog(@"%@", [userData objectForKey:@"name"]);
+                                      //NSLog(@"%@", [userData objectForKey:@"name"]);
                                       NSDictionary *userLocationDict = [userData objectForKey:@"current_location"];
-                                      NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
+                                      //NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"latitude"]);
                                       //NSLog(@"%@", [userLocationDict objectForKey:@"longitude"]);
                                       // Add an annotation
@@ -126,8 +143,56 @@
                                   }
                                   
                               }
-                              [self.activityIndicator stopAnimating];
-                              [UIApplication sharedApplication].networkActivityIndicatorVisible = FALSE;
+                              [self dismissActivityIndicators];
+                          }];
+}
+
+-(void)plotFBFriendsHomeTownWithFQL {
+    NSLog(@"plotFBFriendsHomeTownWithFQL");
+    NSString* fql =
+    @"{"
+    @"'allfriends':'SELECT uid2 FROM friend WHERE uid1=me()',"
+    @"'frienddetails':'SELECT uid, name, pic, hometown_location, current_location FROM user WHERE uid IN ( SELECT uid2 FROM friend WHERE uid1 = me() )',"
+    @"}";
+    [FBRequestConnection startWithGraphPath:@"/fql"
+                                 parameters:@{ @"q" : fql}
+                                 HTTPMethod:@"GET"
+                          completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                              if(error) {
+                                  //[self printError:@"Error reading friends via FQL" error:error];
+                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"OOPS" message:@"Something bad happened trying to reach Facebook :(" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                  [alert show];
+                                  NSLog(@"%@", error);
+                                  [self dismissActivityIndicators];
+                                  return;
+                              }
+                              
+                              //NSArray* friendIds = ((NSArray*)[result data])[0][@"fql_result_set"];
+                              NSArray* friends = ((NSArray*)[result data])[1][@"fql_result_set"];
+                              [socialMapView removeOverlays:socialMapView.overlays];
+                              
+                              for (NSDictionary *userData in friends) {
+                                  @try {
+                                      //NSLog(@"%@", [userData objectForKey:@"name"]);
+                                      NSDictionary *userLocationDict = [userData objectForKey:@"hometown_location"];
+                                      //NSLog(@"%@", [userLocationDict objectForKey:@"city"]);
+                                      //NSLog(@"%@", [userLocationDict objectForKey:@"latitude"]);
+                                      //NSLog(@"%@", [userLocationDict objectForKey:@"longitude"]);
+                                      // Add an annotation
+                                      double latitude = [[userLocationDict objectForKey:@"latitude"]doubleValue];
+                                      double longitude = [[userLocationDict objectForKey:@"longitude"]doubleValue];
+                                      
+                                      OCMapViewSampleHelpAnnotation *annotation = [[OCMapViewSampleHelpAnnotation alloc]initWithCoordinate:CLLocationCoordinate2DMake(latitude, longitude)];
+                                      annotation.title = [userData objectForKey:@"name"];
+                                      annotation.groupTag = kTYPE1;
+                                      [socialMapView addAnnotation:annotation];
+                                  }
+                                  @catch (NSException *exception) {
+                                      //NSLog(@"EXCEPTION %@", exception);
+                                  }
+                                  
+                              }
+                              [self dismissActivityIndicators];
                           }];
 }
 
