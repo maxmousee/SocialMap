@@ -77,6 +77,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    [_showMapButton setEnabled:YES];
+}
+
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+    [_showMapButton setEnabled:NO];
+}
+
 - (void) checkFBLogin
 {
     if (FBSession.activeSession.isOpen)

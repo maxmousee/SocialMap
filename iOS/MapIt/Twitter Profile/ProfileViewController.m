@@ -36,6 +36,8 @@
     [_mapView.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     [_mapView.layer setBorderWidth: 2.0];
     
+    [self setUpGoogleAd];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     int plotInteractions = [defaults integerForKey:@"userInteractions"];
     int plotTimeline = [defaults integerForKey:@"userInteractions"];
@@ -52,6 +54,31 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setUpGoogleAd
+{
+    googleBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    CGRect googleBannerViewFrame = googleBannerView.frame;
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    googleBannerViewFrame.origin.y = screenRect.size.height - googleBannerViewFrame.size.height;
+    [googleBannerView setFrame:googleBannerViewFrame];
+    
+    // Specify the ad unit ID.
+    googleBannerView.adUnitID = @"ca-app-pub-6181270546404452/2050401562";
+    
+    // Let the runtime know which UIViewController to restore after taking
+    // the user wherever the ad goes and add it to the view hierarchy.
+    googleBannerView.rootViewController = self;
+    [self.view addSubview:googleBannerView];
+    
+    // Initiate a generic request to load it with an ad.
+    
+    GADRequest *request = [GADRequest request];
+    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, @"596325609d0e6da57543212613fd6f6c", nil];
+    //request.testDevices = [NSArray arrayWithObjects:@"596325609d0e6da57543212613fd6f6c", nil];
+    //request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
+    [googleBannerView loadRequest:request];
 }
 
 - (void)plotTimeline{

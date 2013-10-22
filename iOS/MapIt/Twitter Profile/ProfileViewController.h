@@ -14,10 +14,11 @@
 #import <CoreLocation/CoreLocation.h>
 #import "OCMapView.h"
 #import "OCMapViewSampleHelpAnnotation.h"
+#import "GADBannerView.h"
 
 @interface ProfileViewController : UIViewController <MKMapViewDelegate>
 {
-    //nothing here
+    GADBannerView *googleBannerView;
 }
 
 @property (weak, nonatomic) IBOutlet OCMapView *mapView;

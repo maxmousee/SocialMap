@@ -8,6 +8,9 @@
 
 #import "TwtrSettingsViewController.h"
 
+#define TWUSRINTERACTIONS "userInteractions"
+#define TWTIMELINE "timeline"
+
 @interface TwtrSettingsViewController ()
 
 @end
@@ -29,6 +32,19 @@
     [super viewDidLoad];
     _interactionsSwitch.onTintColor = [UIColor colorWithRed:90.0/255.0 green:200.0/255.0 blue:250.0/255.0 alpha:1];
     _timelineSwitch.onTintColor = [UIColor colorWithRed:90.0/255.0 green:200.0/255.0 blue:250.0/255.0 alpha:1];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL twInteractions = [defaults boolForKey:@TWUSRINTERACTIONS];
+    BOOL twTimeline = [defaults boolForKey:@TWTIMELINE];
+    
+    if(twTimeline || twInteractions) {
+        [_interactionsSwitch setOn:twInteractions animated:YES];
+        [_timelineSwitch setOn:twTimeline animated:YES];
+    } else {
+        [_interactionsSwitch setOn:YES animated:YES];
+        [_timelineSwitch setOn:NO animated:YES];
+    }
+
     
 	[_userProfileIV.layer setBorderWidth:4.0f];
     [_userProfileIV.layer setBorderColor:[[UIColor whiteColor] CGColor]];
@@ -170,8 +186,8 @@
     //NSLog(@"UserInteractions enabled %d", [_interactionsSwitch isOn]);
     //NSLog(@"Timeline enabled %d", [_timelineSwitch isOn]);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:[_interactionsSwitch isOn] forKey:@"userInteractions"];
-    [defaults setInteger:[_timelineSwitch isOn] forKey:@"timeline"];
+    [defaults setInteger:[_interactionsSwitch isOn] forKey:@TWUSRINTERACTIONS];
+    [defaults setInteger:[_timelineSwitch isOn] forKey:@TWTIMELINE];
     [defaults synchronize];
 }
 
