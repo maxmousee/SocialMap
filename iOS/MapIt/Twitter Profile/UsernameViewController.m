@@ -64,14 +64,12 @@
     loginViewFrame.origin.x += 80;
     
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-        loginViewFrame.origin.y += 340;
+        loginViewFrame.origin.y += 40;
         //_interactionsSwitch.onTintColor = [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1];
         //_timelineSwitch.onTintColor = [UIColor colorWithRed:76.0/255.0 green:217.0/255.0 blue:100.0/255.0 alpha:1];
     }
     else {
-        loginViewFrame.origin.y += 400;
-        _interactionsSwitch.onTintColor = [UIColor colorWithRed:90.0/255.0 green:200.0/255.0 blue:250.0/255.0 alpha:1];
-        _timelineSwitch.onTintColor = [UIColor colorWithRed:90.0/255.0 green:200.0/255.0 blue:250.0/255.0 alpha:1];
+        loginViewFrame.origin.y += 120;
     }
     loginview.frame = loginViewFrame;
     
@@ -85,18 +83,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    //NSLog(@"UserInteractions enabled %d", [_interactionsSwitch isOn]);
-    //NSLog(@"Timeline enabled %d", [_timelineSwitch isOn]);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:[_interactionsSwitch isOn] forKey:@"userInteractions"];
-    [defaults setInteger:[_timelineSwitch isOn] forKey:@"timeline"];
-    [defaults synchronize];
-    ProfileViewController *profileViewController = [segue destinationViewController];
-    [profileViewController setUsername:username];
 }
 
 - (void) getTwitterInfo

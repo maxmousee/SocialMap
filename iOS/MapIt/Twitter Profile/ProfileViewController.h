@@ -17,25 +17,9 @@
 
 @interface ProfileViewController : UIViewController <MKMapViewDelegate>
 {
-    IBOutlet UIImageView *profileImageView;
-    IBOutlet UIImageView *bannerImageView;
-    
-    IBOutlet UILabel *nameLabel;
-    IBOutlet UILabel *usernameLabel;
-    
-    IBOutlet UILabel *tweetsLabel;
-    IBOutlet UILabel *followingLabel;
-    IBOutlet UILabel *followersLabel;
-    
-    NSString *username;
-    BOOL isFullScreen;
-    CGRect mapViewSmallFrame;
-    
+    //nothing here
 }
 
-@property (nonatomic, retain) NSString *username;
 @property (weak, nonatomic) IBOutlet OCMapView *mapView;
-
-- (IBAction)handleMapViewTap:(UITapGestureRecognizer *)recognizer;
 
 @end
