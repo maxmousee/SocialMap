@@ -100,7 +100,7 @@
     if ([recognizer.view isKindOfClass:[MKAnnotationView class]]) {
         
         MKAnnotationView *annotationView = (MKAnnotationView *)recognizer.view;
-        NSLog(@"MKAnnotationView");
+        //NSLog(@"MKAnnotationView");
         
         // if it's a cluster
         if ([annotationView.annotation isKindOfClass:[OCAnnotation class]]) {

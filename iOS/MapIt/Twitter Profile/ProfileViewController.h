@@ -19,6 +19,7 @@
 @interface ProfileViewController : UIViewController <MKMapViewDelegate>
 {
     GADBannerView *googleBannerView;
+    UITapGestureRecognizer *singleFingerTapAnnotation;
 }
 
 @property (weak, nonatomic) IBOutlet OCMapView *mapView;
