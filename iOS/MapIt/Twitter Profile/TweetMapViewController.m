@@ -89,7 +89,7 @@
     // Initiate a generic request to load it with an ad.
     
     GADRequest *request = [GADRequest request];
-    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, @"596325609d0e6da57543212613fd6f6c", nil];
+    //request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, @"596325609d0e6da57543212613fd6f6c", nil];
     //request.testDevices = [NSArray arrayWithObjects:@"596325609d0e6da57543212613fd6f6c", nil];
     //request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
     [googleBannerView loadRequest:request];
