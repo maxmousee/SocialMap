@@ -18,6 +18,7 @@
 #import "OCMapView.h"
 #import "OCMapViewSampleHelpAnnotation.h"
 #import "GADBannerView.h"
+#import "CompleteListVC.h"
 
 #define ARC4RANDOM_MAX 0X100000000
 #define kTYPE1 @"Friend"
@@ -30,6 +31,7 @@
     NSArray *followersIDs;
     IBOutlet OCMapView *socialMapView;
     GADBannerView *googleBannerView;
+    UITapGestureRecognizer *singleFingerTapAnnotation;
 }
 
 @property (nonatomic, retain) NSString *username;

@@ -48,8 +48,11 @@
     self.activityIndicator.center = center;
     [self.activityIndicator startAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
-
+    
     [self setUpGoogleAd];
+    
+    singleFingerTapAnnotation = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                        action:@selector(handleMapAnnotationTap:)];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if([defaults boolForKey:@FBCURRENTLOCATION]) {
@@ -90,6 +93,33 @@
     //request.testDevices = [NSArray arrayWithObjects:@"596325609d0e6da57543212613fd6f6c", nil];
     //request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
     [googleBannerView loadRequest:request];
+}
+
+- (void)handleMapAnnotationTap:(UITapGestureRecognizer *)recognizer {
+    // if it's a MKAnnotationView
+    if ([recognizer.view isKindOfClass:[MKAnnotationView class]]) {
+        
+        MKAnnotationView *annotationView = (MKAnnotationView *)recognizer.view;
+        NSLog(@"MKAnnotationView");
+        
+        // if it's a cluster
+        if ([annotationView.annotation isKindOfClass:[OCAnnotation class]]) {
+            NSMutableArray *usersNamesMA = [[NSMutableArray alloc]init];
+            OCAnnotation *clusterAnnotation = (OCAnnotation *)annotationView.annotation;
+            
+            for (OCAnnotation *userAnnotation in clusterAnnotation.annotationsInCluster) {
+                NSString *anUserName = userAnnotation.title;
+                //NSLog(@"%@", anUserName);
+                [usersNamesMA addObject:anUserName];
+                
+            }
+            
+            [usersNamesMA sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            CompleteListVC *clVC = [self.storyboard instantiateViewControllerWithIdentifier:@"usersStoryboard"];
+            [clVC setUsersArray:[[NSArray alloc] initWithArray:usersNamesMA]];
+            [self.navigationController pushViewController:clVC animated:YES];
+        }
+    }
 }
 
 -(void)dismissActivityIndicators {
@@ -228,9 +258,10 @@
         OCAnnotation *firstAnnotation = [clusterAnnotation.annotationsInCluster objectAtIndex:0];
         clusterAnnotation.title = [firstAnnotation title];
         clusterAnnotation.subtitle = [NSString stringWithFormat:@"and %d more...", [clusterAnnotation.annotationsInCluster count] - 1];
-
+        
         // set its image
         annotationView.image = [UIImage imageNamed:@"regular.png"];
+        [annotationView addGestureRecognizer:singleFingerTapAnnotation];
     }
     // If it's a single annotation
     else if([annotation isKindOfClass:[OCMapViewSampleHelpAnnotation class]]){
@@ -243,7 +274,7 @@
         }
         //singleAnnotation.title = singleAnnotation.groupTag;
         annotationView.image = [UIImage imageNamed:@"regular.png"];
-
+        
     }
     // Error
     else{

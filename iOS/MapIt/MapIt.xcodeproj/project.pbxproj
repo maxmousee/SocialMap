@@ -55,6 +55,7 @@
 		3A87862717CC8A3600BBA7FC /* icon2_72.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3A87862617CC8A3600BBA7FC /* icon2_72.PNG */; };
 		3A87862917CC8A4100BBA7FC /* icon2_144.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3A87862817CC8A4100BBA7FC /* icon2_144.PNG */; };
 		3A96F53217CEEC79009425B5 /* Configs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A96F53117CEEC79009425B5 /* Configs.m */; };
+		3AB8AB36181839B100BC4D08 /* CompleteListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8AB35181839B100BC4D08 /* CompleteListVC.m */; };
 		3ABE6106178BA6F200E00BC6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */; };
 		3AD011301815F0C40003D401 /* TwtrSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD0112F1815F0C40003D401 /* TwtrSettingsViewController.m */; };
 		3AE87C3217EAAECC00B6372E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE87C3117EAAECC00B6372E /* Images.xcassets */; };
@@ -149,6 +150,8 @@
 		3AB109CF17EA80F000C06BC4 /* icon2_76.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_76.PNG; path = ../icon2_76.PNG; sourceTree = "<group>"; };
 		3AB109D017EA80FF00C06BC4 /* icon2_152.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_152.PNG; path = ../icon2_152.PNG; sourceTree = "<group>"; };
 		3AB109D117EA811300C06BC4 /* icon2_120.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon2_120.PNG; path = ../icon2_120.PNG; sourceTree = "<group>"; };
+		3AB8AB34181839B100BC4D08 /* CompleteListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteListVC.h; sourceTree = "<group>"; };
+		3AB8AB35181839B100BC4D08 /* CompleteListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteListVC.m; sourceTree = "<group>"; };
 		3ABE6104178BA6E900E00BC6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3AD0112E1815F0C40003D401 /* TwtrSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwtrSettingsViewController.h; sourceTree = "<group>"; };
 		3AD0112F1815F0C40003D401 /* TwtrSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwtrSettingsViewController.m; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 				3A8413CD178A538600C1159A /* TweetMapViewController.m */,
 				90E9BE8816C1BEE000EC2D36 /* UsernameViewController.h */,
 				90E9BE8916C1BEE000EC2D36 /* UsernameViewController.m */,
+				3AB8AB34181839B100BC4D08 /* CompleteListVC.h */,
+				3AB8AB35181839B100BC4D08 /* CompleteListVC.m */,
 				90E9BE8E16C1C13500EC2D36 /* ProfileViewController.h */,
 				90E9BE8F16C1C13500EC2D36 /* ProfileViewController.m */,
 				3AEA126D181628A800C5DF6E /* FbSettingsVC.h */,
@@ -506,6 +511,7 @@
 				3A73819B17CCD0620060BC02 /* OCAlgorithms.m in Sources */,
 				3A73819C17CCD0620060BC02 /* OCAnnotation.m in Sources */,
 				3A73819D17CCD0620060BC02 /* OCDistance.m in Sources */,
+				3AB8AB36181839B100BC4D08 /* CompleteListVC.m in Sources */,
 				3A73819E17CCD0620060BC02 /* OCMapView.m in Sources */,
 				3A7381AB17CCD0BF0060BC02 /* OCMapViewSampleHelpAnnotation.m in Sources */,
 				3A7381C017CDB9370060BC02 /* ConfigurationViewController.m in Sources */,
