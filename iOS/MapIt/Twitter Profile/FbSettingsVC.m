@@ -59,8 +59,8 @@
         @try {
             NSDictionary* myInfo = ((NSDictionary*)result);
             NSLog(@"%@", myInfo);
-            NSString *userName = [myInfo objectForKey:@"name"];
-            [_usrnameLabel setText:userName];
+            //NSString *userName = [myInfo objectForKey:@"name"];
+            //[_usrnameLabel setText:userName];
             [self loadUsrProfilePic:[myInfo objectForKey:@"id"]];
         }
         @catch (NSException *exception) {

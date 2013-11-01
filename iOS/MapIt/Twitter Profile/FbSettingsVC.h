@@ -18,7 +18,6 @@
 }
 
 @property (weak, nonatomic) IBOutlet FBProfilePictureView *userImage;
-@property (weak, nonatomic) IBOutlet UILabel *usrnameLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *currentLocationSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *hometownSwitch;
 
