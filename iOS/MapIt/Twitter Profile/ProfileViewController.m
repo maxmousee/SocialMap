@@ -129,7 +129,7 @@
                 
                 // Creating a request to get the info about a user on Twitter
                 
-                SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/home_timeline.json?user_id=%@&count=800",twitterAccount.username]] parameters:nil];
+                SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/home_timeline.json?user_id=%@&count=200&exclude_replies=true",twitterAccount.username]] parameters:nil];
                 [twitterInfoRequest setAccount:twitterAccount];
                 
                 // Making the request
@@ -218,7 +218,7 @@
                 
                 // Creating a request to get the info about a user on Twitter
                 
-                SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/mentions_timeline.json?user_id=%@&count=800",twitterAccount.username]] parameters:nil];
+                SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/statuses/mentions_timeline.json?user_id=%@&count=200",twitterAccount.username]] parameters:nil];
                 [twitterInfoRequest setAccount:twitterAccount];
                 
                 // Making the request

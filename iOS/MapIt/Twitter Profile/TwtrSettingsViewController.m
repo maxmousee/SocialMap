@@ -11,6 +11,12 @@
 #define TWUSRINTERACTIONS "userInteractions"
 #define TWTIMELINE "timeline"
 
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
 @interface TwtrSettingsViewController ()
 
 @end
@@ -64,6 +70,19 @@
     [self getInfo];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0"))
+    {
+        [_interactionsSwitch setFrame:CGRectOffset(_interactionsSwitch.frame, 0, 12)];
+        [_timelineSwitch setFrame:CGRectOffset(_timelineSwitch.frame, 0, 12)];
+    }
+    
+    [_interactionsSwitch setHidden:NO];
+    [_timelineSwitch setHidden:NO];
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -77,13 +96,14 @@
     _userProfileIV.image = [UIImage imageWithData:data];
 }
 
+/*
 - (void) getBannerImageForURLString:(NSString *)urlString;
 {
     NSURL *url = [NSURL URLWithString:urlString];
     NSData *data = [NSData dataWithContentsOfURL:url];
     _userBackgroundIV.image = [UIImage imageWithData:data];
 }
-
+*/
 - (void) getInfo
 {
     // Request access to the Twitter accounts
@@ -136,24 +156,24 @@
                             
                             // Filter the preferred data
                             
-                            NSString *screen_name = [(NSDictionary *)TWData objectForKey:@"screen_name"];
+                            //NSString *screen_name = [(NSDictionary *)TWData objectForKey:@"screen_name"];
                             //NSString *name = [(NSDictionary *)TWData objectForKey:@"name"];
                             
-                            int followers = [[(NSDictionary *)TWData objectForKey:@"followers_count"] integerValue];
-                            int following = [[(NSDictionary *)TWData objectForKey:@"friends_count"] integerValue];
-                            int tweets = [[(NSDictionary *)TWData objectForKey:@"statuses_count"] integerValue];
+                            //int followers = [[(NSDictionary *)TWData objectForKey:@"followers_count"] integerValue];
+                            //int following = [[(NSDictionary *)TWData objectForKey:@"friends_count"] integerValue];
+                            //int tweets = [[(NSDictionary *)TWData objectForKey:@"statuses_count"] integerValue];
                             
                             NSString *profileImageStringURL = [(NSDictionary *)TWData objectForKey:@"profile_image_url_https"];
-                            NSString *bannerImageStringURL =[(NSDictionary *)TWData objectForKey:@"profile_banner_url"];
+                            //NSString *bannerImageStringURL =[(NSDictionary *)TWData objectForKey:@"profile_banner_url"];
                             
                             
                             // Update the interface with the loaded data
                             
-                            [_usernameLabel setText:[NSString stringWithFormat:@"@%@",screen_name]];
+                            //[_usernameLabel setText:[NSString stringWithFormat:@"@%@",screen_name]];
                             
-                            _countTweetsLabel.text = [NSString stringWithFormat:@"%i", tweets];
-                            _countFollowingLabel.text= [NSString stringWithFormat:@"%i", following];
-                            _countFollowersLabel.text = [NSString stringWithFormat:@"%i", followers];
+                            //_countTweetsLabel.text = [NSString stringWithFormat:@"%i", tweets];
+                            //_countFollowingLabel.text= [NSString stringWithFormat:@"%i", following];
+                            //_countFollowersLabel.text = [NSString stringWithFormat:@"%i", followers];
                             
                             //NSString *lastTweet = [[(NSDictionary *)TWData objectForKey:@"status"] objectForKey:@"text"];
                             
@@ -164,13 +184,14 @@
                             
                             
                             // Get the banner image, if the user has one
-                            
+                            /*
                             if (bannerImageStringURL) {
                                 NSString *bannerURLString = [NSString stringWithFormat:@"%@/mobile_retina", bannerImageStringURL];
                                 [self getBannerImageForURLString:bannerURLString];
                             } else {
                                 _userBackgroundIV.backgroundColor = [UIColor underPageBackgroundColor];
                             }
+                             */
                         }
                     });
                 }];

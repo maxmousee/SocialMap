@@ -19,11 +19,5 @@
 @property (weak, nonatomic) IBOutlet UISwitch *timelineSwitch;
 
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileIV;
-@property (weak, nonatomic) IBOutlet UIImageView *userBackgroundIV;
-
-@property (weak, nonatomic) IBOutlet UILabel *countTweetsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *countFollowingLabel;
-@property (weak, nonatomic) IBOutlet UILabel *countFollowersLabel;
-@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @end
