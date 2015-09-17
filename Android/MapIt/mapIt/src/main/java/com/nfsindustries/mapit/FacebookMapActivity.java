@@ -24,11 +24,13 @@ public class FacebookMapActivity extends FragmentActivity {
 		} else {
 			currentLocationOpt = savedInstanceState.getBoolean("current_location", true);
 		}
+		/*
 		try {
 			// Loading map
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 	}
 
 
@@ -39,7 +41,6 @@ public class FacebookMapActivity extends FragmentActivity {
 
 		private LatLng position;
 
-		
 		public MutableData(int value, LatLng position) {
 			this.value = value;
 			this.position = position;

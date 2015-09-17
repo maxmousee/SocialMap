@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.nfsindustries.mapit"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 22
     }
 

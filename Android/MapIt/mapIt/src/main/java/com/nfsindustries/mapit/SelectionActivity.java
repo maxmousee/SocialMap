@@ -10,18 +10,16 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class SelectionActivity extends Activity {
-	static final int FACEBOOK_LOGIN_REQUEST = 1;  // The request code
 	Button currentLocBtn;
 	Button hometownBtn;
 	TextView fbInfoTV;
@@ -30,13 +28,13 @@ public class SelectionActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		FacebookSdk.sdkInitialize(this.getApplicationContext());
 		setContentView(R.layout.activity_selection);
 
 		currentLocBtn = (Button)findViewById(R.id.currentLocationButton);
 		hometownBtn = (Button)findViewById(R.id.homeTownButton);
 		fbInfoTV = (TextView)findViewById(R.id.textView1);
 
-		FacebookSdk.sdkInitialize(this.getApplicationContext());
 
 		callbackManager = CallbackManager.Factory.create();
 		final LoginButton loginButton = (LoginButton)findViewById(R.id.fb_login_button);
@@ -88,14 +86,6 @@ public class SelectionActivity extends Activity {
 			}
 		});
 
-	}
-
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.selection, menu);
-		return true;
 	}
 
 	@Override

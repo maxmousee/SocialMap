@@ -19,3 +19,5 @@ DerivedData
 *.class
 *.bin
 *.lock
+Android/MapIt/local.properties
+Android/MapIt/.gradle/2.4/taskArtifacts/cache.properties
