@@ -58,7 +58,7 @@
                   android:theme="@android:style/Theme.NoTitleBar"
                   android:screenOrientation="portrait"
                   android:label="@string/app_name" />
-        <activity android:name=".LoginUsingLoginFragmentActivity"/>
+
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id" />
          <!-- Google Maps API Key -->
          <!-- debug AIzaSyA2uGsdnWJtEmItwPYuFoy9MqK1eHyl-yA -->

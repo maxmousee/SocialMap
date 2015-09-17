@@ -2,9 +2,13 @@ package com.nfsindustries.mapit;
 
 import java.util.Arrays;
 
-import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.widget.LoginButton;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -21,7 +25,7 @@ public class SelectionActivity extends Activity {
 	Button currentLocBtn;
 	Button hometownBtn;
 	TextView fbInfoTV;
-	LoginButton loginButton;
+    CallbackManager callbackManager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,31 +35,42 @@ public class SelectionActivity extends Activity {
 		currentLocBtn = (Button)findViewById(R.id.currentLocationButton);
 		hometownBtn = (Button)findViewById(R.id.homeTownButton);
 		fbInfoTV = (TextView)findViewById(R.id.textView1);
-		loginButton = (LoginButton) findViewById(R.id.authButton);
+
+
+		setContentView(R.layout.fb_login_fragment_activity);
+
+		FacebookSdk.sdkInitialize(this.getApplicationContext());
+
+		callbackManager = CallbackManager.Factory.create();
+		final LoginButton loginButton = (LoginButton)findViewById(R.id.fb_login_button);
+		loginButton.setReadPermissions(Arrays.asList("user_about_me", "user_hometown", "user_location", "friends_hometown", "read_friendlists", "friends_location"));
+		LoginManager.getInstance().registerCallback(callbackManager,
+				new FacebookCallback<LoginResult>() {
+					@Override
+					public void onSuccess(LoginResult loginResult) {
+                        currentLocBtn.setVisibility(View.VISIBLE);
+                        fbInfoTV.setVisibility(View.VISIBLE);
+                        hometownBtn.setVisibility(View.VISIBLE);
+                    }
+
+					@Override
+					public void onCancel() {
+                        currentLocBtn.setVisibility(View.GONE);
+                        fbInfoTV.setVisibility(View.GONE);
+                        hometownBtn.setVisibility(View.GONE);
+                    }
+
+					@Override
+					public void onError(FacebookException exception) {
+                        currentLocBtn.setVisibility(View.GONE);
+                        fbInfoTV.setVisibility(View.GONE);
+                        hometownBtn.setVisibility(View.GONE);
+                    }
+				});
 
 		loginButton.setReadPermissions(Arrays.asList("user_about_me", "user_hometown", "user_location", "friends_hometown", "read_friendlists", "friends_location"));
 		Log.d("ANDROID_API_LEVEL", "" + Integer.valueOf(android.os.Build.VERSION.SDK_INT));
 
-		Session.StatusCallback callback = 
-				new Session.StatusCallback() {
-			@Override
-			public void call(Session session, SessionState state,
-					Exception exception) {
-				if (session != null && session.isOpened()) {
-					// if the session is already open,
-					// try to show the selection fragment
-					currentLocBtn.setVisibility(View.VISIBLE);
-					fbInfoTV.setVisibility(View.VISIBLE);
-					hometownBtn.setVisibility(View.VISIBLE);
-				} else {
-					currentLocBtn.setVisibility(View.GONE);
-					fbInfoTV.setVisibility(View.GONE);
-					hometownBtn.setVisibility(View.GONE);
-				}
-
-			}
-		};
-		loginButton.setSessionStatusCallback(callback);
 		currentLocBtn.setOnClickListener(new OnClickListener(){
 			@Override
 			//On click function
@@ -78,50 +93,6 @@ public class SelectionActivity extends Activity {
 
 	}
 
-	@Override
-	protected void onResume()
-	{
-		super.onResume();
-		Session currentSession = Session.getActiveSession();
-		try{
-			if(currentSession.isOpened()) {
-				hometownBtn.setVisibility(View.VISIBLE);
-				currentLocBtn.setVisibility(View.VISIBLE);
-				fbInfoTV.setVisibility(View.VISIBLE);
-			}
-			else {
-				hometownBtn.setVisibility(View.GONE);
-				currentLocBtn.setVisibility(View.GONE);
-				fbInfoTV.setVisibility(View.GONE);
-			}
-		}catch(Exception ex){
-			hometownBtn.setVisibility(View.GONE);
-			currentLocBtn.setVisibility(View.GONE);
-			fbInfoTV.setVisibility(View.GONE);
-		}
-		/*
-		Session.openActiveSession(this, true, new Session.StatusCallback() {
-			// callback when session changes state
-			@Override
-			public void call(Session session, SessionState state,
-					Exception exception) {
-				if (session.isOpened())
-				{
-					hometownBtn.setVisibility(View.VISIBLE);
-					currentLocBtn.setVisibility(View.VISIBLE);
-					fbInfoTV.setVisibility(View.VISIBLE);
-				}
-				else
-				{
-					hometownBtn.setVisibility(View.GONE);
-					currentLocBtn.setVisibility(View.GONE);
-					fbInfoTV.setVisibility(View.GONE);
-				}
-			}
-		});
-		 */
-	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -134,6 +105,5 @@ public class SelectionActivity extends Activity {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		Log.d("onActivityResult", "" + resultCode);
 		super.onActivityResult(requestCode, resultCode, data);
-		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
 	}
 }
