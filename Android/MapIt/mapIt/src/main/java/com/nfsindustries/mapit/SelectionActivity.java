@@ -36,9 +36,6 @@ public class SelectionActivity extends Activity {
 		hometownBtn = (Button)findViewById(R.id.homeTownButton);
 		fbInfoTV = (TextView)findViewById(R.id.textView1);
 
-
-		setContentView(R.layout.fb_login_fragment_activity);
-
 		FacebookSdk.sdkInitialize(this.getApplicationContext());
 
 		callbackManager = CallbackManager.Factory.create();
