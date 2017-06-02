@@ -1,3 +1,3 @@
 ## SocialMap
 
-# Project on halt due to FB API changes.
+## Project on halt due to FB API changes.
